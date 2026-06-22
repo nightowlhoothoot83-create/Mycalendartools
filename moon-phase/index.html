@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Phase Today | MyCalendarTools</title>
+  <meta name="description" content="Today's moon phase, illumination and lunar details. Moon phase calculator for any date.">
+  <link rel="canonical" href="https://www.mycalendartools.net/moon-phase/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Moon Phase Today">
+  <meta property="og:description" content="Today's moon phase, illumination and lunar details. Moon phase calculator for any date.">
+  <meta property="og:url" content="https://www.mycalendartools.net/moon-phase/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Moon Phase Today", "url": "https://www.mycalendartools.net/moon-phase/", "description": "Today's moon phase and illumination", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+  <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">&#8250;</span> <span class="breadcrumb-current">Moon Phase</span></nav>
+  <section class="page-hero container">
+    <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(167,139,250,0.12),rgba(6,214,255,0.12));border:1px solid rgba(167,139,250,0.2)">&#127765;</div>
+    <h1>Moon Phase Today</h1>
+    <p>Today's moon phase, illumination percentage and lunar cycle details. Check any date.</p>
+  </section>
+  <div class="tool-layout container">
+    <div class="tool-card card">
+      <div class="moon-phase-display">
+        <span class="moon-big" id="moonBig">&#127765;</span>
+        <div class="moon-phase-name" id="moonName">Loading...</div>
+        <div class="moon-illumination" id="moonIll"></div>
+        <div class="moon-stats">
+          <div class="moon-stat"><div class="moon-stat-label">Cycle Day</div><div class="moon-stat-value" id="moonCycleDay">&#8212;</div></div>
+          <div class="moon-stat"><div class="moon-stat-label">Phase</div><div class="moon-stat-value" id="moonPhaseNum">&#8212;</div></div>
+          <div class="moon-stat"><div class="moon-stat-label">Next Full Moon</div><div class="moon-stat-value" id="moonNextFull">&#8212;</div></div>
+          <div class="moon-stat"><div class="moon-stat-label">Next New Moon</div><div class="moon-stat-value" id="moonNextNew">&#8212;</div></div>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <label style="text-transform:uppercase;font-size:0.78rem;letter-spacing:.06em;color:var(--dim)">Check a specific date</label>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <input type="date" id="moonDateInput" style="flex:1">
+          <button class="btn-primary" onclick="checkMoonDate()">Check</button>
+        </div>
+      </div>
+    </div>
+    <div class="info-sidebar">
+      <div class="info-card card">
+        <h3>Moon Phase Meanings</h3>
+        <ul>
+          <li><strong>&#127761; New Moon</strong> — New beginnings, intentions</li>
+          <li><strong>&#127762; Waxing Crescent</strong> — Setting goals</li>
+          <li><strong>&#127763; First Quarter</strong> — Taking action</li>
+          <li><strong>&#127764; Waxing Gibbous</strong> — Refining plans</li>
+          <li><strong>&#127765; Full Moon</strong> — Culmination, celebration</li>
+          <li><strong>&#127766; Waning Gibbous</strong> — Gratitude, sharing</li>
+          <li><strong>&#127767; Last Quarter</strong> — Release, forgiveness</li>
+          <li><strong>&#127768; Waning Crescent</strong> — Rest, reflection</li>
+        </ul>
+      </div>
+      <div class="info-card card" style="border-color:rgba(167,139,250,0.25)">
+        <h3>Also see</h3>
+        <p><a href="/moon-phases/">Full moon calendar for any month &#8594;</a></p>
+        <p style="margin-top:8px"><a href="/zodiac/">Today's zodiac sign &#8594;</a></p>
+      </div>
+    </div>
+  </div>
+<div class="ad-rectangle container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+  </div>  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      document.getElementById('moonDateInput').value=new Date().toISOString().split('T')[0];
+      checkMoonDate();
+    });
+    function getMoonPhaseForDate(date){
+      var year=date.getFullYear(),month=date.getMonth()+1,day=date.getDate();
+      var c=0,e=0,jd=0;
+      if(month<3){var y=year-1;var m=month+12;c=365.25*y;e=30.6*(m+1);jd=c+e+day-694039.09;}
+      else{c=365.25*year;e=30.6*(month+1);jd=c+e+day-694039.09;}
+      jd/=29.5305882;var b=Math.floor(jd);jd-=b;
+      var phase=Math.round(jd*8)%8;
+      var phases=[
+        {name:'New Moon',emoji:'&#127761;',ill:'~0%',num:'0/8'},
+        {name:'Waxing Crescent',emoji:'&#127762;',ill:'~25%',num:'1/8'},
+        {name:'First Quarter',emoji:'&#127763;',ill:'50%',num:'2/8'},
+        {name:'Waxing Gibbous',emoji:'&#127764;',ill:'~75%',num:'3/8'},
+        {name:'Full Moon',emoji:'&#127765;',ill:'100%',num:'4/8'},
+        {name:'Waning Gibbous',emoji:'&#127766;',ill:'~75%',num:'5/8'},
+        {name:'Last Quarter',emoji:'&#127767;',ill:'50%',num:'6/8'},
+        {name:'Waning Crescent',emoji:'&#127768;',ill:'~25%',num:'7/8'},
+      ];
+      return Object.assign(phases[phase],{cycleDay:Math.round(jd*29.5)+1});
+    }
+    function checkMoonDate(){
+      var d=new Date(document.getElementById('moonDateInput').value||new Date());
+      var p=getMoonPhaseForDate(d);
+      document.getElementById('moonBig').innerHTML=p.emoji;
+      document.getElementById('moonName').textContent=p.name;
+      document.getElementById('moonIll').textContent='Illumination: '+p.ill;
+      document.getElementById('moonCycleDay').textContent=p.cycleDay+' / 29';
+      document.getElementById('moonPhaseNum').textContent=p.num;
+      // Approximate next full/new
+      var nextFull=new Date(d);nextFull.setDate(d.getDate()+(4-Math.round(p.cycleDay/29.5*8)+8)%8*3+1);
+      var nextNew=new Date(d);nextNew.setDate(d.getDate()+(8-Math.round(p.cycleDay/29.5*8))%8*3+1);
+      document.getElementById('moonNextFull').textContent=nextFull.toLocaleDateString('en-AU',{day:'numeric',month:'short'});
+      document.getElementById('moonNextNew').textContent=nextNew.toLocaleDateString('en-AU',{day:'numeric',month:'short'});
+    }
+  </script>
+</body></html>

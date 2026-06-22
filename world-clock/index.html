@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Clock | MyCalendarTools</title>
+  <meta name="description" content="See live times for major world cities and compare time zones quickly.">
+  <link rel="canonical" href="https://www.mycalendartools.net/world-clock/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="World Clock">
+  <meta property="og:description" content="See live times for major world cities and compare time zones quickly.">
+  <meta property="og:url" content="https://www.mycalendartools.net/world-clock/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "World Clock", "url": "https://www.mycalendartools.net/world-clock/", "description": "Live time in major cities worldwide", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+  <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">World Clock</span></nav>
+  <section class="page-hero container">
+    <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(6,214,255,0.15));border:1px solid rgba(96,165,250,0.2)">🕰️</div>
+    <h1>World Clock</h1>
+    <p>Live city clocks in the same clean MyCalendarTools style.</p>
+  </section>
+
+  <div class="tool-layout container">
+    <div class="tool-card card">
+      <div class="form-group"><label>Add a city/time zone</label><select id="zoneSelect"><option value="Australia/Brisbane|Brisbane">Brisbane</option><option value="Australia/Sydney|Sydney">Sydney</option><option value="Pacific/Auckland|Auckland">Auckland</option><option value="Asia/Tokyo|Tokyo">Tokyo</option><option value="Asia/Dubai|Dubai">Dubai</option><option value="Europe/London|London">London</option><option value="Europe/Paris|Paris">Paris</option><option value="America/New_York|New York">New York</option><option value="America/Los_Angeles|Los Angeles">Los Angeles</option></select></div>
+      <button class="btn-primary" onclick="addZone()" style="width:100%;justify-content:center">Add Clock</button>
+      <p class="tool-note">Uses your browser’s time zone data, including daylight saving where supported.</p>
+    </div>
+    <div class="tool-card card"><h2 style="font-size:1.2rem;margin-bottom:10px">Live clocks</h2><div id="clockGrid" class="inline-tool-row"></div></div>
+  </div>
+
+  <section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/time-zone/" class="related-card card"><span class="related-card-icon">🌍</span>Time Zone Converter</a><a href="/countdown/" class="related-card card"><span class="related-card-icon">⏳</span>Countdown</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">🗓️</span>Date Calculator</a><a href="/week-number/" class="related-card card"><span class="related-card-icon">🔢</span>Week Number</a></div></section>
+  <div class="container"><div class="ad-rectangle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins><script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script></div></div>
+  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+    initFAQ(); initHamburger();
+  </script>
+  <script>
+const clocks=[['Australia/Brisbane','Brisbane'],['Australia/Sydney','Sydney'],['Pacific/Auckland','Auckland'],['Asia/Tokyo','Tokyo'],['Europe/London','London'],['America/New_York','New York']];
+function renderClocks(){const now=new Date();document.getElementById('clockGrid').innerHTML=clocks.map(([tz,city])=>`<div class="mini-result-card"><strong>${now.toLocaleTimeString('en-AU',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit'})}</strong><span>${city}</span><span>${now.toLocaleDateString('en-AU',{timeZone:tz,weekday:'short',day:'numeric',month:'short'})}</span></div>`).join('');}
+function addZone(){const [tz,city]=document.getElementById('zoneSelect').value.split('|'); if(!clocks.some(c=>c[0]===tz)) clocks.push([tz,city]); renderClocks();}
+renderClocks(); setInterval(renderClocks,1000);
+</script>
+</body>
+</html>

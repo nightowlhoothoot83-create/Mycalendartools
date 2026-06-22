@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Countdown Builder | MyCalendarTools</title>
+  <meta name="description" content="Build a countdown to any event or date. See days, hours, minutes and seconds. Free, no sign-up.">
+  <link rel="canonical" href="https://www.mycalendartools.net/countdown/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Custom Countdown Builder">
+  <meta property="og:description" content="Build a countdown to any event or date. See days, hours, minutes and seconds. Free, no sign-up.">
+  <meta property="og:url" content="https://www.mycalendartools.net/countdown/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Custom Countdown Builder", "url": "https://www.mycalendartools.net/countdown/", "description": "Build a countdown to any event or date", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+  <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">&#8250;</span> <span class="breadcrumb-current">Custom Countdown</span></nav>
+  <section class="page-hero container">
+    <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(6,214,255,0.12),rgba(139,92,246,0.12));border:1px solid rgba(6,214,255,0.2)">&#9203;</div>
+    <h1>Custom Countdown</h1>
+    <p>Build a countdown to any event — wedding, holiday, birthday, deadline. Updates every second.</p>
+  </section>
+  <div class="container" style="padding-bottom:40px;position:relative;z-index:1">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+      <div class="card" style="padding:28px">
+        <div class="form-group"><label>Event Name</label><input type="text" id="cdName" placeholder="e.g. My Wedding" value="My Event"></div>
+        <div class="form-group"><label>Target Date &amp; Time</label><input type="datetime-local" id="cdTarget"></div>
+        <button class="btn-primary" onclick="startCountdown()" style="width:100%;justify-content:center">Start Countdown</button>
+      </div>
+      <div class="card" style="padding:28px;text-align:center" id="cdCard">
+        <div style="font-size:0.82rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px" id="cdEventName">Your Event</div>
+        <div style="font-family:Syne,sans-serif;font-size:clamp(2.5rem,10vw,5rem);font-weight:800;color:var(--cyan);line-height:1" id="cdDays">-</div>
+        <div style="font-size:0.9rem;color:var(--muted);margin-bottom:20px">days</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+          <div style="background:var(--surface2);border-radius:10px;padding:12px">
+            <div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)" id="cdH">00</div>
+            <div style="font-size:0.7rem;color:var(--dim)">hours</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:12px">
+            <div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)" id="cdM">00</div>
+            <div style="font-size:0.7rem;color:var(--dim)">mins</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:12px">
+            <div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)" id="cdS">00</div>
+            <div style="font-size:0.7rem;color:var(--dim)">secs</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:0.82rem;color:var(--dim)" id="cdTargetDate"></div>
+      </div>
+    </div>
+  </div>
+  <section class="related-tools container"><h2>Popular Countdowns</h2>
+    <div class="related-grid">
+      <a href="/days-until-christmas/" class="related-card card">&#127876; Christmas</a>
+      <a href="/days-until-new-years/" class="related-card card">&#127878; New Year</a>
+      <a href="/days-until-easter/" class="related-card card">&#128424; Easter</a>
+      <a href="/birthday-countdown/" class="related-card card">&#127874; Birthday</a>
+      <a href="/days-until-halloween/" class="related-card card">&#127875; Halloween</a>
+      <a href="/days-until-anzac-day/" class="related-card card">&#127802; ANZAC Day</a>
+    </div>
+  </section>
+<div class="ad-rectangle container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+  </div>  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+  <script>
+    var cdInterval = null;
+    document.addEventListener('DOMContentLoaded', function(){
+      var now = new Date(); now.setDate(now.getDate()+30);
+      var local = new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,16);
+      document.getElementById('cdTarget').value = local;
+      startCountdown();
+    });
+    function startCountdown(){
+      if(cdInterval) clearInterval(cdInterval);
+      var name = document.getElementById('cdName').value || 'Your Event';
+      document.getElementById('cdEventName').textContent = name;
+      function tick(){
+        var target = new Date(document.getElementById('cdTarget').value);
+        var now = new Date();
+        var diff = target - now;
+        if(diff < 0) diff = 0;
+        var days = Math.floor(diff/86400000);
+        var h = Math.floor((diff%86400000)/3600000);
+        var m = Math.floor((diff%3600000)/60000);
+        var s = Math.floor((diff%60000)/1000);
+        document.getElementById('cdDays').textContent = days;
+        document.getElementById('cdH').textContent = String(h).padStart(2,'0');
+        document.getElementById('cdM').textContent = String(m).padStart(2,'0');
+        document.getElementById('cdS').textContent = String(s).padStart(2,'0');
+        document.getElementById('cdTargetDate').textContent = target.toLocaleDateString('en-AU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+      }
+      tick();
+      cdInterval = setInterval(tick, 1000);
+    }
+  </script>
+</body></html>

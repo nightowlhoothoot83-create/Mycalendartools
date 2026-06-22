@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator — Exact Age in Years Months Days | MyCalendarTools</title>
+  <meta name="description" content="Find your exact age in years months and days. See days until your next birthday. Free online age calculator.">
+  <link rel="canonical" href="https://www.mycalendartools.net/age-calculator/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Age Calculator — Exact Age in Years Months Days">
+  <meta property="og:description" content="Find your exact age in years months and days. See days until your next birthday. Free online age calculator.">
+  <meta property="og:url" content="https://www.mycalendartools.net/age-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is the age calculator?","acceptedAnswer":{"@type":"Answer","text":"It calculates your exact age in years, months and days as of today."}},{"@type":"Question","name":"When is my next birthday?","acceptedAnswer":{"@type":"Answer","text":"The tool shows how many days until your next birthday."}},{"@type":"Question","name":"Can I calculate age on a specific date?","acceptedAnswer":{"@type":"Answer","text":"Yes, change the As of date field."}}]}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+<nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <a href="/">Date Tools</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Age Calculator</span></nav>
+<section class="page-hero container">
+  <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(244,114,182,0.15),rgba(251,146,60,0.15));border:1px solid rgba(244,114,182,0.2)">&#127874;</div>
+  <h1>Age Calculator</h1>
+  <p>Calculate your exact age in years, months and days, and find out how many days until your next birthday.</p>
+</section>
+<div class="tool-layout container">
+  <div class="tool-card card">
+    <div class="form-group"><label>Date of Birth</label><input type="date" id="ageDob"></div>
+    <div class="form-group"><label>As of Date</label><input type="date" id="ageAsOf"></div>
+    <button class="btn-primary" onclick="calcAge()" style="width:100%;justify-content:center">Calculate Age</button>
+    <div class="tool-result" id="ageResult">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
+        <div style="background:var(--surface2);border-radius:10px;padding:14px;text-align:center">
+          <div style="font-family:Syne,sans-serif;font-size:2rem;font-weight:800;color:var(--cyan)" id="ageYears">0</div>
+          <div style="font-size:0.75rem;color:var(--dim)">Years</div>
+        </div>
+        <div style="background:var(--surface2);border-radius:10px;padding:14px;text-align:center">
+          <div style="font-family:Syne,sans-serif;font-size:2rem;font-weight:800;color:var(--accent)" id="ageMonths">0</div>
+          <div style="font-size:0.75rem;color:var(--dim)">Months</div>
+        </div>
+        <div style="background:var(--surface2);border-radius:10px;padding:14px;text-align:center">
+          <div style="font-family:Syne,sans-serif;font-size:2rem;font-weight:800;color:var(--pink)" id="ageDays">0</div>
+          <div style="font-size:0.75rem;color:var(--dim)">Days</div>
+        </div>
+      </div>
+      <div id="ageExtra"></div>
+    </div>
+  </div>
+  <div class="info-sidebar">
+    <div class="info-card card"><h3>What you get</h3><ul><li>Exact age in years, months, days</li><li>Total days alive</li><li>Days until next birthday</li></ul></div>
+    <div class="info-card card" style="border-color:rgba(6,214,255,0.2)"><h3>Sister site</h3><p><a href="https://www.mycalctools.net" target="_blank">Also try Age Calculator on MyCalcTools &#8594;</a></p></div>
+  </div>
+</div>
+<section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/days-between/" class="related-card card"><span class="related-card-icon">&#128303;</span>Days Between</a><a href="/birthday-countdown/" class="related-card card"><span class="related-card-icon">&#127881;</span>Birthday Countdown</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">&#128197;</span>Date Calculator</a><a href="/zodiac/" class="related-card card"><span class="related-card-icon">&#9800;</span>Zodiac Sign</a></div></section>
+<section class="faq-section container"><h2>Frequently Asked Questions</h2><div class="faq-item"><button class="faq-question">How accurate is the age calculator? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>It calculates your exact age in years, months and days as of today.</p></div></div>
+<div class="faq-item"><button class="faq-question">When is my next birthday? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The tool shows how many days until your next birthday.</p></div></div>
+<div class="faq-item"><button class="faq-question">Can I calculate age on a specific date? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Yes, change the As of date field.</p></div></div></section>
+<div class="ad-rectangle container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins><script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script></div>  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('ageAsOf').value=new Date().toISOString().split('T')[0];
+    var d=new Date();d.setFullYear(d.getFullYear()-25);
+    document.getElementById('ageDob').value=d.toISOString().split('T')[0];
+  });
+  function calcAge(){
+    var dob=new Date(document.getElementById('ageDob').value);
+    var asOf=new Date(document.getElementById('ageAsOf').value);
+    if(isNaN(dob)||isNaN(asOf)||dob>=asOf)return;
+    var y=asOf.getFullYear()-dob.getFullYear();
+    var m=asOf.getMonth()-dob.getMonth();
+    var d=asOf.getDate()-dob.getDate();
+    if(d<0){m--;var pm=new Date(asOf.getFullYear(),asOf.getMonth(),0);d+=pm.getDate();}
+    if(m<0){y--;m+=12;}
+    var totalDays=Math.round((asOf-dob)/86400000);
+    var nextBday=new Date(asOf.getFullYear(),dob.getMonth(),dob.getDate());
+    if(nextBday<=asOf)nextBday.setFullYear(asOf.getFullYear()+1);
+    var daysUntilBday=Math.round((nextBday-asOf)/86400000);
+    document.getElementById('ageResult').classList.add('visible');
+    document.getElementById('ageYears').textContent=y;
+    document.getElementById('ageMonths').textContent=m;
+    document.getElementById('ageDays').textContent=d;
+    document.getElementById('ageExtra').innerHTML='<div style="background:var(--surface2);border-radius:8px;padding:12px;margin-bottom:10px"><span style="color:var(--dim)">Total days alive:</span> <strong style="color:var(--text)">'+totalDays.toLocaleString()+'</strong></div><div style="background:rgba(244,114,182,0.08);border:1px solid rgba(244,114,182,0.2);border-radius:8px;padding:12px">&#127874; Next birthday in <strong style="color:var(--pink)">'+daysUntilBday+' days</strong> &mdash; '+nextBday.toLocaleDateString('en-AU',{weekday:'long',month:'long',day:'numeric',year:'numeric'})+'</div>';
+  }
+</script>
+</body></html>

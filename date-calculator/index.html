@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Calculator — Add or Subtract Days | MyCalendarTools</title>
+  <meta name="description" content="Add or subtract days, weeks, months from any date. Find deadlines and due dates instantly.">
+  <link rel="canonical" href="https://www.mycalendartools.net/date-calculator/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Date Calculator — Add or Subtract Days">
+  <meta property="og:description" content="Add or subtract days, weeks, months from any date. Find deadlines and due dates instantly.">
+  <meta property="og:url" content="https://www.mycalendartools.net/date-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the date calculator do?","acceptedAnswer":{"@type":"Answer","text":"It adds or subtracts days, weeks, or months from a date to find a result date."}},{"@type":"Question","name":"Can I add working days only?","acceptedAnswer":{"@type":"Answer","text":"Yes, tick working days only to skip weekends."}},{"@type":"Question","name":"What is the earliest supported date?","acceptedAnswer":{"@type":"Answer","text":"The calculator works for any valid calendar date."}}]}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+<nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <a href="/">Date Tools</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Date Calculator</span></nav>
+<section class="page-hero container">
+  <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(244,114,182,0.15));border:1px solid rgba(167,139,250,0.2)">&#128197;</div>
+  <h1>Date Calculator</h1>
+  <p>Add or subtract days, weeks, months or years from any date to find your target date.</p>
+</section>
+<div class="tool-layout container">
+  <div class="tool-card card">
+    <div class="form-group"><label>Start Date</label><input type="date" id="dcDate"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="form-group"><label>Days</label><input type="number" id="dcDays" value="0" min="0"></div>
+      <div class="form-group"><label>Weeks</label><input type="number" id="dcWeeks" value="0" min="0"></div>
+      <div class="form-group"><label>Months</label><input type="number" id="dcMonths" value="0" min="0"></div>
+    </div>
+    <div style="display:flex;gap:12px;margin-bottom:16px">
+      <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:0.92rem"><input type="radio" name="dcOp" value="add" checked style="width:auto"> Add</label>
+      <label style="display:flex;align-items:center;gap:8px;text-transform:none;font-size:0.92rem"><input type="radio" name="dcOp" value="sub" style="width:auto"> Subtract</label>
+    </div>
+    <div class="form-group" style="display:flex;align-items:center;gap:10px">
+      <input type="checkbox" id="dcWork" style="width:auto">
+      <label for="dcWork" style="text-transform:none;font-size:0.92rem;margin:0">Working days only</label>
+    </div>
+    <button class="btn-primary" onclick="calcDate()" style="width:100%;justify-content:center">Calculate Date</button>
+    <div class="tool-result" id="dcResult">
+      <div class="result-value" style="font-size:1.8rem" id="dcResultDate"></div>
+      <div class="result-label" id="dcResultLabel"></div>
+    </div>
+  </div>
+  <div class="info-sidebar">
+    <div class="info-card card"><h3>What can I calculate?</h3><ul><li>Contract end dates</li><li>Notice periods</li><li>Payment due dates</li><li>Project deadlines</li><li>Warranty expiry</li></ul></div>
+    <div class="info-card card" style="border-color:rgba(6,214,255,0.2)"><h3>Sister site</h3><p><a href="https://www.mycalctools.net" target="_blank">Also try Date Calculator on MyCalcTools &#8594;</a></p></div>
+  </div>
+</div>
+<section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/days-between/" class="related-card card"><span class="related-card-icon">&#128303;</span>Days Between</a><a href="/age-calculator/" class="related-card card"><span class="related-card-icon">&#127874;</span>Age Calculator</a><a href="/week-number/" class="related-card card"><span class="related-card-icon">&#128290;</span>Week Number</a><a href="/day-of-week/" class="related-card card"><span class="related-card-icon">&#128198;</span>Day of Week</a></div></section>
+<section class="faq-section container"><h2>Frequently Asked Questions</h2><div class="faq-item"><button class="faq-question">What does the date calculator do? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>It adds or subtracts days, weeks, or months from a date to find a result date.</p></div></div>
+<div class="faq-item"><button class="faq-question">Can I add working days only? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Yes, tick working days only to skip weekends.</p></div></div>
+<div class="faq-item"><button class="faq-question">What is the earliest supported date? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The calculator works for any valid calendar date.</p></div></div></section>
+<div class="ad-rectangle container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins><script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script></div>
+  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){document.getElementById('dcDate').value=new Date().toISOString().split('T')[0];});
+  function calcDate(){
+    var d=new Date(document.getElementById('dcDate').value);
+    if(isNaN(d))return;
+    var days=parseInt(document.getElementById('dcDays').value)||0;
+    var weeks=parseInt(document.getElementById('dcWeeks').value)||0;
+    var months=parseInt(document.getElementById('dcMonths').value)||0;
+    var op=document.querySelector('input[name="dcOp"]:checked').value;
+    var work=document.getElementById('dcWork').checked;
+    var sign=op==='add'?1:-1;
+    if(work){
+      var remaining=(days+weeks*7)*sign;
+      var cur=new Date(d);
+      while(remaining!==0){cur.setDate(cur.getDate()+(remaining>0?1:-1));if(cur.getDay()!==0&&cur.getDay()!==6)remaining+=(remaining>0?-1:1);}
+      d=cur;
+    } else {
+      d.setMonth(d.getMonth()+months*sign);
+      d.setDate(d.getDate()+(days+weeks*7)*sign);
+    }
+    var opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+    document.getElementById('dcResult').classList.add('visible');
+    document.getElementById('dcResultDate').textContent=d.toLocaleDateString('en-AU',opts);
+    document.getElementById('dcResultLabel').textContent='Result date ('+(op==='add'?'added':'subtracted')+')';
+  }
+</script>
+</body></html>

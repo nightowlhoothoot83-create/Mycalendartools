@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCalendarTools — Free Date, Calendar & Countdown Tools</title>
+  <meta name="description" content="Free online date tools including days between dates, countdowns, moon phases, school holidays, age calculator and more. No sign-up. Always free.">
+  <link rel="canonical" href="https://www.mycalendartools.net/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="MyCalendarTools — Free Date & Calendar Tools">
+  <meta property="og:description" content="Free online date tools including days between dates, countdowns, moon phases, school holidays and more.">
+  <meta property="og:url" content="https://www.mycalendartools.net/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MyCalendarTools",
+    "url": "https://www.mycalendartools.net",
+    "description": "Free date tools, moon phases, school holidays and countdowns",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Ascension Digital Group"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-h1">Free Online Date, Calendar &amp; Countdown Tools</h1>
+        <div class="hero-date-card card">
+          <div class="hero-day" id="heroDay"></div>
+          <div class="hero-date" id="heroDate"></div>
+          <div class="hero-time" id="heroTime"></div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <strong id="weekNumber">—</strong>
+              Week of Year
+            </div>
+            <div class="hero-meta-item">
+              <strong id="dayOfYear">—</strong>
+              Day of Year
+            </div>
+            <div class="hero-meta-item">
+              <strong id="daysLeft">—</strong>
+              Days Left in Year
+            </div>
+            <div class="hero-meta-item">
+              <strong id="timezone">—</strong>
+              Timezone
+            </div>
+          </div>
+          <div class="year-progress-wrap">
+            <div class="year-progress-label">
+              <span>Jan 1</span>
+              <span id="yearProgressPct">—% through <span id="yearProgressYear"></span></span>
+              <span>Dec 31</span>
+            </div>
+            <div class="year-progress-bar">
+              <div class="year-progress-fill" id="yearFill" style="width:0%"></div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="copyDate()">📋 Copy Date</button>
+            <a href="/days-until-christmas/" class="btn-secondary">🎄 Share Christmas Countdown</a>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="stats-row">
+          <div class="stat-item"><div class="stat-dot"></div>📅 24+ Tools</div>
+          <div class="stat-item"><div class="stat-dot" style="background:var(--purple);box-shadow:0 0 8px var(--purple)"></div>🌍 6 Countries</div>
+          <div class="stat-item"><div class="stat-dot" style="background:var(--green);box-shadow:0 0 8px var(--green)"></div>🆓 Always Free</div>
+          <div class="stat-item"><div class="stat-dot" style="background:var(--gold);box-shadow:0 0 8px var(--gold)"></div>🚫 No Sign-up</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Tools -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Quick Tools</h2>
+        <div class="tools-grid">
+          <a href="/days-between/" class="tool-grid-card card">
+            <div class="tool-grid-icon">📏</div>
+            <div class="tool-grid-info">
+              <h3>Days Between Dates</h3>
+              <p>Calculate the exact number of days between any two dates</p>
+            </div>
+          </a>
+          <a href="/age-calculator/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🎂</div>
+            <div class="tool-grid-info">
+              <h3>Age Calculator</h3>
+              <p>Your exact age in years, months and days</p>
+            </div>
+          </a>
+          <a href="/countdown/" class="tool-grid-card card">
+            <div class="tool-grid-icon">⏳</div>
+            <div class="tool-grid-info">
+              <h3>Custom Countdown</h3>
+              <p>Build a countdown to any event or date</p>
+            </div>
+          </a>
+          <a href="/moon-phase/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🌕</div>
+            <div class="tool-grid-info">
+              <h3>Moon Phase</h3>
+              <p>Today's moon phase, illumination and lunar calendar</p>
+            </div>
+          </a>
+          <a href="/school-holidays/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🏫</div>
+            <div class="tool-grid-info">
+              <h3>School Holidays</h3>
+              <p>Dates for AU, UK, US, NZ, CA and more</p>
+            </div>
+          </a>
+          <a href="/week-number/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🔢</div>
+            <div class="tool-grid-info">
+              <h3>Week Number</h3>
+              <p>Find the ISO week number for any date</p>
+            </div>
+          </a>
+          <a href="/date-calculator/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🗓️</div>
+            <div class="tool-grid-info">
+              <h3>Date Calculator</h3>
+              <p>Add or subtract days, weeks and months from a date</p>
+            </div>
+          </a>
+          <a href="/printable-calendar/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🖨️</div>
+            <div class="tool-grid-info">
+              <h3>Printable Calendar</h3>
+              <p>Generate and print any month or year</p>
+            </div>
+          </a>
+          <a href="/world-clock/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🕰️</div><div class="tool-grid-info"><h3>World Clock</h3><p>Live times for major cities and time zones</p></div>
+          </a>
+          <a href="/stopwatch-timer/" class="tool-grid-card card">
+            <div class="tool-grid-icon">⏱️</div><div class="tool-grid-info"><h3>Stopwatch & Timer</h3><p>Browser stopwatch and countdown timer</p></div>
+          </a>
+          <a href="/reminders/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🔔</div><div class="tool-grid-info"><h3>Date Reminders</h3><p>Save simple reminders in your browser</p></div>
+          </a>
+          <a href="/tides/" class="tool-grid-card card">
+            <div class="tool-grid-icon">🌊</div><div class="tool-grid-info"><h3>Tide Times</h3><p>Ready for location-based tide data</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-leaderboard container">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+    </div>
+
+    <!-- Moon + Zodiac widgets -->
+    <section>
+      <div class="container">
+        <div class="widgets-row">
+          <div class="widget-card card">
+            <div class="widget-title">🌕 Tonight's Moon</div>
+            <div class="moon-display">
+              <div class="moon-emoji" id="moonEmoji">🌕</div>
+              <div class="moon-info">
+                <h3 id="moonPhaseName">Loading…</h3>
+                <p id="moonIllumination"></p>
+                <p style="margin-top:6px"><a href="/moon-phase/">View full moon details →</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="widget-card card">
+            <div class="widget-title">♈ Today's Zodiac</div>
+            <div class="zodiac-display">
+              <div class="zodiac-emoji" id="zodiacEmoji">♈</div>
+              <div class="zodiac-info">
+                <h3 id="zodiacName">Loading…</h3>
+                <p id="zodiacDates"></p>
+                <p style="margin-top:6px"><a href="/zodiac/">Explore your sign →</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="ad-leaderboard">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+      </div>
+    </div>
+
+    <!-- Featured Countdowns -->
+    <section class="countdowns-section">
+      <div class="container">
+        <h2 class="section-title">Featured Countdowns</h2>
+        <div class="countdowns-grid" id="countdownsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Unique Holiday Widget -->
+    <section>
+      <div class="container">
+        <div class="holiday-widget card" id="holidayWidget"></div>
+      </div>
+    </section>
+
+    <!-- Sister Site Banner -->
+    <div class="container">
+      <div class="sister-banner card" style="border-color:rgba(6,214,255,0.2)">
+        <div class="sister-banner-text">
+          <h3>Need a calculator? 🧮</h3>
+          <p>MyCalcTools.net has 38 free tools — health, finance, kitchen, eco and business.</p>
+        </div>
+        <a href="https://www.mycalctools.net" class="btn-primary" target="_blank" rel="noopener">Visit MyCalcTools →</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+
+  <script src="/components.js"></script>
+  <script>
+    // Inject layout
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav('/');
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+
+    // Live date/time
+    function updateClock() {
+      const now = new Date();
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+      document.getElementById('heroDay').textContent = days[now.getDay()];
+      document.getElementById('heroDate').textContent = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+      const h = now.getHours().toString().padStart(2,'0');
+      const m = now.getMinutes().toString().padStart(2,'0');
+      const s = now.getSeconds().toString().padStart(2,'0');
+      document.getElementById('heroTime').textContent = `${h}:${m}:${s}`;
+
+      // Week number
+      const startOfYear = new Date(now.getFullYear(), 0, 1);
+      const weekNum = Math.ceil(((now - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
+      document.getElementById('weekNumber').textContent = weekNum;
+
+      // Day of year
+      const dayOfYear = Math.ceil((now - startOfYear) / 86400000) + 1;
+      document.getElementById('dayOfYear').textContent = dayOfYear;
+
+      // Days left
+      const endOfYear = new Date(now.getFullYear(), 11, 31);
+      const daysLeft = Math.ceil((endOfYear - now) / 86400000);
+      document.getElementById('daysLeft').textContent = daysLeft;
+
+      // Timezone
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      document.getElementById('timezone').textContent = tz.split('/').pop().replace('_', ' ');
+
+      // Year progress
+      const totalDays = (new Date(now.getFullYear(), 11, 31) - startOfYear) / 86400000 + 1;
+      const pct = ((dayOfYear / totalDays) * 100).toFixed(1);
+      document.getElementById('yearFill').style.width = pct + '%';
+      document.getElementById('yearProgressPct').innerHTML = `${pct}% through <span id="yearProgressYear">${now.getFullYear()}</span>`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Copy date
+    function copyDate() {
+      const now = new Date();
+      const str = now.toLocaleDateString('en-AU', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+      navigator.clipboard.writeText(str).then(() => alert('Date copied: ' + str));
+    }
+
+    // Moon widget
+    const moon = getMoonPhase(new Date());
+    document.getElementById('moonEmoji').textContent = moon.emoji;
+    document.getElementById('moonPhaseName').textContent = moon.name;
+    document.getElementById('moonIllumination').textContent = 'Illumination: ' + moon.illumination;
+
+    // Zodiac widget
+    const zodiac = getZodiac(new Date());
+    document.getElementById('zodiacEmoji').textContent = zodiac.emoji;
+    document.getElementById('zodiacName').textContent = zodiac.name + ' — ' + zodiac.element;
+    document.getElementById('zodiacDates').textContent = zodiac.dates;
+
+    // Countdowns
+    const countdowns = [
+      { name: 'Christmas', emoji: '🎄', fn: () => daysUntil(12, 25), date: 'December 25', href: '/days-until-christmas/' },
+      { name: 'New Year', emoji: '🎆', fn: () => daysUntil(1, 1), date: 'January 1', href: '/days-until-new-years/' },
+      { name: 'Easter', emoji: '🐣', fn: () => daysUntilEaster(), date: 'Varies', href: '/days-until-easter/' },
+      { name: 'ANZAC Day', emoji: '🌺', fn: () => daysUntil(4, 25), date: 'April 25', href: '/days-until-anzac-day/' },
+    ];
+    document.getElementById('countdownsGrid').innerHTML = countdowns.map(c => `
+      <a href="${c.href}" class="countdown-block card" style="text-decoration:none;color:inherit">
+        <div class="countdown-block-emoji">${c.emoji}</div>
+        <div class="countdown-block-name">${c.name}</div>
+        <div class="countdown-block-days">${c.fn()}</div>
+        <div class="countdown-block-unit">days away</div>
+        <div class="countdown-block-date">${c.date}</div>
+      </a>
+    `).join('');
+
+    // Unique holiday
+    const holiday = getTodayHoliday();
+    document.getElementById('holidayWidget').innerHTML = `
+      <div class="holiday-badge">⭐ Today's Unusual Holiday</div>
+      <div class="holiday-name">${holiday.emoji} ${holiday.name}</div>
+      <div class="holiday-desc">${holiday.desc}</div>
+      <div style="margin-top:14px"><a href="/unique-holidays/" class="btn-secondary" style="font-size:0.82rem;padding:7px 16px">See all unique holidays →</a></div>
+    `;
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodiac Sign Calculator | MyCalendarTools</title>
+  <meta name="description" content="Find your zodiac sign by birthday. Learn about your sign's traits, element and compatibility.">
+  <link rel="canonical" href="https://www.mycalendartools.net/zodiac/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Zodiac Sign Calculator">
+  <meta property="og:description" content="Find your zodiac sign by birthday. Learn about your sign's traits, element and compatibility.">
+  <meta property="og:url" content="https://www.mycalendartools.net/zodiac/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Zodiac Sign Calculator", "url": "https://www.mycalendartools.net/zodiac/", "description": "Find your zodiac sign by birthday", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+  <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">&#8250;</span> <span class="breadcrumb-current">Zodiac Signs</span></nav>
+  <section class="page-hero container">
+    <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(167,139,250,0.12),rgba(244,114,182,0.12));border:1px solid rgba(167,139,250,0.2)">&#9800;</div>
+    <h1>Zodiac Sign Calculator</h1>
+    <p>Enter your birthday to find your zodiac sign, element, ruling planet and traits.</p>
+  </section>
+  <div class="tool-layout container">
+    <div class="tool-card card">
+      <div class="form-group"><label>Your Birthday</label><input type="date" id="zodiacDob"></div>
+      <button class="btn-primary" onclick="calcZodiac()" style="width:100%;justify-content:center">Find My Sign</button>
+      <div class="tool-result" id="zodiacResult">
+        <div style="text-align:center;padding:10px 0">
+          <div style="font-size:4rem" id="zodiacEmoji"></div>
+          <div style="font-family:Syne,sans-serif;font-size:1.8rem;font-weight:800;color:var(--text);margin:8px 0" id="zodiacName"></div>
+          <div style="font-size:0.88rem;color:var(--muted)" id="zodiacDates"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px" id="zodiacStats"></div>
+      </div>
+    </div>
+    <div class="info-sidebar">
+      <div class="info-card card">
+        <h3>All 12 Signs</h3>
+        <div style="display:grid;gap:6px;margin-top:8px" id="allSigns"></div>
+      </div>
+    </div>
+  </div>
+<div class="ad-rectangle container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+  </div>  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+  <script>
+    var signs=[
+      {name:'Aries',emoji:'&#9800;',element:'Fire',planet:'Mars',dates:'Mar 21 &#8211; Apr 19',traits:'Bold, ambitious, energetic'},
+      {name:'Taurus',emoji:'&#9801;',element:'Earth',planet:'Venus',dates:'Apr 20 &#8211; May 20',traits:'Patient, reliable, devoted'},
+      {name:'Gemini',emoji:'&#9802;',element:'Air',planet:'Mercury',dates:'May 21 &#8211; Jun 20',traits:'Curious, adaptable, witty'},
+      {name:'Cancer',emoji:'&#9803;',element:'Water',planet:'Moon',dates:'Jun 21 &#8211; Jul 22',traits:'Nurturing, intuitive, protective'},
+      {name:'Leo',emoji:'&#9804;',element:'Fire',planet:'Sun',dates:'Jul 23 &#8211; Aug 22',traits:'Confident, generous, creative'},
+      {name:'Virgo',emoji:'&#9805;',element:'Earth',planet:'Mercury',dates:'Aug 23 &#8211; Sep 22',traits:'Analytical, precise, helpful'},
+      {name:'Libra',emoji:'&#9806;',element:'Air',planet:'Venus',dates:'Sep 23 &#8211; Oct 22',traits:'Diplomatic, fair, social'},
+      {name:'Scorpio',emoji:'&#9807;',element:'Water',planet:'Pluto',dates:'Oct 23 &#8211; Nov 21',traits:'Intense, mysterious, passionate'},
+      {name:'Sagittarius',emoji:'&#9808;',element:'Fire',planet:'Jupiter',dates:'Nov 22 &#8211; Dec 21',traits:'Adventurous, optimistic, philosophical'},
+      {name:'Capricorn',emoji:'&#9809;',element:'Earth',planet:'Saturn',dates:'Dec 22 &#8211; Jan 19',traits:'Disciplined, responsible, ambitious'},
+      {name:'Aquarius',emoji:'&#9810;',element:'Air',planet:'Uranus',dates:'Jan 20 &#8211; Feb 18',traits:'Independent, innovative, humanitarian'},
+      {name:'Pisces',emoji:'&#9811;',element:'Water',planet:'Neptune',dates:'Feb 19 &#8211; Mar 20',traits:'Empathetic, artistic, dreamy'},
+    ];
+    document.getElementById('allSigns').innerHTML=signs.map(function(s){
+      return '<div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--muted)"><span>'+s.emoji+'</span><span><strong style="color:var(--text)">'+s.name+'</strong> '+s.dates+'</span></div>';
+    }).join('');
+    function getSign(dob){
+      var m=dob.getMonth()+1,d=dob.getDate();
+      if((m===3&&d>=21)||(m===4&&d<=19))return signs[0];
+      if((m===4&&d>=20)||(m===5&&d<=20))return signs[1];
+      if((m===5&&d>=21)||(m===6&&d<=20))return signs[2];
+      if((m===6&&d>=21)||(m===7&&d<=22))return signs[3];
+      if((m===7&&d>=23)||(m===8&&d<=22))return signs[4];
+      if((m===8&&d>=23)||(m===9&&d<=22))return signs[5];
+      if((m===9&&d>=23)||(m===10&&d<=22))return signs[6];
+      if((m===10&&d>=23)||(m===11&&d<=21))return signs[7];
+      if((m===11&&d>=22)||(m===12&&d<=21))return signs[8];
+      if((m===12&&d>=22)||(m===1&&d<=19))return signs[9];
+      if((m===1&&d>=20)||(m===2&&d<=18))return signs[10];
+      return signs[11];
+    }
+    document.addEventListener('DOMContentLoaded',function(){
+      var d=new Date();d.setFullYear(d.getFullYear()-30);
+      document.getElementById('zodiacDob').value=d.toISOString().split('T')[0];
+    });
+    function calcZodiac(){
+      var dob=new Date(document.getElementById('zodiacDob').value);
+      if(isNaN(dob))return;
+      var s=getSign(dob);
+      document.getElementById('zodiacResult').classList.add('visible');
+      document.getElementById('zodiacEmoji').innerHTML=s.emoji;
+      document.getElementById('zodiacName').textContent=s.name;
+      document.getElementById('zodiacDates').innerHTML=s.dates;
+      document.getElementById('zodiacStats').innerHTML=[
+        {label:'Element',val:s.element},{label:'Ruling Planet',val:s.planet},{label:'Traits',val:s.traits},{label:'Dates',val:s.dates}
+      ].map(function(x){return '<div style="background:var(--surface2);border-radius:8px;padding:12px"><div style="font-size:0.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em">'+x.label+'</div><div style="font-size:0.9rem;color:var(--text);font-weight:500;margin-top:2px">'+x.val+'</div></div>';}).join('');
+    }
+  </script>
+</body></html>

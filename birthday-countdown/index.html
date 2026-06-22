@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Countdown | MyCalendarTools</title>
+  <meta name="description" content="How many days until your birthday? Enter your birthday and get a live countdown.">
+  <link rel="canonical" href="https://www.mycalendartools.net/birthday-countdown/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="Birthday Countdown">
+  <meta property="og:description" content="How many days until your birthday? Enter your birthday and get a live countdown.">
+  <meta property="og:url" content="https://www.mycalendartools.net/birthday-countdown/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyCalendarTools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080810">
+  <meta name="google-adsense-account" content="ca-pub-1904958390525375">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Birthday Countdown", "url": "https://www.mycalendartools.net/birthday-countdown/", "description": "Calculate how many days until your birthday", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+</head>
+<body>
+  <div id="brand-strip"></div>
+  <div id="cookie-consent-mount"></div>
+  <div id="nav"></div>
+  <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">&#8250;</span> <a href="/countdown/">Countdowns</a> <span class="breadcrumb-sep">&#8250;</span> <span class="breadcrumb-current">Birthday Countdown</span></nav>
+  <section class="page-hero container">
+    <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(244,114,182,0.12),rgba(251,146,60,0.12));border:1px solid rgba(244,114,182,0.2)">&#127874;</div>
+    <h1>Birthday Countdown</h1>
+    <p>Enter any birthday to see a live countdown to the next celebration.</p>
+  </section>
+  <div class="container" style="padding-bottom:40px;position:relative;z-index:1">
+    <div style="max-width:600px;margin:0 auto">
+      <div class="card" style="padding:28px;margin-bottom:20px">
+        <div class="form-group"><label>Whose Birthday?</label><input type="text" id="bdName" placeholder="e.g. Mum" value="Your Birthday"></div>
+        <div class="form-group"><label>Date of Birth</label><input type="date" id="bdDob"></div>
+        <button class="btn-primary" onclick="calcBday()" style="width:100%;justify-content:center">Count Down!</button>
+      </div>
+      <div class="card" style="padding:32px;text-align:center;display:none" id="bdResult">
+        <div style="font-size:0.82rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px" id="bdLabel"></div>
+        <div style="font-family:Syne,sans-serif;font-size:5rem;font-weight:800;color:var(--pink);line-height:1" id="bdDays"></div>
+        <div style="font-size:1rem;color:var(--muted);margin-bottom:16px">days away</div>
+        <div style="font-size:0.88rem;color:var(--muted)" id="bdDate"></div>
+        <div style="margin-top:14px;font-size:0.9rem;color:var(--accent)" id="bdAge"></div>
+      </div>
+    </div>
+  </div>
+<div class="ad-rectangle container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
+  </div>  <div id="site-footer"></div>
+  <div id="group-footer"></div>
+  <script src="/components.js"></script>
+  <script>
+    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
+    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
+    document.getElementById('nav').innerHTML = renderNav();
+    document.getElementById('site-footer').innerHTML = renderSiteFooter();
+    document.getElementById('group-footer').innerHTML = renderGroupFooter();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var d=new Date();d.setFullYear(d.getFullYear()-25);
+      document.getElementById('bdDob').value=d.toISOString().split('T')[0];
+    });
+    function calcBday(){
+      var dob=new Date(document.getElementById('bdDob').value);
+      if(isNaN(dob))return;
+      var name=document.getElementById('bdName').value||'Birthday';
+      var now=new Date();
+      var next=new Date(now.getFullYear(),dob.getMonth(),dob.getDate());
+      if(next<=now)next.setFullYear(now.getFullYear()+1);
+      var days=Math.ceil((next-now)/86400000);
+      var age=next.getFullYear()-dob.getFullYear();
+      document.getElementById('bdResult').style.display='block';
+      document.getElementById('bdLabel').textContent=name+"'s next birthday";
+      document.getElementById('bdDays').textContent=days;
+      document.getElementById('bdDate').textContent=next.toLocaleDateString('en-AU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+      document.getElementById('bdAge').textContent='Turning '+age+' years old';
+    }
+  </script>
+</body></html>
