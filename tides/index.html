@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tide Times & NOAA Tide Predictions | MyCalendarTools</title>
-  <meta name="description" content="Look up high and low tide predictions by NOAA station ID or coastal station search, with optional nearby station lookup using your browser location.">
+  <title>Global Tide Times — Check Tides Anywhere in the World | MyCalendarTools</title>
+  <meta name="description" content="Check tide times for any coastal location worldwide. Search by city, beach or harbour and get today's tide heights and times — no sign-up, always free.">
   <link rel="canonical" href="https://www.mycalendartools.net/tides/">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:title" content="Tide Times & NOAA Tide Predictions">
-  <meta property="og:description" content="Find high and low tide predictions from NOAA tide stations. Search by station, date, or use your location to find nearby stations.">
+  <meta property="og:title" content="Global Tide Times — MyCalendarTools">
+  <meta property="og:description" content="Check tide times for any coastal location worldwide. Free, no sign-up.">
   <meta property="og:url" content="https://www.mycalendartools.net/tides/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MyCalendarTools">
@@ -17,196 +17,277 @@
   <meta name="google-adsense-account" content="ca-pub-1904958390525375">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904958390525375" crossorigin="anonymous"></script>
   <style>
-    .tide-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.tide-actions .btn-primary,.tide-actions .btn-secondary{justify-content:center}.tide-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:18px 0}.tide-pill{border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:12px;background:rgba(255,255,255,.03)}.tide-pill strong{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.tide-pill span{display:block;margin-top:4px;color:var(--text);font-weight:700}.tide-table{width:100%;border-collapse:collapse;margin-top:14px}.tide-table th,.tide-table td{padding:11px 10px;border-bottom:1px solid rgba(148,163,184,.16);text-align:left}.tide-table th{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.station-list{display:grid;gap:10px;margin-top:14px}.station-option{width:100%;text-align:left;border:1px solid rgba(148,163,184,.18);background:rgba(255,255,255,.035);color:var(--text);border-radius:16px;padding:12px;cursor:pointer}.station-option:hover{border-color:rgba(96,165,250,.42);background:rgba(96,165,250,.08)}.station-option strong{display:block}.station-option span{display:block;color:var(--muted);font-size:.92rem;margin-top:4px}.fine-note{font-size:.9rem;color:var(--muted);line-height:1.6;margin-top:12px}@media(max-width:680px){.tide-actions{grid-template-columns:1fr}.tide-table{font-size:.92rem}.tide-table th,.tide-table td{padding:10px 6px}}
+    .nav-logo-icon { height: 36px; width: auto; object-fit: contain; }
+    .tide-chart-wrap { margin: 20px 0; }
+    .tide-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 0.88rem; }
+    .tide-bar-label { width: 48px; color: var(--muted); flex-shrink: 0; }
+    .tide-bar-track { flex: 1; background: rgba(6,214,255,0.08); border-radius: 8px; height: 18px; position: relative; overflow: hidden; }
+    .tide-bar-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, rgba(6,100,255,0.6), rgba(6,214,255,0.8)); transition: width 0.4s; }
+    .tide-bar-val { width: 52px; text-align: right; color: var(--text); font-weight: 600; flex-shrink: 0; }
+    .tide-summary-pill { display: inline-block; background: rgba(6,214,255,0.1); border: 1px solid rgba(6,214,255,0.25); border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; color: var(--cyan); margin: 4px 4px 4px 0; }
+    .tide-high { color: var(--cyan, #06d6ff); font-weight: 700; }
+    .tide-low { color: var(--purple, #a78bfa); font-weight: 700; }
+    .location-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+    .fine-note { font-size: .9rem; color: var(--muted); line-height: 1.6; margin-top: 12px; }
+    @media(max-width:680px){ .tide-bar-label { width: 38px; } .tide-bar-val { width: 44px; } }
   </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Tide Times & NOAA Tide Predictions", "url": "https://www.mycalendartools.net/tides/", "description": "NOAA tide station lookup and predictions", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+  <script type="application/ld+json">
+  [
+    { "@context": "https://schema.org", "@type": "WebApplication",
+      "name": "Global Tide Times", "description": "Check tide times for any coastal location worldwide.",
+      "url": "https://www.mycalendartools.net/tides/",
+      "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "isAccessibleForFree": true,
+      "publisher": { "@id": "https://ascensiondigitalgroup.com/#org" }
+    },
+    { "@context": "https://schema.org", "@type": "Organization",
+      "@id": "https://ascensiondigitalgroup.com/#org",
+      "name": "Ascension Digital Group", "url": "https://ascensiondigitalgroup.com"
+    },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mycalendartools.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Tide Times", "item": "https://www.mycalendartools.net/tides/" }
+      ]
+    }
+  ]
+  </script>
 </head>
 <body>
   <div id="brand-strip"></div>
-  <div id="cookie-consent-mount"></div>
   <div id="nav"></div>
   <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Tide Times</span></nav>
   <section class="page-hero container">
     <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(6,214,255,0.15));border:1px solid rgba(96,165,250,0.2)">🌊</div>
-    <h1>Tide Times</h1>
-    <p>Search NOAA tide prediction stations and check high and low tide times without changing the MyCalendarTools flow.</p>
+    <h1>Global Tide Times</h1>
+    <p>Check tide heights and times for any coastal location in the world — beaches, harbours, bays, rivers.</p>
   </section>
 
   <div class="tool-layout container">
     <div class="tool-card card">
       <div class="form-group">
-        <label for="stationSearch">Station, city, state or NOAA station ID</label>
-        <input id="stationSearch" placeholder="San Francisco, Seattle, 9414290..." autocomplete="off">
+        <label for="tideSearch">Coastal location, beach, harbour or city</label>
+        <input id="tideSearch" placeholder="Bondi Beach, Sydney; Gold Coast; Whitby, UK; Miami Beach…" autocomplete="off">
       </div>
-      <div class="form-group">
-        <label for="tideDate">Date</label>
-        <input id="tideDate" type="date">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+        <button class="btn-primary" onclick="searchTideLocation()">🔍 Search Location</button>
+        <button class="btn-secondary" onclick="useMyLocation()">📍 Use My Location</button>
       </div>
-      <div class="form-group">
-        <label for="tideUnits">Units</label>
-        <select id="tideUnits">
-          <option value="metric">Metric</option>
-          <option value="english">English</option>
-        </select>
-      </div>
-      <div class="tide-actions">
-        <button class="btn-primary" onclick="findStations()">Find Stations</button>
-        <button class="btn-secondary" onclick="useMyLocation()">Use My Location</button>
-      </div>
-      <p class="fine-note">This tool uses NOAA CO-OPS public station metadata and tide prediction data. Location access is optional and only used in your browser to find nearby stations.</p>
+      <p class="fine-note">Tide data sourced from the Norwegian Meteorological Institute ocean forecast model — free, global coverage, updated every 6 hours. Data shows sea surface height relative to mean sea level for the next 48 hours.</p>
       <div class="tool-result visible" id="tideResult">
-        <h3>Start with a station search</h3>
-        <p>Try a station name, US coastal city, state abbreviation, or NOAA station ID. The results will appear here.</p>
+        <h3>Search for any coastal location</h3>
+        <p>Try your local beach, harbour or coastal city. Global coverage including Australia, UK, US, NZ, Pacific Islands and more.</p>
       </div>
     </div>
 
     <div class="info-sidebar">
       <div class="info-card card">
-        <h3>NOAA station data</h3>
-        <p>Station search uses the NOAA CO-OPS Metadata API for tide prediction stations. Tide times are pulled from NOAA predictions for the selected date.</p>
+        <h3>🌍 Global Coverage</h3>
+        <p>Tide data covers all major ocean coastlines worldwide — including Australia, New Zealand, UK, US, Pacific and Indian Ocean regions.</p>
       </div>
       <div class="info-card card">
-        <h3>Safety note</h3>
-        <p>Tides can affect swimming, boating, fishing, crossings and coastal access. Always check local warnings and official marine forecasts before making safety decisions.</p>
+        <h3>📊 What the data shows</h3>
+        <p>Sea surface height above mean sea level in metres. Positive values = above average, negative = below. Higher values indicate high tide conditions; lower values indicate low tide.</p>
       </div>
       <div class="info-card card">
-        <h3>Coverage</h3>
-        <p>This version supports NOAA tide prediction stations. Other regional sources can be added later using the same layout.</p>
+        <h3>⚠️ Safety note</h3>
+        <p>This data is for general guidance only. Always check official local tide tables before swimming, boating or coastal crossings. Conditions can vary due to storms and local factors.</p>
       </div>
     </div>
   </div>
 
-  <section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/time-zone/" class="related-card card"><span class="related-card-icon">🌍</span>Time Zone Converter</a><a href="/world-clock/" class="related-card card"><span class="related-card-icon">🕰️</span>World Clock</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">🗓️</span>Date Calculator</a><a href="/reminders/" class="related-card card"><span class="related-card-icon">🔔</span>Date Reminders</a></div></section>
-  <div class="container"><div class="ad-rectangle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins><script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script></div></div>
+  <section class="info-section container" style="margin-top:32px">
+    <div class="info-card card" style="padding:28px;max-width:800px;margin:0 auto">
+      <h2 style="font-size:1.25rem;margin-bottom:16px">About This Tide Tool</h2>
+      <p style="line-height:1.7;color:var(--muted);margin-bottom:14px">
+        This tool uses the <strong style="color:var(--text)">Norwegian Meteorological Institute's ocean forecast model</strong> (Havvarsel-Møre 800m) to provide sea surface height predictions for coastal locations worldwide. The model is updated every six hours and provides hourly forecasts for approximately 48 hours ahead.
+      </p>
+      <p style="line-height:1.7;color:var(--muted)">
+        Location search uses <strong style="color:var(--text)">OpenStreetMap Nominatim</strong> to convert place names into coordinates, then passes those coordinates to the ocean forecast API. Your location is only used for this look-up and nothing is stored.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/time-zone/" class="related-card card"><span class="related-card-icon">🌍</span>Time Zone Converter</a><a href="/world-clock/" class="related-card card"><span class="related-card-icon">🕰️</span>World Clock</a><a href="/moon-phase/" class="related-card card"><span class="related-card-icon">🌕</span>Moon Phase</a><a href="/reminders/" class="related-card card"><span class="related-card-icon">🔔</span>Date Reminders</a></div></section>
+
   <div id="site-footer"></div>
   <div id="group-footer"></div>
   <script src="/components.js"></script>
   <script>
     document.getElementById('brand-strip').innerHTML = renderBrandStrip();
-    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
     document.getElementById('nav').innerHTML = renderNav();
     document.getElementById('site-footer').innerHTML = renderSiteFooter();
     document.getElementById('group-footer').innerHTML = renderGroupFooter();
     initFAQ(); initHamburger();
 
-    const stationEndpoint = 'https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=tidepredictions';
-    const predictionEndpoint = 'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter';
     const resultEl = document.getElementById('tideResult');
-    const dateEl = document.getElementById('tideDate');
-    const searchEl = document.getElementById('stationSearch');
-    const unitsEl = document.getElementById('tideUnits');
-    let stationsCache = [];
+    const searchEl = document.getElementById('tideSearch');
 
-    dateEl.value = new Date().toISOString().slice(0,10);
-    searchEl.addEventListener('keydown', event => { if (event.key === 'Enter') findStations(); });
+    searchEl.addEventListener('keydown', e => { if (e.key === 'Enter') searchTideLocation(); });
 
-    function setResult(html){ resultEl.classList.add('visible'); resultEl.innerHTML = html; }
-    function escapeHTML(value){ return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char])); }
-    function stationLabel(station){ return `${station.name || 'Unnamed station'}${station.state ? ', ' + station.state : ''}`; }
-    function formatStationMeta(station){
-      const parts = [];
-      if(station.id) parts.push(`ID ${station.id}`);
-      if(station.lat && station.lng) parts.push(`${Number(station.lat).toFixed(4)}, ${Number(station.lng).toFixed(4)}`);
-      if(station.distanceNm) parts.push(`${station.distanceNm.toFixed(1)} nautical miles away`);
-      return parts.join(' • ');
+    function setResult(html) { resultEl.classList.add('visible'); resultEl.innerHTML = html; }
+
+    function escHTML(v) {
+      return String(v ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     }
-    async function loadStations(){
-      if(stationsCache.length) return stationsCache;
-      const stored = localStorage.getItem('mct_noaa_tide_stations_v1');
-      if(stored){
-        try{ stationsCache = JSON.parse(stored); if(stationsCache.length) return stationsCache; }catch(e){}
-      }
-      const response = await fetch(stationEndpoint);
-      if(!response.ok) throw new Error('Station list could not be loaded.');
-      const data = await response.json();
-      stationsCache = data.stationList || [];
-      localStorage.setItem('mct_noaa_tide_stations_v1', JSON.stringify(stationsCache));
-      return stationsCache;
-    }
-    async function findStations(){
-      const query = searchEl.value.trim().toLowerCase();
-      if(!query){ setResult('<h3>Type a station or coastal place</h3><p>Try San Francisco, Seattle, Honolulu, Boston, or a NOAA station ID such as 9414290.</p>'); return; }
-      setResult('<h3>Searching stations...</h3><p>Checking NOAA tide prediction stations.</p>');
-      try{
-        const stations = await loadStations();
-        const matches = stations.filter(station => {
-          const haystack = `${station.id || ''} ${station.name || ''} ${station.state || ''}`.toLowerCase();
-          return haystack.includes(query);
-        }).slice(0, 8);
-        renderStationMatches(matches, query);
-      }catch(error){
-        setResult(`<h3>Could not load station list</h3><p>${escapeHTML(error.message)} Try entering a known NOAA station ID such as 9414290.</p>`);
+
+    async function searchTideLocation() {
+      const q = searchEl.value.trim();
+      if (!q) { setResult('<h3>Enter a location</h3><p>Type a beach, harbour or coastal city and press Search.</p>'); return; }
+      setResult('<h3>Searching…</h3><p>Looking up "' + escHTML(q) + '" on the map…</p>');
+      try {
+        const geo = await fetch(
+          'https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + encodeURIComponent(q),
+          { headers: { 'Accept': 'application/json', 'User-Agent': 'MyCalendarTools/1.0 (mycalendartools.net)' } }
+        );
+        const places = await geo.json();
+        if (!places.length) { setResult('<h3>Location not found</h3><p>Try a more specific coastal location — e.g. "Bondi Beach NSW" or "Whitby, North Yorkshire".</p>'); return; }
+        if (places.length === 1) {
+          await loadTides(parseFloat(places[0].lat), parseFloat(places[0].lon), places[0].display_name);
+        } else {
+          // Show choices
+          const list = places.map(p =>
+            `<button class="station-option" onclick="loadTides(${p.lat},${p.lon},'${escHTML(p.display_name).replace(/'/g,"\\'")}')">
+              <strong>${escHTML(p.display_name.split(',').slice(0,3).join(', '))}</strong>
+              <span>${escHTML(p.display_name.split(',').slice(3).join(', ').trim())}</span>
+            </button>`
+          ).join('');
+          setResult('<h3>Select a location</h3><div class="station-list">' + list + '</div>');
+        }
+      } catch (err) {
+        setResult('<h3>Search failed</h3><p>' + escHTML(err.message) + '</p>');
       }
     }
-    function renderStationMatches(matches, query){
-      const idLooksValid = /^[a-z0-9]{6,8}$/i.test(query.replace(/\s/g,''));
-      const directButton = idLooksValid ? `<button class="station-option" onclick="getTides('${escapeHTML(query.replace(/\s/g,''))}', 'NOAA Station ${escapeHTML(query.replace(/\s/g,''))}')"><strong>Use NOAA station ID ${escapeHTML(query.replace(/\s/g,''))}</strong><span>Check tide predictions directly from this station ID.</span></button>` : '';
-      if(!matches.length && !directButton){ setResult('<h3>No matching stations found</h3><p>Try a broader US coastal city, state abbreviation, or NOAA tide station ID.</p>'); return; }
-      const items = matches.map(station => `<button class="station-option" onclick="getTides('${escapeHTML(station.id)}', '${escapeHTML(stationLabel(station))}')"><strong>${escapeHTML(stationLabel(station))}</strong><span>${escapeHTML(formatStationMeta(station))}</span></button>`).join('');
-      setResult(`<h3>Select a tide station</h3><div class="station-list">${directButton}${items}</div>`);
-    }
-    function useMyLocation(){
-      if(!navigator.geolocation){ setResult('<h3>Location is not available</h3><p>Your browser does not support location lookup. Search by station or city instead.</p>'); return; }
-      setResult('<h3>Finding nearby stations...</h3><p>Your browser will ask permission to use location. Nothing is stored by this tool.</p>');
-      navigator.geolocation.getCurrentPosition(async position => {
-        try{
-          const stations = await loadStations();
-          const nearby = stations
-            .filter(station => station.lat && station.lng)
-            .map(station => ({...station, distanceNm: distanceNm(position.coords.latitude, position.coords.longitude, Number(station.lat), Number(station.lng))}))
-            .sort((a,b) => a.distanceNm - b.distanceNm)
-            .slice(0, 8);
-          renderStationMatches(nearby, 'nearby');
-        }catch(error){ setResult(`<h3>Could not find nearby stations</h3><p>${escapeHTML(error.message)}</p>`); }
-      }, error => setResult(`<h3>Location permission not available</h3><p>${escapeHTML(error.message || 'Search by station name or ID instead.')}</p>`), {enableHighAccuracy:false, timeout:10000, maximumAge:600000});
-    }
-    function distanceNm(lat1, lon1, lat2, lon2){
-      const toRad = value => value * Math.PI / 180;
-      const radiusKm = 6371;
-      const dLat = toRad(lat2-lat1);
-      const dLon = toRad(lon2-lon1);
-      const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
-      const km = 2 * radiusKm * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      return km / 1.852;
-    }
-    async function getTides(stationId, stationName){
-      const dateValue = (dateEl.value || new Date().toISOString().slice(0,10)).replaceAll('-', '');
-      const units = unitsEl.value || 'metric';
-      const params = new URLSearchParams({
-        product: 'predictions',
-        application: 'MyCalendarTools',
-        begin_date: dateValue,
-        end_date: dateValue,
-        datum: 'MLLW',
-        station: stationId,
-        time_zone: 'lst_ldt',
-        units: units,
-        interval: 'hilo',
-        format: 'json'
-      });
-      setResult(`<h3>Loading tides for ${escapeHTML(stationName)}</h3><p>Fetching high and low tide predictions from NOAA.</p>`);
-      try{
-        const response = await fetch(`${predictionEndpoint}?${params.toString()}`);
-        if(!response.ok) throw new Error('NOAA tide prediction request failed.');
-        const data = await response.json();
-        if(data.error) throw new Error(data.error.message || 'NOAA returned an error for this station.');
-        const predictions = data.predictions || [];
-        if(!predictions.length) throw new Error('No high/low tide predictions were returned for this date.');
-        const unitLabel = units === 'metric' ? 'm' : 'ft';
-        const rows = predictions.map(item => {
-          const date = new Date(item.t.replace(' ', 'T'));
-          const time = Number.isNaN(date.getTime()) ? item.t : date.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
-          const tideType = item.type === 'H' ? 'High tide' : item.type === 'L' ? 'Low tide' : item.type;
-          return `<tr><td>${escapeHTML(time)}</td><td>${escapeHTML(tideType)}</td><td>${escapeHTML(item.v)} ${unitLabel}</td></tr>`;
-        }).join('');
-        const prettyDate = new Date((dateEl.value || new Date().toISOString().slice(0,10)) + 'T00:00:00').toLocaleDateString([], {weekday:'long', year:'numeric', month:'long', day:'numeric'});
-        setResult(`<h3>${escapeHTML(stationName)}</h3><div class="tide-meta"><div class="tide-pill"><strong>Station</strong><span>${escapeHTML(stationId)}</span></div><div class="tide-pill"><strong>Date</strong><span>${escapeHTML(prettyDate)}</span></div><div class="tide-pill"><strong>Datum</strong><span>MLLW</span></div></div><table class="tide-table"><thead><tr><th>Time</th><th>Tide</th><th>Height</th></tr></thead><tbody>${rows}</tbody></table><p class="fine-note">Predictions are shown in local station time. Check local marine warnings before relying on tide conditions.</p>`);
-      }catch(error){
-        setResult(`<h3>Tide data unavailable</h3><p>${escapeHTML(error.message)}</p><p>Try another NOAA station, a different date, or search the station list again.</p>`);
+
+    async function loadTides(lat, lon, name) {
+      setResult('<h3>Loading tide data…</h3><p>Fetching ocean forecast for ' + escHTML(name.split(',').slice(0,2).join(', ')) + '…</p>');
+      try {
+        const url = `https://api.met.no/weatherapi/oceanforecast/2.0/complete?lat=${lat}&lon=${lon}`;
+        const res = await fetch(url, { headers: { 'User-Agent': 'MyCalendarTools/1.0 (mycalendartools.net)' } });
+        if (!res.ok) throw new Error('No ocean forecast data available for this location. It may be too far inland — try a nearby coastal point.');
+        const data = await res.json();
+        renderTideData(data, name, lat, lon);
+      } catch (err) {
+        setResult('<h3>No data for this location</h3><p>' + escHTML(err.message) + '</p><p style="color:var(--muted);margin-top:10px;font-size:0.9rem">Ocean forecast data is available for coastal ocean locations. If this location is inland, try searching for a nearby beach, harbour or coastal point.</p>');
       }
+    }
+
+    function renderTideData(data, name, lat, lon) {
+      const timeseries = data.properties?.timeseries || [];
+      if (!timeseries.length) { setResult('<h3>No forecast data</h3><p>No ocean forecast available for this location.</p>'); return; }
+
+      const shortName = name.split(',').slice(0, 2).join(', ');
+      const now = new Date();
+
+      // Get next 48 hourly points
+      const points = timeseries.slice(0, 48).map(ts => ({
+        time: new Date(ts.time),
+        height: ts.data?.instant?.details?.sea_surface_height_above_mean_sea_level ?? null,
+        waterTemp: ts.data?.instant?.details?.sea_water_temperature ?? null,
+        waveHeight: ts.data?.instant?.details?.sea_surface_wave_significant_height ?? null,
+      })).filter(p => p.height !== null);
+
+      if (!points.length) { setResult('<h3>No tidal data</h3><p>Ocean surface height data is not available at this location. The location may be too far from open water.</p>'); return; }
+
+      // Find high/low tides (local extrema)
+      const highs = [], lows = [];
+      for (let i = 1; i < points.length - 1; i++) {
+        if (points[i].height > points[i-1].height && points[i].height > points[i+1].height) highs.push(points[i]);
+        if (points[i].height < points[i-1].height && points[i].height < points[i+1].height) lows.push(points[i]);
+      }
+
+      const fmtTime = d => d.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: true });
+      const fmtDate = d => d.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
+      const fmtH = h => (h >= 0 ? '+' : '') + h.toFixed(2) + ' m';
+
+      // Current conditions
+      const current = points[0];
+      const maxH = Math.max(...points.map(p => p.height));
+      const minH = Math.min(...points.map(p => p.height));
+      const range = maxH - minH || 1;
+
+      // Build tide events for today
+      const todayEvents = [...highs.filter(p => p.time.toDateString() === now.toDateString()),
+                           ...lows.filter(p => p.time.toDateString() === now.toDateString())]
+        .sort((a, b) => a.time - b.time);
+
+      // Build tide events for tomorrow
+      const tomorrow = new Date(now); tomorrow.setDate(tomorrow.getDate() + 1);
+      const tmrwEvents = [...highs.filter(p => p.time.toDateString() === tomorrow.toDateString()),
+                          ...lows.filter(p => p.time.toDateString() === tomorrow.toDateString())]
+        .sort((a, b) => a.time - b.time);
+
+      const eventsToRow = evts => evts.map(p => {
+        const isHigh = highs.includes(p);
+        return `<tr>
+          <td>${fmtTime(p.time)}</td>
+          <td class="${isHigh ? 'tide-high' : 'tide-low'}">${isHigh ? '▲ High' : '▼ Low'}</td>
+          <td>${fmtH(p.height)}</td>
+        </tr>`;
+      }).join('');
+
+      // 24-hour chart
+      const chartPoints = points.slice(0, 24);
+      const chartBars = chartPoints.map(p => {
+        const pct = Math.round(((p.height - minH) / range) * 100);
+        const label = fmtTime(p.time).replace(':00', '').replace(' ', '');
+        return `<div class="tide-bar-row">
+          <span class="tide-bar-label">${label}</span>
+          <div class="tide-bar-track"><div class="tide-bar-fill" style="width:${pct}%"></div></div>
+          <span class="tide-bar-val">${fmtH(p.height)}</span>
+        </div>`;
+      }).join('');
+
+      const tempRow = current.waterTemp ? `<span class="tide-summary-pill">🌡️ Water ${current.waterTemp.toFixed(1)}°C</span>` : '';
+      const waveRow = current.waveHeight ? `<span class="tide-summary-pill">🌊 Swell ${current.waveHeight.toFixed(1)} m</span>` : '';
+
+      setResult(`
+        <h3 style="margin-bottom:4px">🌊 ${escHTML(shortName)}</h3>
+        <p style="font-size:0.8rem;color:var(--dim);margin-bottom:12px">${lat.toFixed(4)}, ${lon.toFixed(4)} · Updated ${fmtTime(now)}</p>
+
+        <div style="margin-bottom:14px">
+          <span class="tide-summary-pill">Current: <strong>${fmtH(current.height)}</strong></span>
+          <span class="tide-summary-pill">24h High: <strong class="tide-high">${fmtH(maxH)}</strong></span>
+          <span class="tide-summary-pill">24h Low: <strong class="tide-low">${fmtH(minH)}</strong></span>
+          ${tempRow}${waveRow}
+        </div>
+
+        ${todayEvents.length ? `
+        <h4 style="margin:18px 0 10px;font-size:0.95rem">Today's Tides — ${fmtDate(now)}</h4>
+        <table class="tide-table">
+          <thead><tr><th>Time</th><th>Tide</th><th>Height</th></tr></thead>
+          <tbody>${eventsToRow(todayEvents)}</tbody>
+        </table>` : ''}
+
+        ${tmrwEvents.length ? `
+        <h4 style="margin:18px 0 10px;font-size:0.95rem">Tomorrow's Tides — ${fmtDate(tomorrow)}</h4>
+        <table class="tide-table">
+          <thead><tr><th>Time</th><th>Tide</th><th>Height</th></tr></thead>
+          <tbody>${eventsToRow(tmrwEvents)}</tbody>
+        </table>` : ''}
+
+        <h4 style="margin:20px 0 10px;font-size:0.95rem">24-Hour Sea Level Chart</h4>
+        <div class="tide-chart-wrap">${chartBars}</div>
+
+        <p class="location-note">📍 Data: Norwegian Meteorological Institute ocean forecast model · Heights in metres above mean sea level · <a href="https://api.met.no/" target="_blank" rel="noopener" style="color:var(--muted)">api.met.no</a></p>
+      `);
+    }
+
+    function useMyLocation() {
+      if (!navigator.geolocation) { setResult('<h3>Location not available</h3><p>Your browser does not support location. Search by place name instead.</p>'); return; }
+      setResult('<div style="padding:8px 0"><h3>📍 Use My GPS Location</h3><p style="color:var(--muted);margin:10px 0;line-height:1.6">Your GPS coordinates will be used to fetch local ocean tide data. <strong style="color:var(--text)">Nothing is stored.</strong></p><div style="display:flex;gap:10px;margin-top:14px"><button class="btn-primary" onclick="confirmGeo()">Allow &amp; Continue</button><button class="btn-secondary" onclick="document.getElementById(\'tideResult\').innerHTML=\'<h3>Search by name</h3><p>Enter a coastal location above.</p>\'">Cancel</button></div></div>');
+    }
+
+    function confirmGeo() {
+      setResult('<h3>Detecting location…</h3><p>Your browser will ask for permission. Nothing is stored.</p>');
+      navigator.geolocation.getCurrentPosition(
+        pos => loadTides(pos.coords.latitude, pos.coords.longitude, 'Your Location'),
+        err => setResult('<h3>Permission denied</h3><p>' + escHTML(err.message) + '</p><p style="color:var(--muted);margin-top:8px">Search by place name instead.</p>'),
+        { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 }
+      );
     }
   </script>
+  <script src="/cookie-consent.js"></script>
 </body>
 </html>

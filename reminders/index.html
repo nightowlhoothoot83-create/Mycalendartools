@@ -17,12 +17,53 @@
   <meta name="google-adsense-account" content="ca-pub-1904958390525375">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Date Reminders", "url": "https://www.mycalendartools.net/reminders/", "description": "Create browser-based date reminders", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Ascension Digital Group"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904958390525375" crossorigin="anonymous"></script>
+<style>.nav-logo-icon { height: 36px; width: auto; object-fit: contain; }</style>
+  <script type="application/ld+json">
+  [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Reminders",
+    "description": "Create simple browser date reminders saved on your device.",
+    "url": "https://www.mycalendartools.net/reminders/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "isAccessibleForFree": true,
+    "publisher": {
+      "@id": "https://ascensiondigitalgroup.com/#org"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://ascensiondigitalgroup.com/#org",
+    "name": "Ascension Digital Group",
+    "url": "https://ascensiondigital.com.au"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mycalendartools.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Reminders",
+        "item": "https://www.mycalendartools.net/reminders/"
+      }
+    ]
+  }
+]
+  </script>
 </head>
 <body>
   <div id="brand-strip"></div>
-  <div id="cookie-consent-mount"></div>
   <div id="nav"></div>
   <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Date Reminders</span></nav>
   <section class="page-hero container">
@@ -33,14 +74,52 @@
 
   <div class="tool-layout container"><div class="tool-card card"><div class="form-group"><label>Reminder title</label><input id="remTitle" placeholder="Pay bill, call client, launch thing..."></div><div class="form-group"><label>Date & time</label><input id="remWhen" type="datetime-local"></div><button class="btn-primary" onclick="addReminder()" style="width:100%;justify-content:center">Save Reminder</button><p class="tool-note">This is a local browser reminder list, not phone push notifications. Keep this page open if you want live alerts.</p></div><div class="tool-card card"><h2 style="font-size:1.2rem;margin-bottom:10px">Saved reminders</h2><div id="remList"></div></div></div>
 
+  
+  <section class="info-section container" style="margin-top:32px">
+    <div class="info-card card" style="padding:28px;max-width:800px;margin:0 auto">
+      <h2 style="font-size:1.25rem;margin-bottom:16px">About Date Reminders</h2>
+      <p style="line-height:1.7;color:var(--muted);margin-bottom:14px">
+        The <strong style="color:var(--text)">MyCalendarTools Date Reminders</strong> tool lets you create a personal list
+        of upcoming dates and deadlines, stored entirely in your browser. No account needed, no data sent to a server
+        — everything lives in your device's local storage. This means your reminders are private, instant to set up,
+        and always available as long as you return to this page on the same browser.
+      </p>
+      <p style="line-height:1.7;color:var(--muted);margin-bottom:14px">
+        Reminders are checked automatically every 30 seconds while the page is open. When a reminder date and time
+        is reached, you'll see a browser alert with the reminder title. For the most reliable experience, keep
+        this tab open in your browser — especially for time-sensitive reminders.
+      </p>
+      <h3 style="font-size:1.05rem;margin:20px 0 10px">How to set a reminder</h3>
+      <ol style="color:var(--muted);line-height:1.8;padding-left:20px">
+        <li>Type a title that describes what you need to remember (e.g., "Pay phone bill", "Submit assignment").</li>
+        <li>Select the date and time you want to be reminded.</li>
+        <li>Click <strong style="color:var(--text)">Save Reminder</strong> — it appears in your saved list immediately.</li>
+        <li>Reminders are sorted by date, so the nearest one always appears at the top.</li>
+        <li>Click <strong style="color:var(--text)">Remove</strong> on any reminder once it's done.</li>
+      </ol>
+      <h3 style="font-size:1.05rem;margin:20px 0 10px">Who uses date reminders?</h3>
+      <ul style="color:var(--muted);line-height:1.8;padding-left:20px">
+        <li><strong style="color:var(--text)">Students</strong> — track assignment submission dates and exam days.</li>
+        <li><strong style="color:var(--text)">Professionals</strong> — keep an eye on billing cycles, contract renewals, and follow-ups.</li>
+        <li><strong style="color:var(--text)">Parents</strong> — remember school events, excursion payments, and permission slips.</li>
+        <li><strong style="color:var(--text)">Anyone planning ahead</strong> — birthdays, anniversaries, appointments, and subscription renewals.</li>
+      </ul>
+      <div class="info-card" style="background:rgba(96,165,250,0.06);border:1px solid rgba(96,165,250,0.15);border-radius:12px;padding:14px;margin-top:18px">
+        <p style="margin:0;font-size:0.88rem;color:var(--muted)">
+          🔒 <strong style="color:var(--text)">Privacy note:</strong> Reminders are saved using your browser's local storage
+          and remain on this device only. They are not synced to any account or shared with our servers.
+          Clearing your browser data will remove saved reminders.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/time-zone/" class="related-card card"><span class="related-card-icon">🌍</span>Time Zone Converter</a><a href="/countdown/" class="related-card card"><span class="related-card-icon">⏳</span>Countdown</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">🗓️</span>Date Calculator</a><a href="/week-number/" class="related-card card"><span class="related-card-icon">🔢</span>Week Number</a></div></section>
-  <div class="container"><div class="ad-rectangle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-format="auto" data-full-width-responsive="true"></ins><script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script></div></div>
   <div id="site-footer"></div>
   <div id="group-footer"></div>
   <script src="/components.js"></script>
   <script>
     document.getElementById('brand-strip').innerHTML = renderBrandStrip();
-    document.getElementById('cookie-consent-mount').innerHTML = renderCookieConsent();
     document.getElementById('nav').innerHTML = renderNav();
     document.getElementById('site-footer').innerHTML = renderSiteFooter();
     document.getElementById('group-footer').innerHTML = renderGroupFooter();
@@ -49,5 +128,6 @@
   <script>
 let reminders=JSON.parse(localStorage.getItem('mct_reminders')||'[]'); function save(){localStorage.setItem('mct_reminders',JSON.stringify(reminders)); renderReminders()} function addReminder(){const title=remTitle.value.trim(), when=remWhen.value; if(!title||!when){alert('Add a title and date');return} reminders.push({title,when,done:false}); remTitle.value=''; save()} function delReminder(i){reminders.splice(i,1);save()} function renderReminders(){reminders.sort((a,b)=>new Date(a.when)-new Date(b.when)); remList.innerHTML=reminders.length?reminders.map((r,i)=>`<div class="mini-result-card" style="margin-bottom:10px"><strong>${r.title}</strong><span>${new Date(r.when).toLocaleString()}</span><button class="btn-secondary" onclick="delReminder(${i})" style="margin-top:8px;padding:6px 12px">Remove</button></div>`).join(''):'<p>No reminders saved yet.</p>'} setInterval(()=>{const now=Date.now();reminders.forEach((r,i)=>{if(!r.done&&new Date(r.when).getTime()<=now){r.done=true; alert('Reminder: '+r.title); save();}})},30000); renderReminders();
 </script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

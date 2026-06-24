@@ -1,46 +1,5 @@
 /* components.js — shared across all pages */
 
-// ── Brand Strip ──
-function renderGroupFooter() {
-  document.getElementById('group-footer').innerHTML = `
-    <div class="rs-footer">
-      <img src="/ascension-digital.png" alt="Ascension Digital" class="ascension-logo">
-      <h3>Part of the Ascension Digital Group</h3>
-      <p class="rs-footer-tagline">Elevating Your Digital Future</p>
-      <div class="rs-footer-links">
-        <a href="/" title="MyCalendarTools"><img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" class="rs-footer-brand-icon"></a>
-        <a href="https://www.mycalctools.net" target="_blank" rel="noopener" title="MyCalcTools"><img src="/mycalctools-logo.jpg" alt="MyCalcTools" class="rs-footer-brand-icon"></a>
-        <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" title="Zyia Creations"><img src="/zyia-creations.png" alt="Zyia Creations" class="rs-footer-brand-icon"></a>
-        <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank" rel="noopener" title="Feed the Feed"><img src="/feed-the-feed.jpg" alt="Feed the Feed" class="rs-footer-brand-icon"></a>
-        <a href="http://www.youtube.com/@spewcrewkids" target="_blank" rel="noopener" title="Spew Crew Kids"><img src="/spew-crew.jpg" alt="Spew Crew Kids" class="rs-footer-brand-icon"></a>
-        <a href="https://mysticalmoments.pages.dev" target="_blank" rel="noopener" title="Mystical Moments"><img src="/mystical-moments.png" alt="Mystical Moments" class="rs-footer-brand-icon"></a>
-        <a href="https://ravensharp.com.au" target="_blank" rel="noopener" title="RavenSharp"><img src="/raven-sharp.jpg" alt="RavenSharp" class="rs-footer-brand-icon"></a>
-        <div style="position:relative;display:inline-block">
-          <img src="/synergy-services.png" alt="Synergy Services" class="rs-footer-brand-icon" style="opacity:0.6">
-          <span style="position:absolute;top:-6px;right:-6px;background:var(--gold);color:#000;font-size:0.55rem;font-weight:800;padding:2px 5px;border-radius:999px;white-space:nowrap">SOON</span>
-        </div>
-        <div style="position:relative;display:inline-block">
-          <img src="/natures-sacred-synergy.jpg" alt="Nature's Sacred Synergy" class="rs-footer-brand-icon" style="opacity:0.6">
-          <span style="position:absolute;top:-6px;right:-6px;background:var(--green);color:#000;font-size:0.55rem;font-weight:800;padding:2px 5px;border-radius:999px;white-space:nowrap">NFP</span>
-        </div>
-      </div>
-      <a href="/about.html#support" class="btn-primary" style="margin-top:8px">Support Us</a>
-    </div>`;
-}
-function renderBrandStrip() {
-  return `
-  <div class="rs-brand-strip">
-    <div class="rs-brand-left">
-      <img src="/raven-sharp.jpg" alt="RavenSharp" class="rs-raven-mark" style="width:40px;height:40px;border-radius:10px;object-fit:cover;filter:drop-shadow(0 0 12px rgba(6,214,255,0.4))">
-      <div>
-        <div class="rs-brand-name">RavenSharp Tools</div>
-        <span class="rs-brand-sub">Part of the Ascension Digital Group</span>
-      </div>
-    </div>
-    <a href="/about.html#support" class="rs-support-pill">Support Us</a>
-  </div>`;
-}
-
 // ── Navigation ──
 function renderNav() {
   const links = [
@@ -73,7 +32,7 @@ function renderNav() {
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <div class="nav-logo-icon">📅</div>
+        <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" class="nav-logo-icon">
         <span class="nav-logo-text">MyCalendarTools</span>
       </a>
       <ul class="nav-links">
@@ -85,6 +44,7 @@ function renderNav() {
           </div>
         </li>
       </ul>
+      <a href="https://www.wheelnamepicker.com.au" class="nav-sister-pill" target="_blank" rel="noopener" title="Wheel Name Picker">🎡 WheelPicker</a>
       <a href="https://www.mycalctools.net" class="nav-sister-pill" target="_blank" rel="noopener">🧮 MyCalcTools</a>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -94,7 +54,22 @@ function renderNav() {
   <div class="nav-mobile-menu" id="mobileMenu">
     ${links.map(l => `<a href="${l.href}">${l.label}</a>`).join('')}
     ${moreLinks.map(l => `<a href="${l.href}">${l.label}</a>`).join('')}
+    <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener">🎡 Wheel Name Picker</a>
     <a href="https://www.mycalctools.net" target="_blank" rel="noopener">🧮 MyCalcTools</a>
+  </div>`;
+}
+
+// ── Brand Strip ──
+function renderBrandStrip() {
+  return `
+  <div class="rs-brand-strip">
+    <div class="rs-brand-left">
+      <a href="https://ravensharppod.pages.dev/login" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+        <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:32px;height:32px;border-radius:8px;object-fit:cover;filter:drop-shadow(0 0 6px rgba(6,100,255,0.5))">
+        <span style="font-weight:700;font-size:0.9rem;color:var(--text,#e8eaf6);letter-spacing:0.02em">Raven Sharp <span style="color:var(--muted,#94a3b8);font-weight:400">Tools</span></span>
+      </a>
+    </div>
+    <a href="/about/#support" class="rs-support-pill">Support Us</a>
   </div>`;
 }
 
@@ -106,7 +81,7 @@ function renderSiteFooter() {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <div class="nav-logo-icon">📅</div>
+            <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" class="nav-logo-icon">
             <span class="nav-logo-text">MyCalendarTools</span>
           </a>
           <p>Free date tools, moon phases, school holidays and countdowns. No accounts. No noise. Just answers.</p>
@@ -141,18 +116,18 @@ function renderSiteFooter() {
         <div class="footer-col">
           <h4>Info</h4>
           <ul>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/contact.html">Contact</a></li>
-            <li><a href="/faq.html">FAQ</a></li>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Use</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
             <li><a href="/sitemap.html">Sitemap</a></li>
             <li><a href="https://www.mycalctools.net" target="_blank" rel="noopener">🧮 MyCalcTools</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 MyCalendarTools · Part of the <strong>Ascension Digital Group</strong></p>
+        <p>© 2025 MyCalendarTools · Part of the <a href="https://ascensiondigitalgroup.com" target="_blank" rel="noopener" style="color:var(--cyan,#06d6ff);text-decoration:none"><strong>Ascension Digital Group</strong></a></p>
         <p><a href="https://www.mycalctools.net" target="_blank" rel="noopener" style="color:var(--dim)">Sister site: mycalctools.net</a></p>
       </div>
     </div>
@@ -170,10 +145,16 @@ function renderGroupFooter() {
     <p class="rs-footer-tagline">Elevating Your Digital Future</p>
     <div class="rs-footer-links" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center">
       <a href="/" title="MyCalendarTools" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#060d1f,#1a0a3a);border:1px solid rgba(6,214,255,0.25);display:flex;align-items:center;justify-content:center;font-size:1.6rem">📅</div>
+        <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://www.mycalctools.net" target="_blank" rel="noopener" title="MyCalcTools" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#060d1f,#1a0a3a);border:1px solid rgba(6,214,255,0.25);display:flex;align-items:center;justify-content:center;font-size:1.6rem">🧮</div>
+        <img src="/mycalctools-logo.jpg" alt="MyCalcTools" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+      </a>
+      <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener" title="Wheel Name Picker" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/wheelnamepicker-logo.png" alt="Wheel Name Picker" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+      </a>
+      <a href="https://ravensharppod.pages.dev/login" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" title="Zyia Creations">
         <img src="/zyia-creations.png" alt="Zyia Creations" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
@@ -182,17 +163,19 @@ function renderGroupFooter() {
         <img src="/feed-the-feed.jpg" alt="Feed the Feed" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="http://www.youtube.com/@spewcrewkids" target="_blank" rel="noopener" title="Spew Crew Kids">
-        <img src="/spew-crew.jpg" alt="Spew Crew Kids" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/spew-crew.jpg" alt="Spew Crew Kids" style="width:52px;height:52px;border-radius:12px;object-fit:cover;background:#000;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://mysticalmoments.pages.dev" target="_blank" rel="noopener" title="Mystical Moments Photography">
         <img src="/mystical-moments.png" alt="Mystical Moments" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
-      <a href="https://ravensharp.com.au" target="_blank" rel="noopener" title="RavenSharp Tools">
-        <img src="/raven-sharp.jpg" alt="RavenSharp" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-      </a>
     </div>
-    <a href="/about.html#support" class="btn-primary">Support Us</a>
+    <a href="/about/#support" class="btn-primary">Support Us</a>
   </div>`;
+}
+
+// ── Hosting Affiliate Banner ──
+function renderHostingAffiliate() {
+  return `<div class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/ventraip-affiliate-banner.jpg" alt="VentraIP Australian website hosting affiliate banner"></a></div>`;
 }
 
 // ── FAQ init ──
@@ -318,67 +301,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initHamburger();
 });
-
-
-function renderRavenSharpPromo() {
-  return `<div class="soft-promo-card card container">
-    <img src="/raven-sharp.jpg" alt="RavenSharp">
-    <div><h3>RavenSharp Tools</h3><p>AI-assisted formatting, fixing and file tools from the Ascension Digital Group.</p></div>
-    <a class="btn-primary" href="https://ravensharp.com.au" target="_blank" rel="noopener">Open RavenSharp</a>
-  </div>`;
-}
-
-function renderHostingAffiliate() {
-  return `<div class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/ventraip-affiliate-banner.jpg" alt="VentraIP Australian website hosting affiliate banner"></a></div>`;
-}
-
-/* ── Cookie Consent + Consent-Gated AdSense Loading ────────────────────── */
-function loadAdsenseScript() {
-  if (document.getElementById('adsbygoogle-script')) return;
-  var s = document.createElement('script');
-  s.id = 'adsbygoogle-script';
-  s.async = true;
-  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904958390525375';
-  s.crossOrigin = 'anonymous';
-  document.head.appendChild(s);
-}
-
-function renderCookieConsent() {
-  return `<div id="cookie-consent-banner" class="cookie-consent-banner" style="display:none">
-    <div class="cookie-consent-inner">
-      <p>We use cookies for basic site functionality and to show ads via Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this or other websites. You can accept or decline non-essential cookies below. See our <a href="/privacy.html">Privacy Policy</a> for details.</p>
-      <div class="cookie-consent-actions">
-        <button id="cookie-decline-btn" class="btn-secondary">Decline</button>
-        <button id="cookie-accept-btn" class="btn-primary">Accept</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-function initCookieConsent() {
-  var choice = localStorage.getItem('cookieConsent');
-  if (choice === 'accepted') {
-    loadAdsenseScript();
-    return;
-  }
-  if (choice === 'declined') {
-    return; // Respect prior decline — do not load ad scripts
-  }
-  // No prior choice — show banner
-  var el = document.getElementById('cookie-consent-banner');
-  if (el) el.style.display = 'block';
-
-  var acceptBtn = document.getElementById('cookie-accept-btn');
-  var declineBtn = document.getElementById('cookie-decline-btn');
-  if (acceptBtn) acceptBtn.addEventListener('click', function () {
-    localStorage.setItem('cookieConsent', 'accepted');
-    if (el) el.style.display = 'none';
-    loadAdsenseScript();
-  });
-  if (declineBtn) declineBtn.addEventListener('click', function () {
-    localStorage.setItem('cookieConsent', 'declined');
-    if (el) el.style.display = 'none';
-  });
-}
-
-document.addEventListener('DOMContentLoaded', initCookieConsent);
