@@ -1319,7 +1319,3 @@ label {
   margin: 0;
 }
 .info-howto h2 { color: var(--text); }
-
-/* Tool search result hover */
-.tool-search-result:hover { background: rgba(6,214,255,0.07) !important; }
-
