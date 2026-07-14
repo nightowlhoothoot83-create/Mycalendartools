@@ -821,7 +821,7 @@ label {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);
   gap: 40px;
   margin-bottom: 40px;
 }
@@ -1114,7 +1114,7 @@ label {
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .tool-layout { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
   .widgets-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
@@ -1122,7 +1122,7 @@ label {
   .nav-links { display: none; }
   .nav-sister-pill { display: none; }
   .nav-hamburger { display: flex; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .footer-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; }
   .hero-date-card { padding: 24px 20px; }
   .stats-row { gap: 16px; }
   .countdowns-grid { grid-template-columns: 1fr 1fr; }
@@ -1132,6 +1132,7 @@ label {
   .countdowns-grid { grid-template-columns: 1fr; }
   .tools-grid { grid-template-columns: 1fr; }
   .rs-brand-strip .rs-brand-sub { display: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* ── Contact / Static pages ── */
