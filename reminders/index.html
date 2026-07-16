@@ -150,5 +150,14 @@
 let reminders=JSON.parse(localStorage.getItem('mct_reminders')||'[]'); function save(){localStorage.setItem('mct_reminders',JSON.stringify(reminders)); renderReminders()} function addReminder(){const title=remTitle.value.trim(), when=remWhen.value; if(!title||!when){alert('Add a title and date');return} reminders.push({title,when,done:false}); remTitle.value=''; save()} function delReminder(i){reminders.splice(i,1);save()} function renderReminders(){reminders.sort((a,b)=>new Date(a.when)-new Date(b.when)); remList.innerHTML=reminders.length?reminders.map((r,i)=>`<div class="mini-result-card" style="margin-bottom:10px"><strong>${r.title}</strong><span>${new Date(r.when).toLocaleString()}</span><button class="btn-secondary" onclick="delReminder(${i})" style="margin-top:8px;padding:6px 12px">Remove</button></div>`).join(''):'<p>No reminders saved yet.</p>'} setInterval(()=>{const now=Date.now();reminders.forEach((r,i)=>{if(!r.done&&new Date(r.when).getTime()<=now){r.done=true; alert('Reminder: '+r.title); save();}})},30000); renderReminders();
 </script>
 <script src="/cookie-consent.js"></script>
+<footer id="static-policy-footer" style="background:#050914;border-top:1px solid rgba(0,229,255,0.08);padding:24px;text-align:center;font-size:0.8rem;color:#8b93b0">
+  <nav aria-label="Policy links">
+    <a href="/privacy/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Privacy Policy</a>
+    <a href="/terms/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Terms of Use</a>
+    <a href="/about/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">About</a>
+    <a href="/contact/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Contact</a>
+  </nav>
+  <p style="margin-top:8px">&copy; 2025 MyCalendarTools &middot; Part of the Ascension Digital Group</p>
+</footer>
 </body>
 </html>

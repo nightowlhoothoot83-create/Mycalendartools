@@ -75,6 +75,8 @@ function renderBrandStrip() {
 
 // ── Site Footer ──
 function renderSiteFooter() {
+  var staticFallback = document.getElementById('static-policy-footer');
+  if (staticFallback) staticFallback.style.display = 'none';
   return `
   <footer class="site-footer">
     <div class="container">

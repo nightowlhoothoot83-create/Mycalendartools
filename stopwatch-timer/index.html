@@ -156,5 +156,14 @@ let swStart=0, swElapsed=0, swInt=null; function fmt(ms){let cs=Math.floor(ms/10
 let timerLeft=300,timerInt=null; function timerFmt(v){let m=Math.floor(v/60),s=v%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')} function resetTimer(){stopTimer();timerLeft=(+timerMin.value||0)*60+(+timerSec.value||0);timerDisplay.textContent=timerFmt(timerLeft)} function startTimer(){resetTimer(); if(timerLeft<=0)return; timerInt=setInterval(()=>{timerLeft--; timerDisplay.textContent=timerFmt(timerLeft); if(timerLeft<=0){stopTimer(); timerDisplay.textContent='Done'; try{new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=').play()}catch(e){} alert('Timer finished');}},1000)} function stopTimer(){clearInterval(timerInt);timerInt=null} timerMin.oninput=resetTimer; timerSec.oninput=resetTimer; resetTimer();
 </script>
 <script src="/cookie-consent.js"></script>
+<footer id="static-policy-footer" style="background:#050914;border-top:1px solid rgba(0,229,255,0.08);padding:24px;text-align:center;font-size:0.8rem;color:#8b93b0">
+  <nav aria-label="Policy links">
+    <a href="/privacy/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Privacy Policy</a>
+    <a href="/terms/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Terms of Use</a>
+    <a href="/about/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">About</a>
+    <a href="/contact/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Contact</a>
+  </nav>
+  <p style="margin-top:8px">&copy; 2025 MyCalendarTools &middot; Part of the Ascension Digital Group</p>
+</footer>
 </body>
 </html>
