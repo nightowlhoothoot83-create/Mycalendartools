@@ -75,8 +75,11 @@ function renderBrandStrip() {
 
 // ── Site Footer ──
 function renderSiteFooter() {
-  var staticFallback = document.getElementById('static-policy-footer');
-  if (staticFallback) staticFallback.style.display = 'none';
+  // NOTE: previously hid the static fallback footer here once the dynamic
+  // one loaded. Removed that — hidden (display:none) content that's
+  // technically present in the HTML can read as concealed/cloaked content
+  // to automated policy review, which very plausibly explains the earlier
+  // AdSense policy rejection on this site. Both footers now stay visible.
   return `
   <footer class="site-footer">
     <div class="container">
