@@ -38,7 +38,7 @@ function renderNav() {
       <ul class="nav-links">
         ${links.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
         <li class="nav-dropdown">
-          <a class="nav-dropdown-toggle" href="#">More ▾</a>
+          <a class="nav-dropdown-toggle" href="/" aria-haspopup="true">More ▾</a>
           <div class="nav-dropdown-menu">
             ${moreLinks.map(l => `<a href="${l.href}">${l.label}</a>`).join('')}
           </div>
