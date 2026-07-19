@@ -64,7 +64,7 @@ function renderBrandStrip() {
   return `
   <div class="rs-brand-strip">
     <div class="rs-brand-left">
-      <a href="https://ravensharppod.pages.dev/login" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <a href="https://pod.raven-sharp.com/login" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
         <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:32px;height:32px;border-radius:8px;object-fit:cover;filter:drop-shadow(0 0 6px rgba(6,100,255,0.5))">
         <span style="font-weight:700;font-size:0.9rem;color:var(--text,#e8eaf6);letter-spacing:0.02em">Raven Sharp <span style="color:var(--muted,#94a3b8);font-weight:400">Tools</span></span>
       </a>
