@@ -158,11 +158,14 @@ function renderGroupFooter() {
       <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener" title="Wheel Name Picker" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
         <img src="/wheelnamepicker-logo.png" alt="Wheel Name Picker" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
-      <a href="https://ravensharppod.pages.dev/login" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+      <a href="https://pod.raven-sharp.com/login" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
         <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
-      <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" title="Zyia Creations">
+      <a href="https://zyia-creations.printify.me/" target="_blank" rel="noopener" title="Zyia Creations">
         <img src="/zyia-creations.png" alt="Zyia Creations" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+      </a>
+      <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" title="ADG Downloads">
+        <img src="/adg-downloads.png" alt="ADG Downloads" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank" rel="noopener" title="Feed the Feed">
         <img src="/feed-the-feed.jpg" alt="Feed the Feed" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
