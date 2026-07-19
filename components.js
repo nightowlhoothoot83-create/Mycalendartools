@@ -153,7 +153,7 @@ function renderGroupFooter() {
         <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://www.mycalctools.net" target="_blank" rel="noopener" title="MyCalcTools" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <img src="/mycalctools-logo.jpg" alt="MyCalcTools" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+        <img src="/mycalctools-logo.png" alt="MyCalcTools" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener" title="Wheel Name Picker" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
         <img src="/wheelnamepicker-logo.png" alt="Wheel Name Picker" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
@@ -171,7 +171,7 @@ function renderGroupFooter() {
         <img src="/feed-the-feed.jpg" alt="Feed the Feed" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="http://www.youtube.com/@spewcrewkids" target="_blank" rel="noopener" title="Spew Crew Kids">
-        <img src="/spew-crew.jpg" alt="Spew Crew Kids" style="width:52px;height:52px;border-radius:12px;object-fit:cover;background:#000;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/spew-crew.png" alt="Spew Crew Kids" style="width:52px;height:52px;border-radius:12px;object-fit:cover;background:#000;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://mysticalmoments.pages.dev" target="_blank" rel="noopener" title="Mystical Moments Photography">
         <img src="/mystical-moments.png" alt="Mystical Moments" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
