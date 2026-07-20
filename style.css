@@ -689,8 +689,8 @@ label {
 }
 .tool-grid-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(6,214,255,0.2);
-  box-shadow: 0 12px 40px rgba(6,214,255,0.08);
+  border-color: rgba(6,214,255,0.4);
+  box-shadow: 0 14px 34px rgba(6,214,255,0.18);
   color: inherit;
 }
 .tool-grid-icon {
