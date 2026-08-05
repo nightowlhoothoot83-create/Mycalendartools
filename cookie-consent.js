@@ -41,7 +41,8 @@
 
     var msg = document.createElement('p');
     msg.style.cssText = 'margin:0;flex:1;min-width:200px;line-height:1.5';
-    msg.innerHTML = 'We use cookies and local storage to remember your preferences and serve ads. ' +
+    msg.innerHTML = 'We use essential storage to remember your choice. With permission, advertising cookies help keep these tools free. ' +
+      '<a href="/cookies/" style="color:#60a5fa;text-decoration:underline">Cookie Policy</a> &middot; ' +
       '<a href="/privacy/" style="color:#60a5fa;text-decoration:underline">Privacy Policy</a>';
 
     var btns = document.createElement('div');
@@ -78,6 +79,17 @@
     if (b) b.remove();
   }
 
+  function addSettingsButton() {
+    if (document.getElementById('mct-cookie-settings')) return;
+    var button = document.createElement('button');
+    button.id = 'mct-cookie-settings';
+    button.type = 'button';
+    button.textContent = 'Cookie settings';
+    button.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:99998;background:#080814;color:#cbd5e1;border:1px solid rgba(148,163,184,.4);border-radius:8px;padding:7px 10px;cursor:pointer;font:12px sans-serif';
+    button.addEventListener('click', window.reopenCookiePreferences);
+    document.body.appendChild(button);
+  }
+
   /* Public: allow user to reopen preferences */
   window.reopenCookiePreferences = function () {
     hideBanner();
@@ -87,6 +99,7 @@
 
   /* Init */
   function init() {
+    addSettingsButton();
     var consent = getConsent();
     if (consent === 'granted') {
       activateAds();
