@@ -1,0 +1,2 @@
+Cloudflare Pages redeploy marker for the 2026-08-11 shared URL hygiene update.
+The functional source change is already in components.js: /sitemap.html -> /sitemap.
