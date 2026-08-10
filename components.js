@@ -128,7 +128,7 @@ function renderSiteFooter() {
             <li><a href="/cookies/">Cookie Policy</a></li>
             <li><button type="button" onclick="reopenCookiePreferences()" style="font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer">Cookie Settings</button></li>
             <li><a href="/terms/">Terms of Use</a></li>
-            <li><a href="/sitemap.html">Sitemap</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
             <li><a href="https://www.mycalctools.net" target="_blank" rel="noopener">🧮 MyCalcTools</a></li>
           </ul>
         </div>
