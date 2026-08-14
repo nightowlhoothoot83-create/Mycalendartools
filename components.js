@@ -64,7 +64,7 @@ function renderBrandStrip() {
   return `
   <div class="rs-brand-strip">
     <div class="rs-brand-left">
-      <a href="https://pod.raven-sharp.com/login" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <a href="https://raven-sharp.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
         <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:32px;height:32px;border-radius:8px;object-fit:cover;filter:drop-shadow(0 0 6px rgba(6,100,255,0.5))">
         <span style="font-weight:700;font-size:0.9rem;color:var(--text,#e8eaf6);letter-spacing:0.02em">Raven Sharp <span style="color:var(--muted,#94a3b8);font-weight:400">Tools</span></span>
       </a>
@@ -160,7 +160,7 @@ function renderGroupFooter() {
       <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener" title="Wheel Name Picker" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
         <img src="/wheelnamepicker-logo.png" alt="Wheel Name Picker" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
-      <a href="https://pod.raven-sharp.com/login" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+      <a href="https://raven-sharp.com" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
         <img src="/raven-sharp.jpg" alt="Raven Sharp" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://zyia-creations.printify.me/" target="_blank" rel="noopener" title="Zyia Creations">
