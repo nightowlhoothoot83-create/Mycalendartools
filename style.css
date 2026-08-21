@@ -687,9 +687,29 @@ label {
   text-decoration: none;
   color: inherit;
 }
+
+/* Restore the category-coloured edge and restrained neon glow that identify
+   the homepage tool cards. Keep the existing dimensions and layout intact. */
+.tool-grid-card:nth-child(7n + 1) { --card-edge: 6,214,255; }
+.tool-grid-card:nth-child(7n + 2) { --card-edge: 139,92,246; }
+.tool-grid-card:nth-child(7n + 3) { --card-edge: 244,114,182; }
+.tool-grid-card:nth-child(7n + 4) { --card-edge: 245,158,11; }
+.tool-grid-card:nth-child(7n + 5) { --card-edge: 52,211,153; }
+.tool-grid-card:nth-child(7n + 6) { --card-edge: 96,165,250; }
+.tool-grid-card:nth-child(7n) { --card-edge: 251,146,60; }
+.tool-grid-card {
+  border-color: rgba(var(--card-edge), .42);
+  box-shadow: inset 0 0 0 1px rgba(var(--card-edge), .08),
+              0 0 16px rgba(var(--card-edge), .12);
+}
+.tool-grid-card:hover {
+  border-color: rgba(var(--card-edge), .78);
+  box-shadow: inset 0 0 0 1px rgba(var(--card-edge), .14),
+              0 0 24px rgba(var(--card-edge), .24);
+}
 .tool-grid-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(6,214,255,0.4);
+  border-color: rgba(var(--card-edge), .78);
   box-shadow: 0 14px 34px rgba(6,214,255,0.18);
   color: inherit;
 }
