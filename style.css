@@ -789,8 +789,22 @@ label {
   gap: 16px;
 }
 .countdown-block {
+  --countdown-glow: 6,214,255;
   padding: 22px;
   text-align: center;
+  border-color: rgba(var(--countdown-glow), 0.46);
+  box-shadow: 0 0 18px rgba(var(--countdown-glow), 0.18),
+              0 8px 30px rgba(0,0,0,0.24);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.countdown-block:nth-child(4n + 2) { --countdown-glow: 139,92,246; }
+.countdown-block:nth-child(4n + 3) { --countdown-glow: 244,114,182; }
+.countdown-block:nth-child(4n) { --countdown-glow: 245,158,11; }
+.countdown-block:hover {
+  border-color: rgba(var(--countdown-glow), 0.82);
+  box-shadow: 0 0 28px rgba(var(--countdown-glow), 0.32),
+              0 10px 34px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
 }
 .countdown-block-emoji { font-size: 2rem; margin-bottom: 8px; }
 .countdown-block-name {
