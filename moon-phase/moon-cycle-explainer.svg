@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Moon phase cycle explainer</title>
+  <desc id="desc">A simple eight-stage moon cycle showing new moon, crescents, quarters, gibbous phases and full moon across the roughly 29.5 day lunar cycle.</desc>
+  <rect width="1200" height="620" rx="28" fill="#0b1020"/>
+  <rect x="1" y="1" width="1198" height="618" rx="27" fill="none" stroke="#2d3652"/>
+  <text x="600" y="70" text-anchor="middle" fill="#f5f7ff" font-family="Arial, sans-serif" font-size="34" font-weight="700">The Moon’s 8 Main Phases</text>
+  <text x="600" y="108" text-anchor="middle" fill="#a8b0c7" font-family="Arial, sans-serif" font-size="20">One complete lunar cycle is about 29.5 days</text>
+
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g transform="translate(110 245)">
+      <circle r="48" fill="#141a2c" stroke="#5a6482" stroke-width="2"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">New Moon</text>
+      <text y="118" fill="#8f99b7" font-size="15">~0%</text>
+    </g>
+    <g transform="translate(250 245)">
+      <circle r="48" fill="#141a2c" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A48 48 0 0 1 0 48 A31 48 0 0 0 0-48Z" fill="#e9edf7"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Waxing Crescent</text>
+      <text y="118" fill="#8f99b7" font-size="15">~25%</text>
+    </g>
+    <g transform="translate(390 245)">
+      <circle r="48" fill="#141a2c" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A48 48 0 0 1 0 48 L0-48Z" fill="#e9edf7"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">First Quarter</text>
+      <text y="118" fill="#8f99b7" font-size="15">50%</text>
+    </g>
+    <g transform="translate(530 245)">
+      <circle r="48" fill="#e9edf7" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A31 48 0 0 0 0 48 A48 48 0 0 1 0-48Z" fill="#141a2c"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Waxing Gibbous</text>
+      <text y="118" fill="#8f99b7" font-size="15">~75%</text>
+    </g>
+    <g transform="translate(670 245)">
+      <circle r="48" fill="#f5f0d8" stroke="#8d93a6" stroke-width="2"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Full Moon</text>
+      <text y="118" fill="#8f99b7" font-size="15">100%</text>
+    </g>
+    <g transform="translate(810 245)">
+      <circle r="48" fill="#e9edf7" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A31 48 0 0 1 0 48 A48 48 0 0 0 0-48Z" fill="#141a2c"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Waning Gibbous</text>
+      <text y="118" fill="#8f99b7" font-size="15">~75%</text>
+    </g>
+    <g transform="translate(950 245)">
+      <circle r="48" fill="#141a2c" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A48 48 0 0 0 0 48 L0-48Z" fill="#e9edf7"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Last Quarter</text>
+      <text y="118" fill="#8f99b7" font-size="15">50%</text>
+    </g>
+    <g transform="translate(1090 245)">
+      <circle r="48" fill="#141a2c" stroke="#5a6482" stroke-width="2"/>
+      <path d="M0-48 A48 48 0 0 0 0 48 A31 48 0 0 1 0-48Z" fill="#e9edf7"/>
+      <text y="92" fill="#f5f7ff" font-size="17" font-weight="700">Waning Crescent</text>
+      <text y="118" fill="#8f99b7" font-size="15">~25%</text>
+    </g>
+  </g>
+
+  <path d="M110 425 H1090" stroke="#59637e" stroke-width="3" stroke-linecap="round"/>
+  <path d="M1090 425 l-18 -10 v20 z" fill="#59637e"/>
+  <text x="110" y="466" fill="#8f99b7" font-family="Arial, sans-serif" font-size="16">Day 1</text>
+  <text x="1090" y="466" text-anchor="end" fill="#8f99b7" font-family="Arial, sans-serif" font-size="16">Day 29.5</text>
+  <text x="600" y="520" text-anchor="middle" fill="#f5f7ff" font-family="Arial, sans-serif" font-size="21" font-weight="700">Waxing = illuminated portion grows • Waning = illuminated portion shrinks</text>
+  <text x="600" y="558" text-anchor="middle" fill="#8f99b7" font-family="Arial, sans-serif" font-size="16">Illumination values are simplified phase guides rather than exact astronomical percentages.</text>
+</svg>
