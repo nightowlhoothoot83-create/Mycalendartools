@@ -6,12 +6,14 @@ on:
       - repair/adsense-content-recovery-20260824
     paths:
       - scripts/repair_adsense_content.py
+      - scripts/repair_remaining_content.py
       - .github/workflows/adsense-content-recovery.yml
   pull_request:
     branches:
       - main
     paths:
       - scripts/repair_adsense_content.py
+      - scripts/repair_remaining_content.py
       - .github/workflows/adsense-content-recovery.yml
       - '**/index.html'
 
@@ -35,8 +37,8 @@ jobs:
           set +e
           python scripts/repair_adsense_content.py
           code=$?
-          echo "repair_script_exit=$code"
-          exit 0
+          echo "primary_repair_exit=$code"
+          python scripts/repair_remaining_content.py
       - name: Report remaining suspicious copy
         run: |
           python - <<'PY'
@@ -48,14 +50,17 @@ jobs:
             'Countdown to Mother It runs',
             'Countdown to Father It runs',
             'Live countdown to St Patrick It runs',
+            'NOAA tide times for US coastal stations',
           ]
           hits=[]
           for p in Path('.').rglob('index.html'):
               t=p.read_text(encoding='utf-8', errors='ignore')
               for s in bad:
                   if s in t: hits.append((str(p),s))
-          for h in hits: print('REMAINING', *h)
-          print(f'Remaining suspicious hits: {len(hits)}')
+          if hits:
+              for h in hits: print('REMAINING', *h)
+              raise SystemExit(1)
+          print('No known malformed or stale content signatures remain')
           PY
       - name: Commit repaired pages to repair branch
         run: |
@@ -65,7 +70,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No page changes to commit"
           else
-            git commit -m "Repair page-specific AdSense content without touching production"
+            git commit -m "Repair remaining AdSense content inconsistencies"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
-# draft PR recovery gate
+# draft PR recovery gate v2
