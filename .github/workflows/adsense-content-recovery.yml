@@ -7,6 +7,13 @@ on:
     paths:
       - scripts/repair_adsense_content.py
       - .github/workflows/adsense-content-recovery.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - scripts/repair_adsense_content.py
+      - .github/workflows/adsense-content-recovery.yml
+      - '**/index.html'
 
 permissions:
   contents: write
@@ -61,4 +68,4 @@ jobs:
             git commit -m "Repair page-specific AdSense content without touching production"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
-# recovery trigger v2: commit matched pages, report exceptions
+# draft PR recovery gate
