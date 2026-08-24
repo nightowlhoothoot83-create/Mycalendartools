@@ -13,6 +13,8 @@ BAD_SIGNATURES = [
     'Live countdown to St Patrick It runs',
     'NOAA tide times for US coastal stations',
     'Common examples include checking a deadline before booking travel',
+    'MyCalendarTools keeps these tools lightweight and, wherever practical',
+    'Choose the relevant year where available',
 ]
 
 errors=[]
@@ -41,6 +43,10 @@ for p in Path('.').rglob('*.html'):
             errors.append(f'{p}: H1 has no descriptive text')
         if re.search(r'\b2025\b', h1_text):
             errors.append(f'{p}: stale 2025 H1')
+    if ('school-holidays' in p.parts or 'school-term-dates' in p.parts):
+        school_text=text.replace('&copy; 2025', '')
+        if re.search(r'\b2025\b', school_text):
+            errors.append(f'{p}: stale 2025 school-calendar content')
 
 # Country school pages must keep semantic H1 titles rather than putting the flag in H1.
 for base,label in [('school-holidays','School Holidays'),('school-term-dates','School Term Dates')]:
