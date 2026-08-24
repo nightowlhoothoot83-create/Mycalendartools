@@ -80,6 +80,9 @@ function renderSiteFooter() {
   // visible navigation and policy content without concealing either version.
   const fallbackFooter = document.getElementById('static-policy-footer');
   if (fallbackFooter) fallbackFooter.remove();
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('static-policy-footer')?.remove();
+  }, { once: true });
   return `
   <footer class="site-footer">
     <div class="container">
