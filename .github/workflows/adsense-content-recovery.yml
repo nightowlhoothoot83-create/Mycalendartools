@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/repair_adsense_content.py
       - scripts/repair_remaining_content.py
+      - scripts/repair_country_pages.py
       - .github/workflows/adsense-content-recovery.yml
   pull_request:
     branches:
@@ -14,6 +15,7 @@ on:
     paths:
       - scripts/repair_adsense_content.py
       - scripts/repair_remaining_content.py
+      - scripts/repair_country_pages.py
       - .github/workflows/adsense-content-recovery.yml
       - '**/index.html'
 
@@ -39,7 +41,8 @@ jobs:
           code=$?
           echo "primary_repair_exit=$code"
           python scripts/repair_remaining_content.py
-      - name: Report remaining suspicious copy
+          python scripts/repair_country_pages.py
+      - name: Verify known malformed and stale copy is gone
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -47,10 +50,14 @@ jobs:
             'is commonly used for:',
             'astronomical or tidal calculations',
             'School holiday dates for New 2025',
+            'School term dates for New 2025',
+            'School holiday and public holiday dates for New.',
+            'School term start and end dates for New.',
             'Countdown to Mother It runs',
             'Countdown to Father It runs',
             'Live countdown to St Patrick It runs',
             'NOAA tide times for US coastal stations',
+            'Common examples include checking a deadline before booking travel',
           ]
           hits=[]
           for p in Path('.').rglob('index.html'):
@@ -60,17 +67,17 @@ jobs:
           if hits:
               for h in hits: print('REMAINING', *h)
               raise SystemExit(1)
-          print('No known malformed or stale content signatures remain')
+          print('No known malformed, generic or stale content signatures remain')
           PY
       - name: Commit repaired pages to repair branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- '*/index.html' '*/*/index.html'
+          git add -- '*/index.html' '*/*/index.html' 'about/index.html'
           if git diff --cached --quiet; then
             echo "No page changes to commit"
           else
-            git commit -m "Repair remaining AdSense content inconsistencies"
+            git commit -m "Complete MyCalendarTools AdSense content recovery"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
-# draft PR recovery gate v2
+# draft PR recovery gate v3
