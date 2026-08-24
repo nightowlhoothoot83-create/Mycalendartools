@@ -1331,10 +1331,27 @@ label {
   margin-top: 24px;
 }
 .info-feature-card {
+  --info-glow: 6,214,255;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-color: rgba(var(--info-glow), .48);
+  box-shadow: inset 0 0 0 1px rgba(var(--info-glow), .08),
+              0 0 18px rgba(var(--info-glow), .16);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.info-feature-card:nth-child(2) { --info-glow: 139,92,246; }
+.info-feature-card:nth-child(3) { --info-glow: 244,114,182; }
+.info-feature-card:nth-child(4) { --info-glow: 245,158,11; }
+.info-feature-card:nth-child(5) { --info-glow: 52,211,153; }
+.info-feature-card:nth-child(6) { --info-glow: 96,165,250; }
+.info-feature-card:hover,
+.info-feature-card:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(var(--info-glow), .82);
+  box-shadow: inset 0 0 0 1px rgba(var(--info-glow), .14),
+              0 0 28px rgba(var(--info-glow), .3);
 }
 .info-feature-icon {
   font-size: 2rem;

@@ -61,6 +61,7 @@ if (/Norwegian Meteorological Institute|NOAA tide times/i.test(tidePage + fs.rea
 if (!fs.readFileSync('robots.txt', 'utf8').includes(`Sitemap: ${origin}/sitemap.xml`)) fail.push('robots.txt: canonical sitemap declaration missing');
 const css = fs.readFileSync('style.css', 'utf8');
 if (!/--card-edge/.test(css)) fail.push('style.css: coloured tool-card edge missing');
+if (!/--info-glow/.test(css) || (css.match(/\.info-feature-card:nth-child\(/g) || []).length < 5 || !/\.info-feature-card:hover[\s\S]*rgba\(var\(--info-glow\)/.test(css)) fail.push('style.css: homepage planning cards are missing their individual coloured glow treatment');
 if (!/--countdown-glow/.test(css) || !/\.countdown-block:hover[\s\S]*rgba\(var\(--countdown-glow\)/.test(css)) fail.push('style.css: featured countdown card glow missing');
 
 if (fail.length) { console.error(fail.join('\n')); process.exit(1); }
