@@ -17,7 +17,6 @@
   <meta name="google-adsense-account" content="ca-pub-1904958390525375">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904958390525375" crossorigin="anonymous"></script>
   <style>
     .nav-logo-icon { height: 36px; width: auto; object-fit: contain; }
     .tide-chart-wrap { margin: 20px 0; }
@@ -74,7 +73,7 @@
         <button class="btn-primary" onclick="searchTideLocation()">🔍 Search Location</button>
         <button class="btn-secondary" onclick="useMyLocation()">📍 Use My Location</button>
       </div>
-      <p class="fine-note">Tide data sourced from the Norwegian Meteorological Institute ocean forecast model — free, global coverage, updated every 6 hours. Data shows sea surface height relative to mean sea level for the next 48 hours.</p>
+      <p class="fine-note">Modelled sea-level data is supplied by Open-Meteo using DWD ocean data. It includes tides and other sea-level effects, uses global mean sea level as its reference and is intended for general planning—not navigation.</p>
       <div class="tool-result visible" id="tideResult">
         <h3>Search for any coastal location</h3>
         <p>Try your local beach, harbour or coastal city. Global coverage including Australia, UK, US, NZ, Pacific Islands and more.</p>
@@ -101,10 +100,10 @@
     <div class="info-card card" style="padding:28px;max-width:800px;margin:0 auto">
       <h2 style="font-size:1.25rem;margin-bottom:16px">About This Tide Tool</h2>
       <p style="line-height:1.7;color:var(--muted);margin-bottom:14px">
-        This tool uses the <strong style="color:var(--text)">Norwegian Meteorological Institute's ocean forecast model</strong> (Havvarsel-Møre 800m) to provide sea surface height predictions for coastal locations worldwide. The model is updated every six hours and provides hourly forecasts for approximately 48 hours ahead.
+        This tool uses <strong style="color:var(--text)">Open-Meteo's Marine Weather API and DWD ocean data</strong> to provide modelled sea-level height for coastal locations worldwide. The values include tides, atmospheric pressure and other sea-level effects and are referenced to global mean sea level rather than a local chart datum.
       </p>
       <p style="line-height:1.7;color:var(--muted)">
-        Location search uses <strong style="color:var(--text)">OpenStreetMap Nominatim</strong> to convert place names into coordinates, then passes those coordinates to the ocean forecast API. Your location is only used for this look-up and nothing is stored.
+        Location search uses <strong style="color:var(--text)">Open-Meteo Geocoding</strong> to convert place names into coordinates, then passes those coordinates to the ocean forecast API. Your location is only used for this look-up and nothing is stored.
       </p>
     </div>
   </section>
@@ -113,24 +112,16 @@
 
 
 <section class="static-content-section container" data-static-seo="true">
-  <h2>About this reference</h2>
-  <p>Check tide times for any coastal location worldwide. Search by city, beach or harbour and get today Figures are estimates based on standard astronomical or tidal calculations — useful for general reference, not for navigation or safety-critical decisions.</p>
+  <h2>About the tide forecast tool</h2>
+  <p>Check forecast tide and sea-level information for a selected coastal location using the data source identified on the page. Tide forecasts are location-specific and conditions can differ from predictions.</p>
 
-  <h2>How to use Global Tide Times</h2>
+  <h2>How to use this page</h2>
   <ol>
-    <li>Select the date or location you want information for.</li>
-    <li>Review the result shown for that specific day.</li>
-    <li>Check a different date to see how it changes.</li>
-    <li>Use the explanation alongside the result for context.</li>
+    <li>Search for or choose the coastal location.</li><li>Select the date or forecast period.</li><li>Review the predicted tide times or sea-level information shown.</li><li>For boating, safety or navigation decisions, confirm conditions with the relevant official marine authority.</li>
   </ol>
 
   <h2>When this page is useful</h2>
-  <p>Global Tide Times is commonly used for: Planning a fishing trip, stargazing session or outdoor activity. Checking a specific date out of curiosity or for planning purposes.</p>
-  <p>The result should be treated as a practical guide rather than professional advice. For legal, financial, health, tax, pregnancy, school holiday, tide or public holiday decisions, confirm important details with an official source or qualified professional.</p>
-
-  <h2>Privacy and accuracy</h2>
-  <p>MyCalendarTools tools run in your browser wherever possible. We aim to keep pages clear, lightweight and easy to read on mobile, tablet and desktop. If a page uses dates, public holidays or calendar rules, those rules can change over time, so checking the final result against the relevant authority is recommended for high-stakes decisions.</p>
-  <p>Canonical URL: <a href="/tides/">https://mycalendartools.net/tides/</a></p>
+  <p>Useful for beach visits, coastal photography, fishing preparation and general shoreline planning. It is not a substitute for official navigation or marine-safety information.</p>
 </section>
 <div id="site-footer"></div>
   <div id="group-footer"></div>
@@ -159,10 +150,16 @@
       setResult('<h3>Searching…</h3><p>Looking up "' + escHTML(q) + '" on the map…</p>');
       try {
         const geo = await fetch(
-          'https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + encodeURIComponent(q),
-          { headers: { 'Accept': 'application/json', 'User-Agent': 'MyCalendarTools/1.0 (mycalendartools.net)' } }
+          'https://geocoding-api.open-meteo.com/v1/search?count=5&language=en&format=json&name=' + encodeURIComponent(q),
+          { headers: { 'Accept': 'application/json' } }
         );
-        const places = await geo.json();
+        if (!geo.ok) throw new Error('Location search is temporarily unavailable. Please try again.');
+        const geoData = await geo.json();
+        const places = (geoData.results || []).map(place => ({
+          lat: place.latitude,
+          lon: place.longitude,
+          display_name: [place.name, place.admin1, place.country].filter(Boolean).join(', ')
+        }));
         if (!places.length) { setResult('<h3>Location not found</h3><p>Try a more specific coastal location — e.g. "Bondi Beach NSW" or "Whitby, North Yorkshire".</p>'); return; }
         if (places.length === 1) {
           await loadTides(parseFloat(places[0].lat), parseFloat(places[0].lon), places[0].display_name);
@@ -184,8 +181,8 @@
     async function loadTides(lat, lon, name) {
       setResult('<h3>Loading tide data…</h3><p>Fetching ocean forecast for ' + escHTML(name.split(',').slice(0,2).join(', ')) + '…</p>');
       try {
-        const url = `https://api.met.no/weatherapi/oceanforecast/2.0/complete?lat=${lat}&lon=${lon}`;
-        const res = await fetch(url, { headers: { 'User-Agent': 'MyCalendarTools/1.0 (mycalendartools.net)' } });
+        const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&hourly=sea_level_height_msl,sea_surface_temperature,wave_height&forecast_days=3&cell_selection=sea`;
+        const res = await fetch(url);
         if (!res.ok) throw new Error('No ocean forecast data available for this location. It may be too far inland — try a nearby coastal point.');
         const data = await res.json();
         renderTideData(data, name, lat, lon);
@@ -195,7 +192,15 @@
     }
 
     function renderTideData(data, name, lat, lon) {
-      const timeseries = data.properties?.timeseries || [];
+      const hourly = data.hourly || {};
+      const timeseries = (hourly.time || []).map((time, index) => ({
+        time: `${time}:00Z`,
+        data: { instant: { details: {
+          sea_surface_height_above_mean_sea_level: hourly.sea_level_height_msl?.[index] ?? null,
+          sea_water_temperature: hourly.sea_surface_temperature?.[index] ?? null,
+          sea_surface_wave_significant_height: hourly.wave_height?.[index] ?? null
+        } } }
+      }));
       if (!timeseries.length) { setResult('<h3>No forecast data</h3><p>No ocean forecast available for this location.</p>'); return; }
 
       const shortName = name.split(',').slice(0, 2).join(', ');
@@ -291,7 +296,7 @@
         <h4 style="margin:20px 0 10px;font-size:0.95rem">24-Hour Sea Level Chart</h4>
         <div class="tide-chart-wrap">${chartBars}</div>
 
-        <p class="location-note">📍 Data: Norwegian Meteorological Institute ocean forecast model · Heights in metres above mean sea level · <a href="https://api.met.no/" target="_blank" rel="noopener" style="color:var(--muted)">api.met.no</a></p>
+        <p class="location-note">📍 Modelled data: DWD via <a href="https://open-meteo.com/en/docs/marine-weather-api" target="_blank" rel="noopener" style="color:var(--muted)">Open-Meteo Marine API</a> · Heights in metres above global mean sea level · Coastal accuracy is limited; never use for navigation.</p>
       `);
     }
 
