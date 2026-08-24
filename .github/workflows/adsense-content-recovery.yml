@@ -57,3 +57,4 @@ jobs:
             git commit -m "Repair page-specific AdSense content without touching production"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
+# one-shot recovery trigger: 2026-08-24
