@@ -47,6 +47,8 @@ for (const url of canonicalRoutes.keys()) {
 if (fs.readFileSync('ads.txt', 'utf8').trim() !== expectedAds) fail.push('ads.txt: publisher line mismatch');
 const consent = fs.readFileSync('cookie-consent.js', 'utf8');
 if (!/data-consent-adsense|consentAdsense/.test(consent) || !/document\.head\.appendChild\(script\)/.test(consent)) fail.push('cookie-consent.js: consent-gated AdSense loader missing');
+const components = fs.readFileSync('components.js', 'utf8');
+if (!/ventraip\.com\.au\/affiliate\/uJmhYi4h/.test(components) || !/rel="sponsored noopener"/.test(components) || !/Affiliate disclosure:/.test(components)) fail.push('components.js: affiliate destination, sponsored relationship or visible disclosure missing');
 if (!fs.readFileSync('robots.txt', 'utf8').includes(`Sitemap: ${origin}/sitemap.xml`)) fail.push('robots.txt: canonical sitemap declaration missing');
 const css = fs.readFileSync('style.css', 'utf8');
 if (!/--card-edge/.test(css)) fail.push('style.css: coloured tool-card edge missing');

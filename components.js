@@ -188,7 +188,7 @@ function renderGroupFooter() {
 
 // ── Hosting Affiliate Banner ──
 function renderHostingAffiliate() {
-  return `<div class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/ventraip-affiliate-banner.jpg" alt="VentraIP Australian website hosting affiliate banner"></a></div>`;
+  return `<figure class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/ventraip-affiliate-banner.jpg" alt="VentraIP Australian website hosting affiliate banner"></a><figcaption style="margin-top:10px;text-align:center;color:var(--dim);font-size:.78rem">Affiliate disclosure: if you purchase through this hosting link, MyCalendarTools may receive a commission at no extra cost to you.</figcaption></figure>`;
 }
 
 // ── FAQ init ──
