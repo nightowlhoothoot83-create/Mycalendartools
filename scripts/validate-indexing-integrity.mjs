@@ -40,7 +40,7 @@ for (const url of canonicalRoutes.keys()) {
   const route = new URL(url).pathname;
   const legacy = route === '/' ? '/index.html' : route === '/sitemap' ? '/sitemap.html' : `${route.replace(/\/$/, '')}.html`;
   const escaped = legacy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  if (!new RegExp(`^${escaped}\\s+${route}\\s+301!$`, 'm').test(redirects)) fail.push(`_redirects: missing permanent legacy redirect ${legacy}`);
+  if (!new RegExp(`^${escaped}\\s+${route}\\s+301$`, 'm').test(redirects)) fail.push(`_redirects: missing Cloudflare-compatible permanent legacy redirect ${legacy}`);
 }
 
 if (fs.readFileSync('ads.txt', 'utf8').trim() !== expectedAds) fail.push('ads.txt: publisher line mismatch');
