@@ -46,7 +46,8 @@ for (const url of canonicalRoutes.keys()) {
 
 if (fs.readFileSync('ads.txt', 'utf8').trim() !== expectedAds) fail.push('ads.txt: publisher line mismatch');
 const consent = fs.readFileSync('cookie-consent.js', 'utf8');
-if (!/data-consent-adsense|consentAdsense/.test(consent) || !/document\.head\.appendChild\(script\)/.test(consent)) fail.push('cookie-consent.js: consent-gated AdSense loader missing');
+if (!/consent-adsense-script/.test(consent) || !/document\.head\.appendChild\(script\)/.test(consent)) fail.push('cookie-consent.js: consent-gated AdSense loader missing');
+if (/data-consent-adsense|dataset\.consentAdsense/.test(consent)) fail.push('cookie-consent.js: unsupported custom attribute on AdSense script');
 const components = fs.readFileSync('components.js', 'utf8');
 if (!/ventraip\.com\.au\/affiliate\/uJmhYi4h/.test(components) || !/rel="sponsored noopener"/.test(components) || !/Affiliate disclosure:/.test(components)) fail.push('components.js: affiliate destination, sponsored relationship or visible disclosure missing');
 const tidePage = fs.readFileSync('tides/index.html', 'utf8');
