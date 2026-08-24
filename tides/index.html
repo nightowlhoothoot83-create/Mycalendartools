@@ -150,7 +150,7 @@
       setResult('<h3>Searching…</h3><p>Looking up "' + escHTML(q) + '" on the map…</p>');
       try {
         const geo = await fetch(
-          '/api/geocode?q=' + encodeURIComponent(q),
+          'https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + encodeURIComponent(q),
           { headers: { 'Accept': 'application/json' } }
         );
         if (!geo.ok) throw new Error('Location search is temporarily unavailable. Please try again.');
@@ -176,7 +176,7 @@
     async function loadTides(lat, lon, name) {
       setResult('<h3>Loading tide data…</h3><p>Fetching ocean forecast for ' + escHTML(name.split(',').slice(0,2).join(', ')) + '…</p>');
       try {
-        const url = `/api/tides?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`;
+        const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&hourly=sea_level_height_msl,sea_surface_temperature,wave_height&forecast_days=3&cell_selection=sea`;
         const res = await fetch(url);
         if (!res.ok) throw new Error('No ocean forecast data available for this location. It may be too far inland — try a nearby coastal point.');
         const data = await res.json();
@@ -187,7 +187,15 @@
     }
 
     function renderTideData(data, name, lat, lon) {
-      const timeseries = data.properties?.timeseries || [];
+      const hourly = data.hourly || {};
+      const timeseries = (hourly.time || []).map((time, index) => ({
+        time: `${time}:00Z`,
+        data: { instant: { details: {
+          sea_surface_height_above_mean_sea_level: hourly.sea_level_height_msl?.[index] ?? null,
+          sea_water_temperature: hourly.sea_surface_temperature?.[index] ?? null,
+          sea_surface_wave_significant_height: hourly.wave_height?.[index] ?? null
+        } } }
+      }));
       if (!timeseries.length) { setResult('<h3>No forecast data</h3><p>No ocean forecast available for this location.</p>'); return; }
 
       const shortName = name.split(',').slice(0, 2).join(', ');
