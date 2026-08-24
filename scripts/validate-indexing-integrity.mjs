@@ -1,6 +1,53 @@
 import fs from 'node:fs';
 import path from 'node:path';
-const expected='google.com, pub-1904958390525375, DIRECT, f08c47fec0942fa0';
-const fail=[];const walk=p=>fs.readdirSync(p,{withFileTypes:true}).flatMap(e=>e.name==='.git'?[]:e.isDirectory()?walk(path.join(p,e.name)):e.name.endsWith('.html')?[path.join(p,e.name)]:[]);const files=walk('.');
-for(const file of files){const s=fs.readFileSync(file,'utf8');if(/href=["'](?!https?:\/\/)[^"']*\.html/i.test(s))fail.push(`${file}: internal .html link`);if(!/<link\b[^>]*rel=["']canonical["'][^>]*href=["']https:\/\/mycalendartools\.net\//i.test(s))fail.push(`${file}: missing absolute canonical`)}
-if(fs.readFileSync('ads.txt','utf8').trim()!==expected)fail.push('ads.txt: publisher line mismatch');if(/<loc>[^<]*\.html/i.test(fs.readFileSync('sitemap.xml','utf8')))fail.push('sitemap.xml: redirected .html URL');const css=fs.readFileSync('style.css','utf8');if(!/--card-edge/.test(css))fail.push('style.css: coloured tool-card edge missing');if(!/--countdown-glow/.test(css)||!/\.countdown-block:hover[\s\S]*rgba\(var\(--countdown-glow\)/.test(css))fail.push('style.css: featured countdown card glow missing');if(fail.length){console.error(fail.join('\n'));process.exit(1)}console.log(`MyCalendarTools integrity passed (${files.length} HTML files)`);
+
+const origin = 'https://mycalendartools.net';
+const expectedAds = 'google.com, pub-1904958390525375, DIRECT, f08c47fec0942fa0';
+const fail = [];
+const walk = p => fs.readdirSync(p, { withFileTypes: true }).flatMap(e =>
+  e.name === '.git' || e.name === '.wrangler' ? [] : e.isDirectory() ? walk(path.join(p, e.name)) : e.name.endsWith('.html') ? [path.join(p, e.name)] : []);
+const files = walk('.');
+const routeFor = file => {
+  const normalized = file.replaceAll('\\', '/').replace(/^\.\//, '');
+  if (normalized === 'index.html') return '/';
+  if (normalized === 'sitemap.html') return '/sitemap';
+  return `/${normalized.replace(/\/index\.html$/, '/')}`;
+};
+
+const canonicalRoutes = new Map();
+for (const file of files) {
+  const html = fs.readFileSync(file, 'utf8');
+  if (/href=["'](?!https?:\/\/)[^"']*\.html(?:[?#][^"']*)?["']/i.test(html)) fail.push(`${file}: internal .html link`);
+  const matches = [...html.matchAll(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/gi)];
+  if (matches.length !== 1) { fail.push(`${file}: expected one canonical, found ${matches.length}`); continue; }
+  const expected = `${origin}${routeFor(file)}`;
+  if (matches[0][1] !== expected) fail.push(`${file}: canonical ${matches[0][1]} should be ${expected}`);
+  if (!/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*index/i.test(html)) fail.push(`${file}: page is not explicitly indexable`);
+  if (canonicalRoutes.has(expected)) fail.push(`${file}: duplicate canonical also used by ${canonicalRoutes.get(expected)}`);
+  canonicalRoutes.set(expected, file);
+}
+
+const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+const sitemapSet = new Set(sitemapUrls);
+if (sitemapSet.size !== sitemapUrls.length) fail.push('sitemap.xml: duplicate URL');
+for (const url of canonicalRoutes.keys()) if (!sitemapSet.has(url)) fail.push(`sitemap.xml: missing indexable canonical ${url}`);
+for (const url of sitemapSet) if (!canonicalRoutes.has(url)) fail.push(`sitemap.xml: URL has no matching HTML page ${url}`);
+if (sitemapUrls.some(url => url.includes('.html'))) fail.push('sitemap.xml: redirected .html URL');
+
+const redirects = fs.readFileSync('_redirects', 'utf8');
+for (const url of canonicalRoutes.keys()) {
+  const route = new URL(url).pathname;
+  const legacy = route === '/' ? '/index.html' : route === '/sitemap' ? '/sitemap.html' : `${route.replace(/\/$/, '')}.html`;
+  const escaped = legacy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  if (!new RegExp(`^${escaped}\\s+${route}\\s+301!$`, 'm').test(redirects)) fail.push(`_redirects: missing permanent legacy redirect ${legacy}`);
+}
+
+if (fs.readFileSync('ads.txt', 'utf8').trim() !== expectedAds) fail.push('ads.txt: publisher line mismatch');
+if (!fs.readFileSync('robots.txt', 'utf8').includes(`Sitemap: ${origin}/sitemap.xml`)) fail.push('robots.txt: canonical sitemap declaration missing');
+const css = fs.readFileSync('style.css', 'utf8');
+if (!/--card-edge/.test(css)) fail.push('style.css: coloured tool-card edge missing');
+if (!/--countdown-glow/.test(css) || !/\.countdown-block:hover[\s\S]*rgba\(var\(--countdown-glow\)/.test(css)) fail.push('style.css: featured countdown card glow missing');
+
+if (fail.length) { console.error(fail.join('\n')); process.exit(1); }
+console.log(`MyCalendarTools integrity passed (${files.length} indexable HTML pages, ${sitemapUrls.length} sitemap URLs)`);
