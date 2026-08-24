@@ -1,4 +1,5 @@
 from pathlib import Path
+from html import unescape
 import re
 
 BAD_SIGNATURES = [
@@ -18,6 +19,7 @@ BAD_SIGNATURES = [
 ]
 
 errors=[]
+paragraphs={}
 
 components=Path('components.js').read_text(encoding='utf-8')
 if "fallbackFooter.remove()" not in components or "DOMContentLoaded" not in components:
@@ -47,6 +49,14 @@ for p in Path('.').rglob('*.html'):
         school_text=text.replace('&copy; 2025', '')
         if re.search(r'\b2025\b', school_text):
             errors.append(f'{p}: stale 2025 school-calendar content')
+    for raw in re.findall(r'<p(?:\s[^>]*)?>(.*?)</p>', text, re.S | re.I):
+        paragraph=re.sub(r'\s+', ' ', unescape(re.sub(r'<[^>]+>', ' ', raw))).strip()
+        if len(paragraph) >= 80:
+            paragraphs.setdefault(paragraph, []).append(str(p))
+
+for paragraph, files in paragraphs.items():
+    if len(files) >= 3:
+        errors.append(f'repeated generic paragraph across {len(files)} pages: {paragraph!r} ({", ".join(files)})')
 
 # Country school pages must keep semantic H1 titles rather than putting the flag in H1.
 for base,label in [('school-holidays','School Holidays'),('school-term-dates','School Term Dates')]:
