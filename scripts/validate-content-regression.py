@@ -31,6 +31,16 @@ for p in Path('.').rglob('*.html'):
     controls=sorted({ord(c) for c in text if ord(c)<32 and c not in '\n\r\t'})
     if controls:
         errors.append(f'{p}: forbidden control characters: {controls}')
+    title=re.search(r'<title>(.*?)</title>', text, re.S)
+    h1=re.search(r'<h1[^>]*>(.*?)</h1>', text, re.S)
+    if title and re.search(r'\b2025\b', re.sub(r'<[^>]+>','',title.group(1))):
+        errors.append(f'{p}: stale 2025 title')
+    if h1:
+        h1_text=re.sub(r'&#\d+;|<[^>]+>','',h1.group(1)).strip()
+        if not re.search(r'[A-Za-z]', h1_text):
+            errors.append(f'{p}: H1 has no descriptive text')
+        if re.search(r'\b2025\b', h1_text):
+            errors.append(f'{p}: stale 2025 H1')
 
 # Country school pages must keep semantic H1 titles rather than putting the flag in H1.
 for base,label in [('school-holidays','School Holidays'),('school-term-dates','School Term Dates')]:
