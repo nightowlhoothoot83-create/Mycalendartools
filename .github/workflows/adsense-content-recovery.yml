@@ -9,6 +9,7 @@ on:
       - scripts/repair_remaining_content.py
       - scripts/repair_country_pages.py
       - scripts/remove_generic_boost_blocks.py
+      - scripts/fix_country_hero_markup.py
       - .github/workflows/adsense-content-recovery.yml
   pull_request:
     branches:
@@ -18,6 +19,7 @@ on:
       - scripts/repair_remaining_content.py
       - scripts/repair_country_pages.py
       - scripts/remove_generic_boost_blocks.py
+      - scripts/fix_country_hero_markup.py
       - .github/workflows/adsense-content-recovery.yml
       - '**/index.html'
 
@@ -44,8 +46,9 @@ jobs:
           echo "primary_repair_exit=$code"
           python scripts/repair_remaining_content.py
           python scripts/repair_country_pages.py
+          python scripts/fix_country_hero_markup.py
           python scripts/remove_generic_boost_blocks.py
-      - name: Verify known malformed and stale copy is gone
+      - name: Verify content and HTML integrity
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -63,14 +66,19 @@ jobs:
             'Common examples include checking a deadline before booking travel',
           ]
           hits=[]
-          for p in Path('.').rglob('index.html'):
-              t=p.read_text(encoding='utf-8', errors='ignore')
+          controls=[]
+          for p in Path('.').rglob('*.html'):
+              t=p.read_text(encoding='utf-8', errors='strict')
               for s in bad:
                   if s in t: hits.append((str(p),s))
-          if hits:
+              bad_ctrl = sorted({ord(c) for c in t if ord(c) < 32 and c not in '\n\r\t'})
+              if bad_ctrl:
+                  controls.append((str(p), bad_ctrl))
+          if hits or controls:
               for h in hits: print('REMAINING', *h)
+              for p,codes in controls: print('CONTROL_CHARACTER', p, codes)
               raise SystemExit(1)
-          print('No known malformed, generic or stale content signatures remain')
+          print('Content signatures clean and HTML contains no forbidden control characters')
           PY
       - name: Commit repaired pages to repair branch
         run: |
@@ -83,4 +91,4 @@ jobs:
             git commit -m "Complete MyCalendarTools AdSense content recovery"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
-# draft PR recovery gate v4
+# draft PR recovery gate v5
