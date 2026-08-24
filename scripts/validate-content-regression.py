@@ -16,6 +16,13 @@ BAD_SIGNATURES = [
 ]
 
 errors=[]
+
+components=Path('components.js').read_text(encoding='utf-8')
+if "fallbackFooter.remove()" not in components:
+    errors.append('components.js: dynamic footer must remove the static no-JavaScript fallback')
+if "Both footers now stay visible" in components:
+    errors.append('components.js: duplicate-footer implementation has returned')
+
 for p in Path('.').rglob('*.html'):
     text=p.read_text(encoding='utf-8', errors='strict')
     for sig in BAD_SIGNATURES:

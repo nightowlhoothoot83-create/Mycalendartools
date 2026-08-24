@@ -75,11 +75,11 @@ function renderBrandStrip() {
 
 // ── Site Footer ──
 function renderSiteFooter() {
-  // NOTE: previously hid the static fallback footer here once the dynamic
-  // one loaded. Removed that — hidden (display:none) content that's
-  // technically present in the HTML can read as concealed/cloaked content
-  // to automated policy review, which very plausibly explains the earlier
-  // AdSense policy rejection on this site. Both footers now stay visible.
+  // Keep the policy footer as a genuine no-JavaScript fallback, but remove it
+  // once the complete dynamic footer is available. This prevents duplicate
+  // visible navigation and policy content without concealing either version.
+  const fallbackFooter = document.getElementById('static-policy-footer');
+  if (fallbackFooter) fallbackFooter.remove();
   return `
   <footer class="site-footer">
     <div class="container">
@@ -134,7 +134,7 @@ function renderSiteFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 MyCalendarTools · Part of the <a href="https://ascensiondigitalgroup.com" target="_blank" rel="noopener" style="color:var(--cyan,#06d6ff);text-decoration:none"><strong>Ascension Digital Group</strong></a></p>
+        <p>© ${new Date().getFullYear()} MyCalendarTools · Part of the <a href="https://ascensiondigitalgroup.com" target="_blank" rel="noopener" style="color:var(--cyan,#06d6ff);text-decoration:none"><strong>Ascension Digital Group</strong></a></p>
         <p><a href="https://www.mycalctools.net" target="_blank" rel="noopener" style="color:var(--dim)">Sister site: mycalctools.net</a></p>
       </div>
     </div>
