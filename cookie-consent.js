@@ -12,9 +12,9 @@
     try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
   }
 
-  /* Gate ads — only push if consent is granted */
+  /* Load and initialise AdSense only after consent is granted. */
   function activateAds() {
-    if (typeof window.adsbygoogle !== 'undefined' || document.querySelector('script[src*="adsbygoogle"]')) {
+    function initialiseSlots() {
       var ads = document.querySelectorAll('ins.adsbygoogle');
       ads.forEach(function (ins) {
         if (!ins.dataset.adsbygoogleStatus) {
@@ -22,6 +22,23 @@
         }
       });
     }
+
+    var existing = document.querySelector('script[data-consent-adsense]');
+    if (existing) {
+      if (existing.dataset.loaded === 'true') initialiseSlots();
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.dataset.consentAdsense = 'true';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904958390525375';
+    script.addEventListener('load', function () {
+      script.dataset.loaded = 'true';
+      initialiseSlots();
+    });
+    document.head.appendChild(script);
   }
 
   function buildBanner() {
@@ -63,8 +80,10 @@
     declineBtn.style.cssText = 'background:transparent;color:#94a3b8;border:1px solid rgba(148,163,184,0.3);' +
       'border-radius:8px;padding:9px 18px;cursor:pointer;font-size:0.88rem;font-weight:600;white-space:nowrap';
     declineBtn.addEventListener('click', function () {
+      var adsWereLoaded = !!document.querySelector('script[data-consent-adsense]');
       setConsent('declined');
       hideBanner();
+      if (adsWereLoaded) window.location.reload();
     });
 
     btns.appendChild(acceptBtn);

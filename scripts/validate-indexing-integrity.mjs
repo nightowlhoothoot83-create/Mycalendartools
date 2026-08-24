@@ -17,6 +17,7 @@ const routeFor = file => {
 const canonicalRoutes = new Map();
 for (const file of files) {
   const html = fs.readFileSync(file, 'utf8');
+  if (/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/i.test(html)) fail.push(`${file}: AdSense library bypasses the consent gate`);
   if (/href=["'](?!https?:\/\/)[^"']*\.html(?:[?#][^"']*)?["']/i.test(html)) fail.push(`${file}: internal .html link`);
   const matches = [...html.matchAll(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/gi)];
   if (matches.length !== 1) { fail.push(`${file}: expected one canonical, found ${matches.length}`); continue; }
@@ -44,6 +45,8 @@ for (const url of canonicalRoutes.keys()) {
 }
 
 if (fs.readFileSync('ads.txt', 'utf8').trim() !== expectedAds) fail.push('ads.txt: publisher line mismatch');
+const consent = fs.readFileSync('cookie-consent.js', 'utf8');
+if (!/data-consent-adsense|consentAdsense/.test(consent) || !/document\.head\.appendChild\(script\)/.test(consent)) fail.push('cookie-consent.js: consent-gated AdSense loader missing');
 if (!fs.readFileSync('robots.txt', 'utf8').includes(`Sitemap: ${origin}/sitemap.xml`)) fail.push('robots.txt: canonical sitemap declaration missing');
 const css = fs.readFileSync('style.css', 'utf8');
 if (!/--card-edge/.test(css)) fail.push('style.css: coloured tool-card edge missing');
