@@ -103,7 +103,7 @@
         This tool uses <strong style="color:var(--text)">Open-Meteo's Marine Weather API and DWD ocean data</strong> to provide modelled sea-level height for coastal locations worldwide. The values include tides, atmospheric pressure and other sea-level effects and are referenced to global mean sea level rather than a local chart datum.
       </p>
       <p style="line-height:1.7;color:var(--muted)">
-        Location search uses <strong style="color:var(--text)">OpenStreetMap Nominatim</strong> to convert place names into coordinates, then passes those coordinates to the ocean forecast API. Your location is only used for this look-up and nothing is stored.
+        Location search uses <strong style="color:var(--text)">Open-Meteo Geocoding</strong> to convert place names into coordinates, then passes those coordinates to the ocean forecast API. Your location is only used for this look-up and nothing is stored.
       </p>
     </div>
   </section>
@@ -150,11 +150,16 @@
       setResult('<h3>Searching…</h3><p>Looking up "' + escHTML(q) + '" on the map…</p>');
       try {
         const geo = await fetch(
-          'https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + encodeURIComponent(q),
+          'https://geocoding-api.open-meteo.com/v1/search?count=5&language=en&format=json&name=' + encodeURIComponent(q),
           { headers: { 'Accept': 'application/json' } }
         );
         if (!geo.ok) throw new Error('Location search is temporarily unavailable. Please try again.');
-        const places = await geo.json();
+        const geoData = await geo.json();
+        const places = (geoData.results || []).map(place => ({
+          lat: place.latitude,
+          lon: place.longitude,
+          display_name: [place.name, place.admin1, place.country].filter(Boolean).join(', ')
+        }));
         if (!places.length) { setResult('<h3>Location not found</h3><p>Try a more specific coastal location — e.g. "Bondi Beach NSW" or "Whitby, North Yorkshire".</p>'); return; }
         if (places.length === 1) {
           await loadTides(parseFloat(places[0].lat), parseFloat(places[0].lon), places[0].display_name);

@@ -50,7 +50,7 @@ if (!/data-consent-adsense|consentAdsense/.test(consent) || !/document\.head\.ap
 const components = fs.readFileSync('components.js', 'utf8');
 if (!/ventraip\.com\.au\/affiliate\/uJmhYi4h/.test(components) || !/rel="sponsored noopener"/.test(components) || !/Affiliate disclosure:/.test(components)) fail.push('components.js: affiliate destination, sponsored relationship or visible disclosure missing');
 const tidePage = fs.readFileSync('tides/index.html', 'utf8');
-if (!tidePage.includes('nominatim.openstreetmap.org/search') || !tidePage.includes('marine-api.open-meteo.com/v1/marine') || !tidePage.includes('sea_level_height_msl')) fail.push('tides: browser-safe geocoding or global marine-data integration missing');
+if (!tidePage.includes('geocoding-api.open-meteo.com/v1/search') || !tidePage.includes('marine-api.open-meteo.com/v1/marine') || !tidePage.includes('sea_level_height_msl')) fail.push('tides: browser-safe geocoding or global marine-data integration missing');
 if (/User-Agent[^\n]*MyCalendarTools/.test(tidePage)) fail.push('tides: browser-forbidden User-Agent request header has returned');
 if (/Norwegian Meteorological Institute|NOAA tide times/i.test(tidePage + fs.readFileSync('index.html', 'utf8'))) fail.push('tides: stale or inaccurate provider claim');
 if (!fs.readFileSync('robots.txt', 'utf8').includes(`Sitemap: ${origin}/sitemap.xml`)) fail.push('robots.txt: canonical sitemap declaration missing');
