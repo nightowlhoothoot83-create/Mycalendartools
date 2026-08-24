@@ -8,6 +8,7 @@ on:
       - scripts/repair_adsense_content.py
       - scripts/repair_remaining_content.py
       - scripts/repair_country_pages.py
+      - scripts/remove_generic_boost_blocks.py
       - .github/workflows/adsense-content-recovery.yml
   pull_request:
     branches:
@@ -16,6 +17,7 @@ on:
       - scripts/repair_adsense_content.py
       - scripts/repair_remaining_content.py
       - scripts/repair_country_pages.py
+      - scripts/remove_generic_boost_blocks.py
       - .github/workflows/adsense-content-recovery.yml
       - '**/index.html'
 
@@ -42,6 +44,7 @@ jobs:
           echo "primary_repair_exit=$code"
           python scripts/repair_remaining_content.py
           python scripts/repair_country_pages.py
+          python scripts/remove_generic_boost_blocks.py
       - name: Verify known malformed and stale copy is gone
         run: |
           python - <<'PY'
@@ -80,4 +83,4 @@ jobs:
             git commit -m "Complete MyCalendarTools AdSense content recovery"
             git push origin HEAD:repair/adsense-content-recovery-20260824
           fi
-# draft PR recovery gate v3
+# draft PR recovery gate v4
