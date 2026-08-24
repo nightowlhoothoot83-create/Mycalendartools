@@ -75,7 +75,7 @@
     <p>Build a countdown to any event — wedding, holiday, birthday, deadline. Updates every second.</p>
   </section>
   <div class="container" style="padding-bottom:40px;position:relative;z-index:1">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;align-items:start">
       <div class="card" style="padding:28px">
         <div class="form-group"><label>Event Name</label><input type="text" id="cdName" placeholder="e.g. My Wedding" value="My Event"></div>
         <div class="form-group"><label>Target Date &amp; Time</label><input type="datetime-local" id="cdTarget"></div>

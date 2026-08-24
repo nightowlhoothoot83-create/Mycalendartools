@@ -50,6 +50,8 @@ if (!/data-consent-adsense|consentAdsense/.test(consent) || !/document\.head\.ap
 const components = fs.readFileSync('components.js', 'utf8');
 if (!/ventraip\.com\.au\/affiliate\/uJmhYi4h/.test(components) || !/rel="sponsored noopener"/.test(components) || !/Affiliate disclosure:/.test(components)) fail.push('components.js: affiliate destination, sponsored relationship or visible disclosure missing');
 const tidePage = fs.readFileSync('tides/index.html', 'utf8');
+const countdownPage = fs.readFileSync('countdown/index.html', 'utf8');
+if (countdownPage.includes('grid-template-columns:1fr 1fr;gap:24px')) fail.push('countdown: fixed two-column tool layout can overflow mobile viewports');
 if (!tidePage.includes('geocoding-api.open-meteo.com/v1/search') || !tidePage.includes('marine-api.open-meteo.com/v1/marine') || !tidePage.includes('sea_level_height_msl')) fail.push('tides: browser-safe geocoding or global marine-data integration missing');
 const headers = fs.readFileSync('_headers', 'utf8');
 if (!headers.includes('connect-src') || !headers.includes('https://geocoding-api.open-meteo.com') || !headers.includes('https://marine-api.open-meteo.com')) fail.push('tides: Content Security Policy does not allow required API connections');
