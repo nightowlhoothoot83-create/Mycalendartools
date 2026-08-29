@@ -50,16 +50,22 @@
 <div class="faq-item"><button class="faq-question">What week number is it? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The tool defaults to today and shows the current week number.</p></div></div>
 <div class="faq-item"><button class="faq-question">Do all years have 52 weeks? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Most do. Some years have 53 ISO weeks.</p></div></div></section><div class="ad-rectangle container"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071"></ins></div>
 <section class="static-content-section container" data-static-seo="true">
-  <h2>About this week-number calculator</h2>
-  <p>Find the numbered week of the year for a selected date, including ISO-style week numbering used in many workplaces and planning systems.</p>
+  <h2>What an ISO week number means</h2>
+  <p>ISO 8601 numbers weeks from Monday to Sunday. Week 1 is the week containing the year's first Thursday, which means the first few days of January can belong to the previous ISO week-year and the final days of December can belong to the next one.</p>
 
-  <h2>How to use this page</h2>
+  <h2>How to use the calculator</h2>
   <ol>
-    <li>Choose a date.</li><li>Read the week number shown.</li><li>Check the year displayed with the result when working near New Year.</li><li>Try another date to compare week numbers.</li>
+    <li>Select the date you need to classify.</li><li>Choose <strong>Get Week Number</strong>.</li><li>Read the ISO week number and ISO week-year together.</li><li>Use the displayed Monday-to-Sunday range when matching the result to a roster, report or project schedule.</li>
   </ol>
 
-  <h2>When this page is useful</h2>
-  <p>Useful for production schedules, rosters, project planning, reporting periods and any system that refers to calendar weeks by number.</p>
+  <h2>Practical examples</h2>
+  <p>Week numbers are useful for manufacturing schedules, freight planning, project sprints, recurring reports, maintenance programs and international teams that refer to work by week rather than by date. For example, a supplier may request delivery in “week 42”; this tool lets you check which Monday-to-Sunday period that means for a particular year.</p>
+
+  <h2>Why the ISO year matters near New Year</h2>
+  <p>The ISO week-year does not always match the calendar year printed in the date. A date such as 1 January can still be part of the final ISO week of the previous year. Always read the week number and week-year as a pair when the date is close to the start or end of a year.</p>
+
+  <h2>Limitations</h2>
+  <p>This page uses ISO 8601 week numbering. Some organisations use Sunday-start calendars, fiscal week systems, retail calendars or custom payroll periods, so their “week 1” may be different. Check the convention used by the organisation you are dealing with before relying on a week number for formal scheduling.</p>
 </section>
 <div id="site-footer"></div>
   <div id="group-footer"></div>
@@ -72,17 +78,29 @@
   </script>
 <script>
   document.addEventListener('DOMContentLoaded',function(){document.getElementById('wnDate').value=new Date().toISOString().split('T')[0];});
+  function getISOWeekInfo(date){
+    var d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+    var day=d.getUTCDay()||7;
+    d.setUTCDate(d.getUTCDate()+4-day);
+    var isoYear=d.getUTCFullYear();
+    var yearStart=new Date(Date.UTC(isoYear,0,1));
+    var week=Math.ceil((((d-yearStart)/86400000)+1)/7);
+    var monday=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+    var originalDay=monday.getUTCDay()||7;
+    monday.setUTCDate(monday.getUTCDate()-(originalDay-1));
+    var sunday=new Date(monday);sunday.setUTCDate(monday.getUTCDate()+6);
+    return {week:week,year:isoYear,monday:monday,sunday:sunday};
+  }
   function calcWN(){
-    var d=new Date(document.getElementById('wnDate').value);
-    if(isNaN(d))return;
-    var jan1=new Date(d.getFullYear(),0,1);
-    var weekNum=Math.ceil(((d-jan1)/86400000+jan1.getDay()+1)/7);
-    var startOfWeek=new Date(d);startOfWeek.setDate(d.getDate()-d.getDay()+1);
-    var endOfWeek=new Date(startOfWeek);endOfWeek.setDate(startOfWeek.getDate()+6);
+    var value=document.getElementById('wnDate').value;
+    if(!value)return;
+    var parts=value.split('-').map(Number);
+    var d=new Date(parts[0],parts[1]-1,parts[2]);
+    var info=getISOWeekInfo(d);
     document.getElementById('wnResult').classList.add('visible');
-    document.getElementById('wnNum').textContent='Week '+weekNum;
-    document.getElementById('wnLabel').textContent=d.getFullYear();
-    document.getElementById('wnExtra').textContent='Week runs '+startOfWeek.toLocaleDateString('en-AU',{day:'numeric',month:'short'})+' to '+endOfWeek.toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+    document.getElementById('wnNum').textContent='Week '+info.week;
+    document.getElementById('wnLabel').textContent='ISO week-year '+info.year;
+    document.getElementById('wnExtra').textContent='Week runs '+info.monday.toLocaleDateString('en-AU',{timeZone:'UTC',day:'numeric',month:'short'})+' to '+info.sunday.toLocaleDateString('en-AU',{timeZone:'UTC',day:'numeric',month:'short',year:'numeric'});
   }
 </script><script src="/cookie-consent.js"></script>
 <footer id="static-policy-footer" style="background:#050914;border-top:1px solid rgba(0,229,255,0.08);padding:24px;text-align:center;font-size:0.8rem;color:#8b93b0">
