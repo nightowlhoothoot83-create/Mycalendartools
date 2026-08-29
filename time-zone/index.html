@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time Zone Converter | MyCalendarTools</title>
-  <meta name="description" content="Convert time between time zones. See what time it is worldwide.">
+  <meta name="description" content="Convert a local date and time to common world time zones and compare live times in major cities.">
   <link rel="canonical" href="https://mycalendartools.net/time-zone/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:title" content="Time Zone Converter">
-  <meta property="og:description" content="Convert time between time zones. See what time it is worldwide.">
+  <meta property="og:description" content="Convert a local date and time to common world time zones and compare live times in major cities.">
   <meta property="og:url" content="https://mycalendartools.net/time-zone/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MyCalendarTools">
@@ -17,7 +17,7 @@
   <meta name="google-adsense-account" content="ca-pub-1904958390525375">
   <link rel="stylesheet" href="/style.css?v=20260825-1">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert between time zones?","acceptedAnswer":{"@type":"Answer","text":"Select the source time zone, enter a date and time, then click convert."}},{"@type":"Question","name":"Does it handle daylight saving?","acceptedAnswer":{"@type":"Answer","text":"Yes — automatically accounted for."}},{"@type":"Question","name":"Can I convert multiple zones at once?","acceptedAnswer":{"@type":"Answer","text":"The tool shows 6 common world cities simultaneously."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this time-zone converter work?","acceptedAnswer":{"@type":"Answer","text":"Enter a date and time in your device's local time zone, then select Convert Times to see the corresponding local date and time in the listed world cities."}},{"@type":"Question","name":"Does it handle daylight saving?","acceptedAnswer":{"@type":"Answer","text":"The browser's time-zone data applies daylight-saving rules for the selected date where supported."}},{"@type":"Question","name":"Which locations are shown?","acceptedAnswer":{"@type":"Answer","text":"The page compares Sydney, Tokyo, Dubai, London, New York and Los Angeles."}}]}</script>
 <style>.nav-logo-icon { height: 36px; width: auto; object-fit: contain; }</style>
 </head>
 <body>
@@ -30,11 +30,11 @@
 <section class="page-hero container">
   <div class="page-hero-icon" style="background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(6,214,255,0.15));border:1px solid rgba(96,165,250,0.2)">&#127757;</div>
   <h1>Time Zone Converter</h1>
-  <p>Convert any time to multiple world time zones instantly. Daylight saving handled automatically.</p>
+  <p>Convert your local date and time to six common world cities and compare their live local times.</p>
 </section>
 <div class="tool-layout container">
   <div class="tool-card card">
-    <div class="form-group"><label>Date &amp; Time</label><input type="datetime-local" id="tzDateTime"></div>
+    <div class="form-group"><label>Date &amp; Time (your local time)</label><input type="datetime-local" id="tzDateTime"></div>
     <button class="btn-primary" onclick="convertTZ()" style="width:100%;justify-content:center">Convert Times</button>
     <div class="tool-result" id="tzResult"><div id="tzOutput"></div></div>
   </div>
@@ -42,20 +42,26 @@
     <div class="info-card card"><h3>Live World Times</h3><div id="worldTimes" style="display:grid;gap:8px;margin-top:8px"></div></div>
   </div>
 </div>
-<section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/days-between/" class="related-card card"><span class="related-card-icon">&#128303;</span>Days Between</a><a href="/week-number/" class="related-card card"><span class="related-card-icon">&#128290;</span>Week Number</a><a href="/day-of-week/" class="related-card card"><span class="related-card-icon">&#128198;</span>Day of Week</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">&#128197;</span>Date Calculator</a></div></section><section class="faq-section container"><h2>Frequently Asked Questions</h2><div class="faq-item"><button class="faq-question">How do I convert between time zones? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Select the source time zone, enter a date and time, then click convert.</p></div></div>
-<div class="faq-item"><button class="faq-question">Does it handle daylight saving? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Yes — automatically accounted for.</p></div></div>
-<div class="faq-item"><button class="faq-question">Can I convert multiple zones at once? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The tool shows 6 common world cities simultaneously.</p></div></div></section><div class="ad-rectangle container"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071"></ins></div>
+<section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/world-clock/" class="related-card card"><span class="related-card-icon">&#128336;</span>World Clock</a><a href="/day-of-week/" class="related-card card"><span class="related-card-icon">&#128198;</span>Day of Week</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">&#128197;</span>Date Calculator</a><a href="/countdown/" class="related-card card"><span class="related-card-icon">&#9203;</span>Countdown</a></div></section><section class="faq-section container"><h2>Frequently Asked Questions</h2><div class="faq-item"><button class="faq-question">How does this time-zone converter work? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>Enter a date and time in your device's local time zone, then select Convert Times to see the corresponding local date and time in the listed world cities.</p></div></div>
+<div class="faq-item"><button class="faq-question">Does it handle daylight saving? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The browser's time-zone data applies daylight-saving rules for the selected date where supported.</p></div></div>
+<div class="faq-item"><button class="faq-question">Which locations are shown? <span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The page compares Sydney, Tokyo, Dubai, London, New York and Los Angeles.</p></div></div></section><div class="ad-rectangle container"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071"></ins></div>
 <section class="static-content-section container" data-static-seo="true">
-  <h2>About this time-zone tool</h2>
-  <p>Compare times between locations so you can plan calls, meetings and events without doing offset arithmetic yourself.</p>
+  <h2>What this converter actually uses as the starting time</h2>
+  <p>The date-and-time field is interpreted in the local time zone configured on your device. The page then shows the corresponding time and date in Sydney, Tokyo, Dubai, London, New York and Los Angeles. This is especially useful when the converted location is already on the previous or next calendar day.</p>
 
-  <h2>How to use this page</h2>
+  <h2>How to use the page</h2>
   <ol>
-    <li>Choose the locations or time zones you want to compare.</li><li>Enter or select the reference time.</li><li>Read the converted local time for the other location.</li><li>Check the date as well as the clock time when crossing midnight.</li>
+    <li>Confirm that your computer or phone is set to the correct local time zone.</li><li>Enter the local date and time you want to compare.</li><li>Select <strong>Convert Times</strong>.</li><li>Read both the clock time and the converted calendar date for each city.</li>
   </ol>
 
-  <h2>When this page is useful</h2>
-  <p>Useful for remote work, international calls, travel, livestreams and coordinating events across regions.</p>
+  <h2>Practical examples</h2>
+  <p>Use the converter before scheduling an international video call, webinar, livestream, support window or family call. If an Australian meeting is proposed for 9:00 am, the result can show whether colleagues in London or New York would receive the invitation on the same calendar date and whether the time is practical.</p>
+
+  <h2>Daylight saving and changing offsets</h2>
+  <p>Time-zone offsets are not fixed all year. Cities such as Sydney, London and New York can change offset because of daylight saving, and those changes happen on different dates. The browser applies its time-zone rules to the date you enter, which is more reliable than assuming a permanent number of hours between cities.</p>
+
+  <h2>Limitations</h2>
+  <p>The listed cities are fixed on this page, and the source is your device's local zone rather than a separately selectable source zone. Government daylight-saving rules can also change over time. For travel, legal cut-offs, market opening times or other high-stakes timing, confirm the official local time and time zone from the relevant organisation.</p>
 </section>
 <div id="site-footer"></div>
   <div id="group-footer"></div>
