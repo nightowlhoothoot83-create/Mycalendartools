@@ -16,8 +16,12 @@ BAD_SIGNATURES = [
     'Common examples include checking a deadline before booking travel',
     'MyCalendarTools keeps these tools lightweight and, wherever practical',
     'Choose the relevant year where available',
+    'Enter the dates, numbers or options requested by the form on this page',
+    'quick checks, household planning, school or work tasks',
 ]
 
+NON_TOOL_ROOTS = {'about','contact','cookies','faq','privacy','terms'}
+MIN_TOOL_WORDS = 300
 errors=[]
 paragraphs={}
 
@@ -26,6 +30,19 @@ if "fallbackFooter.remove()" not in components or "DOMContentLoaded" not in comp
     errors.append('components.js: dynamic footer must remove the static no-JavaScript fallback after parsing')
 if "Both footers now stay visible" in components:
     errors.append('components.js: duplicate-footer implementation has returned')
+if '/assets/perf/ascension-digital.webp' not in components:
+    errors.append('components.js: approved Ascension Digital footer logo reference missing')
+
+
+def visible_words(html):
+    # Count substantive page copy, not scripts/styles/schema or shared fallback/footer chrome.
+    s=re.sub(r'<script\b[^>]*>[\s\S]*?</script>', ' ', html, flags=re.I)
+    s=re.sub(r'<style\b[^>]*>[\s\S]*?</style>', ' ', s, flags=re.I)
+    s=re.sub(r'<footer\b[^>]*>[\s\S]*?</footer>', ' ', s, flags=re.I)
+    s=re.sub(r'<nav\b[^>]*>[\s\S]*?</nav>', ' ', s, flags=re.I)
+    s=re.sub(r'<[^>]+>', ' ', s)
+    s=unescape(s)
+    return re.findall(r"\b[A-Za-z0-9][A-Za-z0-9’'\-]*\b", s)
 
 for p in Path('.').rglob('*.html'):
     text=p.read_text(encoding='utf-8', errors='strict')
@@ -54,11 +71,27 @@ for p in Path('.').rglob('*.html'):
         if len(paragraph) >= 80:
             paragraphs.setdefault(paragraph, []).append(str(p))
 
+    # Every real tool/reference page should contain enough page-specific explanation
+    # to stand alone. 300 is a floor, not a target; we do not pad pages to a magic 600/800.
+    rel=p.as_posix()
+    root=p.parts[0] if len(p.parts)>1 else ''
+    is_tool=(p.name=='index.html' and root and root not in NON_TOOL_ROOTS) or (p.parent.name in {'school-holidays','school-term-dates'})
+    if is_tool and 'noindex' not in text.lower():
+        count=len(visible_words(text))
+        if count < MIN_TOOL_WORDS:
+            errors.append(f'{p}: thin indexable tool/reference page ({count} visible words; minimum {MIN_TOOL_WORDS})')
+
+    # All indexable pages use the shared visual shell.
+    if 'noindex' not in text.lower() and p.as_posix() != 'index.html':
+        if '/components.js' not in text:
+            errors.append(f'{p}: shared components.js shell missing')
+        if 'id="site-footer"' not in text or 'id="group-footer"' not in text:
+            errors.append(f'{p}: shared site/group footer mount missing')
+
 for paragraph, files in paragraphs.items():
     if len(files) >= 3:
         errors.append(f'repeated generic paragraph across {len(files)} pages: {paragraph!r} ({", ".join(files)})')
 
-# Country school pages must keep semantic H1 titles rather than putting the flag in H1.
 for base,label in [('school-holidays','School Holidays'),('school-term-dates','School Term Dates')]:
     root=Path(base)
     if not root.exists():
@@ -70,6 +103,10 @@ for base,label in [('school-holidays','School Holidays'),('school-term-dates','S
             errors.append(f'{p}: H1 no longer contains {label!r}')
         if re.search(r'<div class="page-hero-icon"[^>]*>\s*[^<]{8,80}(?:School Holidays|School Term Dates)', text):
             errors.append(f'{p}: title appears to have regressed into the icon container')
+
+redirects=Path('_redirects').read_text(encoding='utf-8')
+if re.search(r'^/[^\s]+/\s+/[^\s]+\.html\s+200', redirects, re.M):
+    errors.append('_redirects: reverse clean-route to .html rewrite returned')
 
 if errors:
     print('\n'.join('ERROR '+e for e in errors))
