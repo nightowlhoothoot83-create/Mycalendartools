@@ -32,7 +32,6 @@
   <div id="nav"></div>
   <div class="ad-leaderboard container">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071" data-ad-format="auto" data-full-width-responsive="true"></ins>
-
   </div>
 <nav class="breadcrumb container"><a href="/">Home</a> <span class="breadcrumb-sep">›</span> <a href="/">Date Tools</a> <span class="breadcrumb-sep">›</span> <span class="breadcrumb-current">Days Between Dates</span></nav>
 <section class="page-hero container">
@@ -42,142 +41,49 @@
 </section>
 <div class="tool-layout container">
   <div class="tool-card card">
-    <div class="form-group">
-      <label for="startDate">Start Date</label>
-      <input type="date" id="startDate">
-    </div>
-    <div class="form-group">
-      <label for="endDate">End Date</label>
-      <input type="date" id="endDate">
-    </div>
-    <div class="form-group" style="display:flex;align-items:center;gap:10px">
-      <input type="checkbox" id="workingOnly" style="width:auto">
-      <label for="workingOnly" style="text-transform:none;font-size:0.92rem;margin:0">Working days only (exclude weekends)</label>
-    </div>
+    <div class="form-group"><label for="startDate">Start Date</label><input type="date" id="startDate"></div>
+    <div class="form-group"><label for="endDate">End Date</label><input type="date" id="endDate"></div>
+    <div class="form-group" style="display:flex;align-items:center;gap:10px"><input type="checkbox" id="workingOnly" style="width:auto"><label for="workingOnly" style="text-transform:none;font-size:0.92rem;margin:0">Working days only (exclude weekends)</label></div>
     <button class="btn-primary" onclick="calcDays()" style="width:100%;justify-content:center">Calculate Days</button>
-    <div class="tool-result" id="result">
-      <div class="result-value" id="resultDays">0</div>
-      <div class="result-label" id="resultLabel">days between dates</div>
-      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px" id="extraResults"></div>
-    </div>
+    <div class="tool-result" id="result"><div class="result-value" id="resultDays">0</div><div class="result-label" id="resultLabel">days between dates</div><div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px" id="extraResults"></div></div>
   </div>
   <div class="info-sidebar">
-    <div class="info-card card">
-      <h3>How it works</h3>
-      <p>The calculator subtracts the earlier date from the later date to get the total number of days. For working days, it counts only Monday–Friday.</p>
-    </div>
-    <div class="info-card card">
-      <h3>Common uses</h3>
-      <ul>
-        <li>Project planning deadlines</li>
-        <li>Pregnancy due date tracking</li>
-        <li>Calculating leave entitlements</li>
-        <li>Settling friendly bets</li>
-        <li>Countdown to events</li>
-      </ul>
-    </div>
-    <div class="info-card card" style="border-color:rgba(6,214,255,0.2)">
-      <h3>Also on MyCalcTools</h3>
-      <p>Need more date maths? Try the <a href="https://www.mycalctools.net" target="_blank">Date Calculator on MyCalcTools.net →</a></p>
-    </div>
+    <div class="info-card card"><h3>How it works</h3><p>The calculator subtracts the earlier date from the later date to get the total number of days. For working days, it counts only Monday–Friday.</p></div>
+    <div class="info-card card"><h3>Common uses</h3><ul><li>Project planning deadlines</li><li>Pregnancy due date tracking</li><li>Calculating leave entitlements</li><li>Settling friendly bets</li><li>Countdown to events</li></ul></div>
+    <div class="info-card card" style="border-color:rgba(6,214,255,0.2)"><h3>Also on MyCalcTools</h3><p>Need more date maths? Try the <a href="https://www.mycalctools.net" target="_blank">Date Calculator on MyCalcTools.net →</a></p></div>
   </div>
 </div>
-<section class="related-tools container">
-      <h2>Related Tools</h2>
-      <div class="related-grid"><a href="/weeks-between/" class="related-card card"><span class="related-card-icon">📅</span>Weeks Between</a>
-<a href="/date-calculator/" class="related-card card"><span class="related-card-icon">🗓️</span>Date Calculator</a>
-<a href="/age-calculator/" class="related-card card"><span class="related-card-icon">🎂</span>Age Calculator</a>
-<a href="/countdown/" class="related-card card"><span class="related-card-icon">⏳</span>Countdown</a></div>
-    </section>
-<section class="faq-section container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <button class="faq-question">How do I calculate days between two dates? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Enter your start and end dates in the fields above and click Calculate. The tool instantly shows the exact number of days, weeks, and months between them.</p></div>
-      </div>
-<div class="faq-item">
-        <button class="faq-question">Does it include weekends? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Yes, the default count includes all days. Tick 'Working days only' to exclude Saturdays and Sundays.</p></div>
-      </div>
-<div class="faq-item">
-        <button class="faq-question">Can I count working days only? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Absolutely — check the 'Working days only' option to skip weekends.</p></div>
-      </div>
-<div class="faq-item">
-        <button class="faq-question">What's the maximum date range? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>There is no limit — you can calculate between any two dates, past or future.</p></div>
-      </div>
-    </section>
-<div class="ad-rectangle container">
-    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071"></ins>
-
-  </div>
-
+<section class="related-tools container"><h2>Related Tools</h2><div class="related-grid"><a href="/weeks-between/" class="related-card card"><span class="related-card-icon">📅</span>Weeks Between</a><a href="/date-calculator/" class="related-card card"><span class="related-card-icon">🗓️</span>Date Calculator</a><a href="/age-calculator/" class="related-card card"><span class="related-card-icon">🎂</span>Age Calculator</a><a href="/countdown/" class="related-card card"><span class="related-card-icon">⏳</span>Countdown</a></div></section>
+<section class="faq-section container"><h2>Frequently Asked Questions</h2><div class="faq-item"><button class="faq-question">How do I calculate days between two dates? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Enter your start and end dates in the fields above and click Calculate. The tool instantly shows the exact number of days, weeks, and months between them.</p></div></div><div class="faq-item"><button class="faq-question">Does it include weekends? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Yes, the default count includes all days. Tick 'Working days only' to exclude Saturdays and Sundays.</p></div></div><div class="faq-item"><button class="faq-question">Can I count working days only? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Absolutely — check the 'Working days only' option to skip weekends.</p></div></div><div class="faq-item"><button class="faq-question">What's the maximum date range? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>There is no limit — you can calculate between any two dates, past or future.</p></div></div></section>
+<div class="ad-rectangle container"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1904958390525375" data-ad-slot="7308800071"></ins></div>
 <section class="static-content-section container" data-static-seo="true">
-  <h2>About this date difference calculator</h2>
-  <p>Calculate the exact number of calendar days between two dates. This is useful when a simple date subtraction would be error-prone across different month lengths, leap years or year boundaries.</p>
+  <h2>What the days-between calculator tells you</h2>
+  <p>This tool measures the elapsed time between two calendar dates and reports the result as total days, with supporting week and month estimates. Because the calculation uses the actual calendar, it automatically crosses short and long months, leap years and year boundaries without you having to count them manually.</p>
+  <p>The optional working-days setting is useful when weekends should not count. It excludes Saturdays and Sundays, but it does not know the public-holiday calendar for a particular country, state, employer or workplace agreement.</p>
 
-  <h2>How to use this page</h2>
+  <h2>How to use the result</h2>
   <ol>
-    <li>Choose the starting date.</li><li>Choose the ending date.</li><li>Read the total number of days between the two dates.</li><li>Adjust either date to compare another interval.</li>
+    <li>Select the start date and end date. The order does not matter because the tool measures the interval between them.</li>
+    <li>Leave <strong>Working days only</strong> unticked for ordinary calendar days, or tick it when you want a Monday-to-Friday count.</li>
+    <li>Read the main day total first. The weeks and months shown underneath are useful summaries, but the day count is the most precise result.</li>
+    <li>Change either date to compare another deadline, booking window or planning period.</li>
   </ol>
 
-  <h2>When this page is useful</h2>
-  <p>Useful for project schedules, travel planning, deadlines, event planning and checking the length of a period.</p>
+  <h2>Practical examples</h2>
+  <p>If a project starts on 1 September and must be completed by 30 September, the calendar-day result shows the elapsed interval between those dates. If a supplier instead promises delivery within a number of business days, switch on the working-days option and remember that public holidays may still need to be removed separately.</p>
+  <p>For travel, the tool can compare the date you leave with the date you return. For events, it can show the preparation window between today and the event date. For records or contracts, it can help check how much time passed between two dated documents before you apply any legal or business-specific counting rule.</p>
+
+  <h2>Calendar days, working days and inclusive counting</h2>
+  <p>Different organisations count date ranges in different ways. Some deadlines count the number of days <em>after</em> an event, some include both the first and last day, and some exclude weekends or public holidays. This calculator provides a neutral mathematical interval. If the result is being used for a legal, employment, tax, court or contractual deadline, check the rule that applies to that deadline before relying on the number.</p>
+
+  <h2>Accuracy and limitations</h2>
+  <p>The calendar-day calculation is suitable for ordinary Gregorian calendar dates entered in the browser. Working-day mode removes weekends only. It does not adjust for public holidays, shutdown periods, local time-zone cut-offs or special rules such as “clear days”, so those need to be considered separately when relevant.</p>
 </section>
-<div id="site-footer"></div>
-  <div id="group-footer"></div>
-  <script src="/components.js"></script>
-  <script>
-    document.getElementById('brand-strip').innerHTML = renderBrandStrip();
-    document.getElementById('nav').innerHTML = renderNav();
-    document.getElementById('site-footer').innerHTML = renderSiteFooter();
-    document.getElementById('group-footer').innerHTML = renderGroupFooter();
-  </script>
+<div id="site-footer"></div><div id="group-footer"></div><script src="/components.js"></script><script>document.getElementById('brand-strip').innerHTML = renderBrandStrip();document.getElementById('nav').innerHTML = renderNav();document.getElementById('site-footer').innerHTML = renderSiteFooter();document.getElementById('group-footer').innerHTML = renderGroupFooter();</script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('startDate').value = today;
-    const end = new Date(); end.setDate(end.getDate()+30);
-    document.getElementById('endDate').value = end.toISOString().split('T')[0];
-  });
-  function calcDays() {
-    const s = new Date(document.getElementById('startDate').value);
-    const e = new Date(document.getElementById('endDate').value);
-    if (!s || !e || isNaN(s) || isNaN(e)) return;
-    const [start, end] = s <= e ? [s,e] : [e,s];
-    const totalMs = end - start;
-    const totalDays = Math.round(totalMs / 86400000);
-    const workOnly = document.getElementById('workingOnly').checked;
-    let count = 0;
-    if (workOnly) {
-      let d = new Date(start);
-      while (d <= end) { const dow = d.getDay(); if (dow !== 0 && dow !== 6) count++; d.setDate(d.getDate()+1); }
-    } else { count = totalDays; }
-    const res = document.getElementById('result');
-    res.classList.add('visible');
-    document.getElementById('resultDays').textContent = count.toLocaleString();
-    document.getElementById('resultLabel').textContent = workOnly ? 'working days between dates' : 'days between dates';
-    document.getElementById('extraResults').innerHTML = `
-      <div style="background:var(--surface2);border-radius:8px;padding:12px">
-        <div style="font-size:0.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em">Weeks</div>
-        <div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)">${(totalDays/7).toFixed(1)}</div>
-      </div>
-      <div style="background:var(--surface2);border-radius:8px;padding:12px">
-        <div style="font-size:0.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em">Months</div>
-        <div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)">${(totalDays/30.44).toFixed(1)}</div>
-      </div>
-    `;
-  }
+  document.addEventListener('DOMContentLoaded', () => {const today = new Date().toISOString().split('T')[0];document.getElementById('startDate').value = today;const end = new Date(); end.setDate(end.getDate()+30);document.getElementById('endDate').value = end.toISOString().split('T')[0];});
+  function calcDays() {const s = new Date(document.getElementById('startDate').value);const e = new Date(document.getElementById('endDate').value);if (!s || !e || isNaN(s) || isNaN(e)) return;const [start, end] = s <= e ? [s,e] : [e,s];const totalMs = end - start;const totalDays = Math.round(totalMs / 86400000);const workOnly = document.getElementById('workingOnly').checked;let count = 0;if (workOnly) {let d = new Date(start);while (d <= end) { const dow = d.getDay(); if (dow !== 0 && dow !== 6) count++; d.setDate(d.getDate()+1); }} else { count = totalDays; }const res = document.getElementById('result');res.classList.add('visible');document.getElementById('resultDays').textContent = count.toLocaleString();document.getElementById('resultLabel').textContent = workOnly ? 'working days between dates' : 'days between dates';document.getElementById('extraResults').innerHTML = `<div style="background:var(--surface2);border-radius:8px;padding:12px"><div style="font-size:0.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em">Weeks</div><div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)">${(totalDays/7).toFixed(1)}</div></div><div style="background:var(--surface2);border-radius:8px;padding:12px"><div style="font-size:0.72rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em">Months</div><div style="font-family:Syne,sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)">${(totalDays/30.44).toFixed(1)}</div></div>`;}
 </script>
 <script src="/cookie-consent.js"></script>
-<footer id="static-policy-footer" style="background:#050914;border-top:1px solid rgba(0,229,255,0.08);padding:24px;text-align:center;font-size:0.8rem;color:#8b93b0">
-  <nav aria-label="Policy links">
-    <a href="/privacy/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Privacy Policy</a>
-    <a href="/terms/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Terms of Use</a>
-    <a href="/about/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">About</a>
-    <a href="/contact/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Contact</a>
-  </nav>
-  <p style="margin-top:8px">&copy; 2025 MyCalendarTools &middot; Part of the Ascension Digital Group</p>
-</footer>
+<footer id="static-policy-footer" style="background:#050914;border-top:1px solid rgba(0,229,255,0.08);padding:24px;text-align:center;font-size:0.8rem;color:#8b93b0"><nav aria-label="Policy links"><a href="/privacy/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Privacy Policy</a><a href="/terms/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Terms of Use</a><a href="/about/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">About</a><a href="/contact/" style="color:#8b93b0;margin:0 10px;text-decoration:underline">Contact</a></nav><p style="margin-top:8px">&copy; 2025 MyCalendarTools &middot; Part of the Ascension Digital Group</p></footer>
 </body></html>
