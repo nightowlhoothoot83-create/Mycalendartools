@@ -32,7 +32,7 @@ function renderNav() {
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" class="nav-logo-icon" width="36" height="36" decoding="async">
+        <img src="/assets/perf/mycalendartools-logo.webp" alt="MyCalendarTools" class="nav-logo-icon" width="36" height="36" decoding="async">
         <span class="nav-logo-text">MyCalendarTools</span>
       </a>
       <ul class="nav-links">
@@ -65,7 +65,7 @@ function renderBrandStrip() {
   <div class="rs-brand-strip">
     <div class="rs-brand-left">
       <a href="https://raven-sharp.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-        <img src="/raven-sharp.jpg" alt="Raven Sharp" width="32" height="32" decoding="async" style="width:32px;height:32px;border-radius:8px;object-fit:cover;filter:drop-shadow(0 0 6px rgba(6,100,255,0.5))">
+        <img src="/assets/perf/raven-sharp.webp" alt="Raven Sharp" width="32" height="32" decoding="async" style="width:32px;height:32px;border-radius:8px;object-fit:cover;filter:drop-shadow(0 0 6px rgba(6,100,255,0.5))">
         <span style="font-weight:700;font-size:0.9rem;color:var(--text,#e8eaf6);letter-spacing:0.02em">Raven Sharp <span style="color:var(--muted,#94a3b8);font-weight:400">Tools</span></span>
       </a>
     </div>
@@ -89,7 +89,7 @@ function renderSiteFooter() {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" class="nav-logo-icon" width="36" height="36" loading="lazy" decoding="async">
+            <img src="/assets/perf/mycalendartools-logo.webp" alt="MyCalendarTools" class="nav-logo-icon" width="36" height="36" loading="lazy" decoding="async">
             <span class="nav-logo-text">MyCalendarTools</span>
           </a>
           <p>Free date tools, moon phases, school holidays and countdowns. No accounts. No noise. Just answers.</p>
@@ -149,37 +149,37 @@ function renderGroupFooter() {
   return `
   <div class="rs-footer">
     <a href="https://ascensiondigitalgroup.com" target="_blank" rel="noopener">
-      <img src="/ascension-digital.jpg" alt="Ascension Digital" class="ascension-logo" width="440" height="440" loading="lazy" decoding="async" style="width:220px;height:auto;border-radius:12px;margin:0 auto 20px;display:block;filter:drop-shadow(0 0 16px rgba(6,214,255,0.3))">
+      <img src="/assets/perf/ascension-digital.webp" alt="Ascension Digital" class="ascension-logo" width="440" height="440" loading="lazy" decoding="async" style="width:220px;height:auto;border-radius:12px;margin:0 auto 20px;display:block;filter:drop-shadow(0 0 16px rgba(6,214,255,0.3))">
     </a>
     <h3>Part of the Ascension Digital Group</h3>
     <p class="rs-footer-tagline">Elevating Your Digital Future</p>
     <div class="rs-footer-links" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center">
       <a href="/" title="MyCalendarTools" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <img src="/mycalendartools-logo.jpg" alt="MyCalendarTools" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+        <img src="/assets/perf/mycalendartools-logo.webp" alt="MyCalendarTools" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://www.mycalctools.net" target="_blank" rel="noopener" title="MyCalcTools" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <img src="/mycalctools-logo.png" alt="MyCalcTools" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+        <img src="/assets/perf/mycalctools-logo.webp" alt="MyCalcTools" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://www.wheelnamepicker.com.au" target="_blank" rel="noopener" title="Wheel Name Picker" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <img src="/wheelnamepicker-logo.png" alt="Wheel Name Picker" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+        <img src="/assets/perf/wheelnamepicker-logo.webp" alt="Wheel Name Picker" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://raven-sharp.com" target="_blank" rel="noopener" title="Raven Sharp" style="opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
-        <img src="/raven-sharp.jpg" alt="Raven Sharp" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
+        <img src="/assets/perf/raven-sharp.webp" alt="Raven Sharp" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover">
       </a>
       <a href="https://zyia-creations.printify.me/" target="_blank" rel="noopener" title="Zyia Creations">
-        <img src="/zyia-creations.png" alt="Zyia Creations" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/assets/perf/zyia-creations.webp" alt="Zyia Creations" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://zyiacreations.etsy.com" target="_blank" rel="noopener" title="ADG Downloads">
-        <img src="/adg-downloads.png" alt="ADG Downloads" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/assets/perf/adg-downloads.webp" alt="ADG Downloads" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://www.facebook.com/share/18Ma3KsJTo/" target="_blank" rel="noopener" title="Feed the Feed">
-        <img src="/feed-the-feed.jpg" alt="Feed the Feed" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/assets/perf/feed-the-feed.webp" alt="Feed the Feed" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="http://www.youtube.com/@spewcrewkids" target="_blank" rel="noopener" title="Spew Crew Kids">
-        <img src="/spew-crew.png" alt="Spew Crew Kids" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;background:#000;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/assets/perf/spew-crew.webp" alt="Spew Crew Kids" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;background:#000;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
       <a href="https://mysticalmoments.pages.dev" target="_blank" rel="noopener" title="Mystical Moments Photography">
-        <img src="/mystical-moments.png" alt="Mystical Moments" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="/assets/perf/mystical-moments.webp" alt="Mystical Moments" width="52" height="52" loading="lazy" decoding="async" style="width:52px;height:52px;border-radius:12px;object-fit:cover;opacity:0.85;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
       </a>
     </div>
     <a href="/about/#support" class="btn-primary">Support Us</a>
@@ -188,7 +188,7 @@ function renderGroupFooter() {
 
 // ── Hosting Affiliate Banner ──
 function renderHostingAffiliate() {
-  return `<figure class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/ventraip-affiliate-banner.jpg" alt="VentraIP Australian website hosting affiliate banner" width="770" height="513" loading="lazy" decoding="async"></a><figcaption style="margin-top:10px;text-align:center;color:var(--dim);font-size:.78rem">Affiliate disclosure: if you purchase through this hosting link, MyCalendarTools may receive a commission at no extra cost to you.</figcaption></figure>`;
+  return `<figure class="affiliate-banner card container"><a href="https://ventraip.com.au/affiliate/uJmhYi4h" target="_blank" rel="sponsored noopener"><img src="/assets/perf/ventraip-affiliate-banner.webp" alt="VentraIP Australian website hosting affiliate banner" width="770" height="513" loading="lazy" decoding="async"></a><figcaption style="margin-top:10px;text-align:center;color:var(--dim);font-size:.78rem">Affiliate disclosure: if you purchase through this hosting link, MyCalendarTools may receive a commission at no extra cost to you.</figcaption></figure>`;
 }
 
 // ── FAQ init ──
