@@ -1,0 +1,223 @@
+{
+  "year": 2026,
+  "checkedAt": "2026-11-16",
+  "scope": "Government school student term boundaries; school-specific closures are not included.",
+  "regions": [
+    {
+      "id": "QLD",
+      "name": "Queensland",
+      "source": "https://education.qld.gov.au/about/Pages/termDates.aspx",
+      "note": "State schools; Friday 4 September is also a student-free professional development day.",
+      "terms": [
+        {
+          "start": "2026-01-27",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-20",
+          "end": "2026-06-26"
+        },
+        {
+          "start": "2026-07-13",
+          "end": "2026-09-18"
+        },
+        {
+          "start": "2026-10-06",
+          "end": "2026-12-11"
+        }
+      ]
+    },
+    {
+      "id": "NSW-E",
+      "name": "New South Wales — Eastern division",
+      "source": "https://education.nsw.gov.au/schooling/calendars/2026",
+      "note": "Student attendance dates, excluding school development days. Some border schools use different dates.",
+      "terms": [
+        {
+          "start": "2026-02-02",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-22",
+          "end": "2026-07-03"
+        },
+        {
+          "start": "2026-07-21",
+          "end": "2026-09-25"
+        },
+        {
+          "start": "2026-10-13",
+          "end": "2026-12-17"
+        }
+      ]
+    },
+    {
+      "id": "NSW-W",
+      "name": "New South Wales — Western division",
+      "source": "https://education.nsw.gov.au/schooling/calendars/2026",
+      "note": "Western division students start later in February. Some border schools use different dates.",
+      "terms": [
+        {
+          "start": "2026-02-09",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-22",
+          "end": "2026-07-03"
+        },
+        {
+          "start": "2026-07-21",
+          "end": "2026-09-25"
+        },
+        {
+          "start": "2026-10-13",
+          "end": "2026-12-17"
+        }
+      ]
+    },
+    {
+      "id": "VIC",
+      "name": "Victoria",
+      "source": "https://www.vic.gov.au/school-term-dates-and-holidays-victoria",
+      "note": "Students start Term 1 on 28 January; staff start on 27 January. Confirm your school's pupil-free days.",
+      "terms": [
+        {
+          "start": "2026-01-28",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-20",
+          "end": "2026-06-26"
+        },
+        {
+          "start": "2026-07-13",
+          "end": "2026-09-18"
+        },
+        {
+          "start": "2026-10-05",
+          "end": "2026-12-18"
+        }
+      ]
+    },
+    {
+      "id": "WA",
+      "name": "Western Australia",
+      "source": "https://www.education.wa.edu.au/future-term-dates",
+      "note": "Public-school dates. Check school development days with your school.",
+      "terms": [
+        {
+          "start": "2026-02-02",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-20",
+          "end": "2026-07-03"
+        },
+        {
+          "start": "2026-07-20",
+          "end": "2026-09-25"
+        },
+        {
+          "start": "2026-10-12",
+          "end": "2026-12-17"
+        }
+      ]
+    },
+    {
+      "id": "SA",
+      "name": "South Australia",
+      "source": "https://www.education.sa.gov.au/students/term-dates-south-australian-state-schools",
+      "note": "State-school dates. Check individual school student-free days.",
+      "terms": [
+        {
+          "start": "2026-01-27",
+          "end": "2026-04-10"
+        },
+        {
+          "start": "2026-04-27",
+          "end": "2026-07-03"
+        },
+        {
+          "start": "2026-07-20",
+          "end": "2026-09-25"
+        },
+        {
+          "start": "2026-10-12",
+          "end": "2026-12-11"
+        }
+      ]
+    },
+    {
+      "id": "TAS",
+      "name": "Tasmania",
+      "source": "https://www.decyp.tas.gov.au/learning/term-dates/",
+      "note": "School student dates. College finishing dates depend on exams; professional learning days can also affect attendance.",
+      "terms": [
+        {
+          "start": "2026-02-05",
+          "end": "2026-04-17"
+        },
+        {
+          "start": "2026-05-04",
+          "end": "2026-07-10"
+        },
+        {
+          "start": "2026-07-27",
+          "end": "2026-10-02"
+        },
+        {
+          "start": "2026-10-19",
+          "end": "2026-12-18"
+        }
+      ]
+    },
+    {
+      "id": "ACT",
+      "name": "Australian Capital Territory",
+      "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving",
+      "note": "Continuing students start 2 February. New students start 30 January; confirm with the school. College exam periods vary.",
+      "terms": [
+        {
+          "start": "2026-02-02",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-21",
+          "end": "2026-07-03"
+        },
+        {
+          "start": "2026-07-21",
+          "end": "2026-09-25"
+        },
+        {
+          "start": "2026-10-13",
+          "end": "2026-12-18"
+        }
+      ]
+    },
+    {
+      "id": "NT",
+      "name": "Northern Territory",
+      "source": "https://nt.gov.au/learning/primary-and-secondary-students/school-term-dates-in-nt",
+      "note": "Student attendance dates. Gunbalanya School follows a separate flexible calendar; non-government schools may vary.",
+      "terms": [
+        {
+          "start": "2026-01-29",
+          "end": "2026-04-02"
+        },
+        {
+          "start": "2026-04-14",
+          "end": "2026-06-19"
+        },
+        {
+          "start": "2026-07-14",
+          "end": "2026-09-18"
+        },
+        {
+          "start": "2026-10-06",
+          "end": "2026-12-10"
+        }
+      ]
+    }
+  ]
+}
