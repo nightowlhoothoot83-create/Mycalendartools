@@ -51,7 +51,7 @@
 .info-feature-card{display:block;color:inherit;text-decoration:none}
 .info-feature-card:hover,.info-feature-card:focus-visible{text-decoration:none}
 </style>
-</head>
+<script src="/school-location.js" defer></script></head>
 <body>
   <div id="brand-strip"></div>
   <div id="nav"></div>
@@ -125,7 +125,7 @@
           <div class="stat-item"><div class="stat-dot" style="background:var(--gold);box-shadow:0 0 8px var(--gold)"></div>🚫 No Sign-up</div>
         </div>
       </div>
-    </section>
+    </section><section class="container" style="margin:24px auto"><div class="card" id="school-location" style="padding:24px"><h2>Choose your school region</h2><p>Choose where the student attends school.</p></div></section>
 
     <!-- Quick Tools -->
     <section>
@@ -503,9 +503,9 @@
     // Unique holiday
     const holiday = getTodayHoliday();
     document.getElementById('holidayWidget').innerHTML = `
-      <div class="holiday-badge">⭐ Today's Unusual Holiday</div>
-      <div class="holiday-name">${holiday.emoji} ${holiday.name}</div>
-      <div class="holiday-desc">${holiday.desc}</div>
+      <div class="holiday-badge">⭐ ${holiday ? "Today's Featured Observance" : 'Explore Unusual Holidays'}</div>
+      <div class="holiday-name">${holiday ? `${holiday.emoji} ${holiday.name}` : 'No featured observance in our list today'}</div>
+      <div class="holiday-desc">${holiday ? holiday.desc : 'Our list is a selection of observances, not a complete holiday calendar. Browse the list to find the date of each event.'}</div>
       <div style="margin-top:14px"><a href="/unique-holidays/" class="btn-secondary" style="font-size:0.82rem;padding:7px 16px">See all unique holidays →</a></div>
     `;
 
@@ -582,3 +582,4 @@
 </footer>
 </body>
 </html>
+

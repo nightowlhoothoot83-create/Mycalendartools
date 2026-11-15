@@ -304,10 +304,9 @@ const UNIQUE_HOLIDAYS = [
   { month: 12, day: 9, name: 'Christmas Card Day', emoji: '💌', desc: 'Time to write those cards.' },
 ];
 
-function getTodayHoliday() {
-  const now = new Date();
+function getTodayHoliday(now = new Date()) {
   const m = now.getMonth() + 1, d = now.getDate();
-  return UNIQUE_HOLIDAYS.find(h => h.month === m && h.day === d) || UNIQUE_HOLIDAYS[now.getDate() % UNIQUE_HOLIDAYS.length];
+  return UNIQUE_HOLIDAYS.find(h => h.month === m && h.day === d) || null;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

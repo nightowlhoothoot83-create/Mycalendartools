@@ -12,3 +12,8 @@ jobs:
         with:
           node-version: 20
       - run: node scripts/validate-indexing-integrity.mjs
+      - name: Check sourced school calendars and browser-region behaviour
+        run: |
+          node scripts/build-school-calendar.mjs --check
+          node scripts/school-calendar-regression.mjs
+
